@@ -155,7 +155,7 @@
     </style>
 </head>
 
-<body class="bg-pitch font-inter relative w-full overflow-x-hidden">
+<body class="bg-pitch font-inter relative w-full overflow-clip">
 
     <!-- Custom Cursor -->
     <div class="cursor-dot" id="cursor-dot"></div>
@@ -196,7 +196,7 @@
     </header>
 
     <!-- Content Wrap for Lenis -->
-    <div id="smooth-wrapper" class="overflow-hidden w-full">
+    <div id="smooth-wrapper" class="overflow-clip w-full">
         <main id="smooth-content" class="w-full">
 
             <!-- Hero Section -->
@@ -303,7 +303,7 @@
             </section>
 
             <!-- Scrollytelling Methodology (Replaces Portfolio) -->
-            <section id="methodology-scroll" class="relative w-full bg-pitch text-white" style="height: 300vh;">
+            <section id="methodology-scroll" class="relative w-full bg-pitch text-white" style="height: 400vh;">
                 <!-- Sticky Container -->
                 <div class="sticky top-0 h-screen w-full flex items-center overflow-hidden">
 
@@ -315,15 +315,14 @@
                             style="height: 0%;"></div>
                     </div>
 
-                    <div class="container mx-auto max-w-7xl px-6 md:px-12 md:pl-32 relative h-full flex items-center">
+                    <!-- Track container (Full width to allow horizontal shift) -->
+                    <div id="method-track" class="w-max h-full flex items-center will-change-transform"
+                        style="transform: translate3d(0,0,0);">
 
-                        <!-- Track -->
-                        <div id="method-track" class="w-full flex items-center will-change-transform"
-                            style="transform: translate3d(0,0,0);">
-
-                            <!-- Step 1 -->
-                            <div
-                                class="w-[85vw] md:w-[600px] flex-shrink-0 pr-8 md:pr-24 method-step transition-opacity duration-300">
+                        <!-- Step 1 -->
+                        <div
+                            class="w-screen h-full flex-shrink-0 flex items-center justify-center method-step px-6 md:px-24">
+                            <div class="max-w-3xl w-full method-content transform transition-transform duration-300">
                                 <p
                                     class="font-syne text-accent text-xl md:text-2xl mb-4 md:mb-6 uppercase tracking-widest font-bold">
                                     01. Approche</p>
@@ -333,16 +332,19 @@
                                         class="font-serif italic text-white/50 lowercase tracking-normal">vide.</span>
                                 </h3>
                                 <p
-                                    class="font-inter text-base md:text-xl text-gray-400 font-light max-w-md leading-relaxed">
+                                    class="font-inter text-base md:text-xl text-gray-400 font-light max-w-xl leading-relaxed">
                                     Un site web classique empile l'information jusqu'à l'indigestion. Mon processus
                                     commence par la suppression de tout ce qui est superflu pour ne conserver que
                                     l'essence absolue de votre message.
                                 </p>
                             </div>
+                        </div>
 
-                            <!-- Step 2 -->
+                        <!-- Step 2 -->
+                        <div
+                            class="w-screen h-full flex-shrink-0 flex items-center justify-center method-step px-6 md:px-24 opacity-20">
                             <div
-                                class="w-[85vw] md:w-[600px] flex-shrink-0 pr-8 md:pr-24 method-step opacity-20 transition-opacity duration-300">
+                                class="max-w-3xl w-full method-content transform scale-[0.8] transition-transform duration-300">
                                 <p
                                     class="font-syne text-accent text-xl md:text-2xl mb-4 md:mb-6 uppercase tracking-widest font-bold">
                                     02. Design</p>
@@ -352,16 +354,19 @@
                                         class="font-serif italic text-white/50 lowercase tracking-normal">choc.</span>
                                 </h3>
                                 <p
-                                    class="font-inter text-base md:text-xl text-gray-400 font-light max-w-md leading-relaxed">
+                                    class="font-inter text-base md:text-xl text-gray-400 font-light max-w-xl leading-relaxed">
                                     Une fois l'espace libéré, j'injecte des éléments au contraste architectural. De la
                                     typographie démesurée, des micro-interactions magnétiques et un équilibre brutal
                                     inspiré de l'art moderne.
                                 </p>
                             </div>
+                        </div>
 
-                            <!-- Step 3 -->
+                        <!-- Step 3 -->
+                        <div
+                            class="w-screen h-full flex-shrink-0 flex items-center justify-center method-step px-6 md:px-24 opacity-20">
                             <div
-                                class="w-[85vw] md:w-[600px] flex-shrink-0 pr-8 md:pr-24 method-step opacity-20 transition-opacity duration-300">
+                                class="max-w-3xl w-full method-content transform scale-[0.8] transition-transform duration-300">
                                 <p
                                     class="font-syne text-accent text-xl md:text-2xl mb-4 md:mb-6 uppercase tracking-widest font-bold">
                                     03. Impact</p>
@@ -371,19 +376,17 @@
                                         class="font-serif italic text-white/50 lowercase tracking-normal">l'esprit.</span>
                                 </h3>
                                 <p
-                                    class="font-inter text-base md:text-xl text-gray-400 font-light max-w-md leading-relaxed">
+                                    class="font-inter text-base md:text-xl text-gray-400 font-light max-w-xl leading-relaxed">
                                     Le visiteur ne défile plus des pages sans âme, il explore une vision. Chaque scroll,
                                     chaque survol devient mémorable. On ne vend plus un service : on impose une autorité
                                     évidente.
                                 </p>
                             </div>
-
-                            <!-- Spacing buffer at the end -->
-                            <div class="w-[10vw] md:w-[200px] flex-shrink-0"></div>
-
                         </div>
+
                     </div>
                 </div>
+            </section>
             </section>
 
             <!-- Pricing / Minimalist Brutalism -->
@@ -683,7 +686,7 @@
         const methodProgress = document.getElementById('method-progress');
         const methodSteps = document.querySelectorAll('.method-step');
 
-        if (methodSection && methodTrack) {
+        if (methodSection && methodTrack && methodSteps.length > 0) {
             lenis.on('scroll', (e) => {
                 const rect = methodSection.getBoundingClientRect();
                 const vh = window.innerHeight;
@@ -694,44 +697,50 @@
                     const scrolled = -rect.top;
                     const progress = Math.max(0, Math.min(1, Math.abs(scrolled) / totalScrollDistance));
 
-                    // Translate Track
-                    const trackWidth = methodTrack.scrollWidth;
-                    const viewportWidth = window.innerWidth;
-                    // Max translate relies on track width vs viewport, we remove 10% just to leave some padding
-                    const maxTranslate = Math.max(0, trackWidth - viewportWidth);
+                    // Each step takes exactly 100vw, so total translation is (N-1) * 100vw
+                    const maxTranslateVw = (methodSteps.length - 1) * 100;
+                    const translatePercent = progress * maxTranslateVw;
 
-                    // Use progress to move left
-                    methodTrack.style.transform = `translate3d(${-maxTranslate * progress}px, 0, 0)`;
+                    methodTrack.style.transform = `translate3d(-${translatePercent}vw, 0, 0)`;
 
                     // Update Progress bar height
                     if (methodProgress) {
                         methodProgress.style.height = `${progress * 100}%`;
                     }
 
-                    // Update Opacity of steps to highlight the current one
+                    // Smooth Interpolation for Opacity and Scale
                     const stepFloat = progress * (methodSteps.length - 1); // 0 to 2
                     methodSteps.forEach((step, idx) => {
                         const distance = Math.abs(stepFloat - idx);
-                        // If perfectly centered, distance is 0. If > 0.6, fade it heavily.
-                        if (distance < 0.6) {
-                            step.style.opacity = '1';
-                        } else {
-                            step.style.opacity = '0.2';
+                        const stepOpacity = Math.max(0.1, 1 - distance * 0.9);
+                        step.style.opacity = stepOpacity.toString();
+
+                        const content = step.querySelector('.method-content');
+                        if (content) {
+                            const stepScale = Math.max(0.8, 1 - distance * 0.2);
+                            content.style.transform = `scale(${stepScale})`;
                         }
                     });
                 } else if (rect.top > 0) {
                     // Reset to start if above
-                    methodTrack.style.transform = `translate3d(0, 0, 0)`;
+                    methodTrack.style.transform = `translate3d(0vw, 0, 0)`;
                     if (methodProgress) methodProgress.style.height = `0%`;
-                    methodSteps.forEach((s, i) => s.style.opacity = i === 0 ? '1' : '0.2');
+                    methodSteps.forEach((s, i) => {
+                        s.style.opacity = i === 0 ? '1' : '0.1';
+                        const c = s.querySelector('.method-content');
+                        if (c) c.style.transform = i === 0 ? 'scale(1)' : 'scale(0.8)';
+                    });
                 } else if (rect.bottom < vh) {
                     // Lock to end if scrolled past
-                    const trackWidth = methodTrack.scrollWidth;
-                    const viewportWidth = window.innerWidth;
-                    const maxTranslate = Math.max(0, trackWidth - viewportWidth);
-                    methodTrack.style.transform = `translate3d(${-maxTranslate}px, 0, 0)`;
+                    const maxTranslateVw = (methodSteps.length - 1) * 100;
+                    methodTrack.style.transform = `translate3d(-${maxTranslateVw}vw, 0, 0)`;
                     if (methodProgress) methodProgress.style.height = `100%`;
-                    methodSteps.forEach((s, i) => s.style.opacity = i === (methodSteps.length - 1) ? '1' : '0.2');
+                    methodSteps.forEach((s, i) => {
+                        const isLast = i === (methodSteps.length - 1);
+                        s.style.opacity = isLast ? '1' : '0.1';
+                        const c = s.querySelector('.method-content');
+                        if (c) c.style.transform = isLast ? 'scale(1)' : 'scale(0.8)';
+                    });
                 }
             });
         }
