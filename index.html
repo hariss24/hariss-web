@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="fr-FR" class="bg-black text-[#F3F4F6] antialiased">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hariss Web - Creative Studio</title>
+
+    <!-- Fonts: Syne (Headings), Playfair Display (Serif Italic), Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@1,500;1,600&family=Syne:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pitch: "#030303",
+                        accent: "#E25D1E", // User's brand logo color
+                        offwhite: "#F3F4F6",
+                        surface: "#111111"
+                    },
+                    fontFamily: {
+                        syne: ["Syne", "sans-serif"],
+                        serif: ["Playfair Display", "serif"],
+                        inter: ["Inter", "sans-serif"],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        /* Base & Resets */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Hide custom cursor on mobile to avoid buggy touch interactions */
+        @media (pointer: coarse) {
+            .cursor-dot, .cursor-outline {
+                display: none !important;
+            }
+        }
+        @media (pointer: fine) {
+            body {
+                cursor: none;
+            }
+        }
+
+        /* Noise Texture Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        /* Lenis Smooth Scroll Recommended CSS */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        /* Typography sizing adjusted for mobile */
+        .text-huge {
+            font-size: clamp(2.5rem, 10vw, 10rem);
+            line-height: 0.95;
+            word-break: break-word;
+        }
+
+        /* Reveal Animations */
+        .reveal-text {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .reveal-text .line {
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-text.is-visible .line {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Magnetic Button */
+        .btn-magnetic {
+            @apply relative inline-flex items-center justify-center px-8 md:px-10 py-5 rounded-full border border-white/20 text-white font-inter font-medium tracking-wide uppercase text-xs md:text-sm overflow-hidden transition-colors hover:border-accent hover:text-white;
+        }
+        .btn-magnetic::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #E25D1E;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 50% 50% 0 0;
+            z-index: -1;
+        }
+        .btn-magnetic:hover::before {
+            transform: translateY(-100%);
+            border-radius: 0;
+        }
+
+        /* Custom Cursor styling */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 10000;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #E25D1E;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: width 0.3s, height 0.3s, background-color 0.3s, border 0.3s;
+            mix-blend-mode: difference;
+        }
+        .cursor-outline.hovering {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-color: transparent;
+            mix-blend-mode: difference;
+        }
+        
+        /* Layout Utilities */
+        .grid-lines {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
+    </style>
+</head>
+
+<body class="bg-pitch font-inter relative w-full overflow-x-hidden">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Global Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Header (Fixed solid backdrop instead of buggy mix-blend-mode for mobile) -->
+    <header id="main-header"
+        class="fixed top-0 w-full z-50 py-5 px-6 md:px-12 bg-pitch/80 backdrop-blur-xl border-b border-white/5 flex justify-between items-center transition-transform duration-500 ease-in-out">
+        <!-- Logo -->
+        <a href="index.html" class="flex flex-col items-start gap-0 cursor-hover magnetic" data-magnetic-strength="20">
+            <span class="font-syne font-bold text-2xl tracking-tighter leading-none text-white">HARISS</span>
+            <span class="font-serif italic text-sm text-accent leading-none">Creative</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center space-x-12">
+            <a href="index.html"
+                class="text-xs uppercase tracking-[0.2em] font-medium text-accent cursor-hover magnetic"
+                data-magnetic-strength="15">Accueil</a>
+            <a href="services.html"
+                class="text-xs uppercase tracking-[0.2em] font-medium text-white hover:text-accent transition-colors cursor-hover magnetic"
+                data-magnetic-strength="15">Services</a>
+            <a href="portfolio.html"
+                class="text-xs uppercase tracking-[0.2em] font-medium text-white hover:text-accent transition-colors cursor-hover magnetic"
+                data-magnetic-strength="15">Portfolio</a>
+            <a href="contact.html"
+                class="text-xs uppercase tracking-[0.2em] font-medium text-white hover:text-accent transition-colors cursor-hover magnetic"
+                data-magnetic-strength="15">Contact</a>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="md:hidden text-white cursor-hover magnetic" data-magnetic-strength="30">
+            <span class="text-xs uppercase tracking-[0.2em] font-medium">Menu</span>
+        </button>
+    </header>
+
+    <!-- Content Wrap for Lenis -->
+    <div id="smooth-wrapper" class="overflow-hidden w-full">
+        <main id="smooth-content" class="w-full">
+
+            <!-- Hero Section -->
+            <section
+                class="relative min-h-[100svh] flex items-end pb-24 px-6 md:px-12 grid-lines overflow-hidden w-full pt-32">
+                <div class="w-full relative z-10 max-w-full">
+                    <p
+                        class="font-inter text-accent uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold mb-6 md:mb-8 reveal-text">
+                        <span class="line block">Strategy & Digital Experiences</span>
+                    </p>
+
+                    <h1 class="text-huge font-syne font-bold uppercase tracking-tighter text-white reveal-text">
+                        <span class="line block">We build</span>
+                    </h1>
+                    <h1
+                        class="text-huge font-syne font-bold uppercase tracking-tighter text-white reveal-text -mt-1 md:-mt-8 flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4 flex-wrap">
+                        <span class="line block text-surface shrink-0"
+                            style="-webkit-text-stroke: 1px rgba(255,255,255,0.8);">Digital</span>
+                        <span
+                            class="line block font-serif italic text-accent normal-case tracking-normal shrink-0">masterpieces.</span>
+                    </h1>
+
+                    <div
+                        class="mt-16 md:mt-24 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 w-full">
+                        <div class="max-w-md reveal-text">
+                            <p class="font-inter text-gray-400 font-light text-base md:text-xl leading-relaxed">
+                                <span class="line block">On ne fait pas de sites internet.</span>
+                                <span class="line block">On crée des expériences immersives qui pulvérisent</span>
+                                <span class="line block">vos concurrents et marquent les esprits.</span>
+                            </p>
+                        </div>
+
+                        <!-- Magnetic CTA -->
+                        <div class="reveal-text">
+                            <div class="line">
+                                <a href="contact.html" class="btn-magnetic cursor-hover magnetic"
+                                    data-magnetic-strength="50">
+                                    <span class="relative z-10 flex items-center gap-3">
+                                        Commencer un projet
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decorative Scroll Down indicator -->
+                <div
+                    class="absolute bottom-12 right-12 hidden md:flex items-center gap-4 origin-right rotate-90 opacity-50">
+                    <span class="text-[10px] uppercase font-bold tracking-[0.4em] text-white">Scroll</span>
+                    <div class="w-16 h-[1px] bg-white"></div>
+                </div>
+            </section>
+
+            <!-- Manifesto / About -->
+            <section class="py-32 md:py-40 px-6 md:px-12 bg-white text-black relative z-20 overflow-hidden w-full">
+                <div class="container mx-auto max-w-6xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16">
+                        <div class="lg:col-span-4">
+                            <h2 class="text-xs font-bold uppercase tracking-[0.3em] font-inter text-gray-400 mb-4">( LE
+                                MANIFESTO )</h2>
+                            <!-- Rotating badge -->
+                            <div class="mt-16 w-32 h-32 relative hidden lg:block">
+                                <svg viewBox="0 0 100 100" class="animate-spin-slow w-full h-full">
+                                    <path id="circle" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                                        fill="transparent" />
+                                    <text font-size="11" font-weight="bold" letter-spacing="3.5"
+                                        class="uppercase font-inter">
+                                        <textPath href="#circle">
+                                            Design - Develop - Elevate -
+                                        </textPath>
+                                    </text>
+                                </svg>
+                                <div
+                                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-black rounded-full">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8">
+                            <h3
+                                class="font-syne text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tighter reveal-text">
+                                <span class="line block">Le web est saturé</span>
+                                <span class="line block text-gray-300">de designs invisibles.</span>
+                                <span class="line block font-serif italic font-normal mt-4 md:mt-6 text-black">Il est
+                                    temps d'émerger.</span>
+                            </h3>
+                            <div class="mt-12 md:mt-16 max-w-2xl reveal-text">
+                                <p class="font-inter text-lg md:text-xl text-gray-600 leading-relaxed font-light">
+                                    <span class="line inline-block">Les petites entreprises manquent de temps</span>
+                                    <span class="line inline-block">et d'expertise pour briller en ligne. Mon rôle
+                                        est</span>
+                                    <span class="line inline-block">de vous armer d'une plateforme radicalement </span>
+                                    <span class="line inline-block">différente, conçue pour convertir.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scrollytelling Methodology (Replaces Portfolio) -->
+            <section id="methodology-scroll" class="relative w-full bg-pitch text-white" style="height: 300vh;">
+                <!-- Sticky Container -->
+                <div class="sticky top-0 h-screen w-full flex items-center overflow-hidden">
+
+                    <!-- Progress Bar (Desktop only, minimal) -->
+                    <div
+                        class="absolute top-1/2 left-6 md:left-12 transform -translate-y-1/2 w-[2px] h-32 bg-white/10 z-30 hidden md:block">
+                        <div id="method-progress"
+                            class="w-full bg-accent absolute top-0 left-0 transition-none will-change-[height]"
+                            style="height: 0%;"></div>
+                    </div>
+
+                    <div class="container mx-auto max-w-7xl px-6 md:px-12 md:pl-32 relative h-full flex items-center">
+
+                        <!-- Track -->
+                        <div id="method-track" class="w-full flex items-center will-change-transform"
+                            style="transform: translate3d(0,0,0);">
+
+                            <!-- Step 1 -->
+                            <div
+                                class="w-[85vw] md:w-[600px] flex-shrink-0 pr-8 md:pr-24 method-step transition-opacity duration-300">
+                                <p
+                                    class="font-syne text-accent text-xl md:text-2xl mb-4 md:mb-6 uppercase tracking-widest font-bold">
+                                    01. Approche</p>
+                                <h3
+                                    class="font-syne text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter mb-6 md:mb-8 leading-none">
+                                    Faire le <br><span
+                                        class="font-serif italic text-white/50 lowercase tracking-normal">vide.</span>
+                                </h3>
+                                <p
+                                    class="font-inter text-base md:text-xl text-gray-400 font-light max-w-md leading-relaxed">
+                                    Un site web classique empile l'information jusqu'à l'indigestion. Mon processus
+                                    commence par la suppression de tout ce qui est superflu pour ne conserver que
+                                    l'essence absolue de votre message.
+                                </p>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div
+                                class="w-[85vw] md:w-[600px] flex-shrink-0 pr-8 md:pr-24 method-step opacity-20 transition-opacity duration-300">
+                                <p
+                                    class="font-syne text-accent text-xl md:text-2xl mb-4 md:mb-6 uppercase tracking-widest font-bold">
+                                    02. Design</p>
+                                <h3
+                                    class="font-syne text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter mb-6 md:mb-8 leading-none">
+                                    Créer le <br><span
+                                        class="font-serif italic text-white/50 lowercase tracking-normal">choc.</span>
+                                </h3>
+                                <p
+                                    class="font-inter text-base md:text-xl text-gray-400 font-light max-w-md leading-relaxed">
+                                    Une fois l'espace libéré, j'injecte des éléments au contraste architectural. De la
+                                    typographie démesurée, des micro-interactions magnétiques et un équilibre brutal
+                                    inspiré de l'art moderne.
+                                </p>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div
+                                class="w-[85vw] md:w-[600px] flex-shrink-0 pr-8 md:pr-24 method-step opacity-20 transition-opacity duration-300">
+                                <p
+                                    class="font-syne text-accent text-xl md:text-2xl mb-4 md:mb-6 uppercase tracking-widest font-bold">
+                                    03. Impact</p>
+                                <h3
+                                    class="font-syne text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter mb-6 md:mb-8 leading-none">
+                                    Imprimer <br><span
+                                        class="font-serif italic text-white/50 lowercase tracking-normal">l'esprit.</span>
+                                </h3>
+                                <p
+                                    class="font-inter text-base md:text-xl text-gray-400 font-light max-w-md leading-relaxed">
+                                    Le visiteur ne défile plus des pages sans âme, il explore une vision. Chaque scroll,
+                                    chaque survol devient mémorable. On ne vend plus un service : on impose une autorité
+                                    évidente.
+                                </p>
+                            </div>
+
+                            <!-- Spacing buffer at the end -->
+                            <div class="w-[10vw] md:w-[200px] flex-shrink-0"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing / Minimalist Brutalism -->
+            <section
+                class="py-32 md:py-40 px-6 md:px-12 bg-pitch border-t border-white/10 relative z-10 grid-lines overflow-hidden w-full">
+                <div class="container mx-auto max-w-7xl">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 reveal-text">
+                        <h2 class="font-syne text-4xl md:text-7xl font-bold uppercase tracking-tighter text-white">
+                            <span class="line block">Forfaits</span>
+                        </h2>
+                        <p class="text-gray-400 font-inter font-light max-w-sm text-left md:text-right mt-6 md:mt-0">
+                            <span class="line block">Des solutions tranchantes.</span>
+                            <span class="line block">0% bullshit, 100% performance.</span>
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-y border-white/20">
+
+                        <!-- Essentiel -->
+                        <div class="group border-b md:border-b-0 md:border-r border-white/20 p-8 md:p-10 lg:p-16 hover:bg-surface transition-colors cursor-hover magnetic-area"
+                            data-magnetic-strength="5">
+                            <div class="flex justify-between items-center mb-12 md:mb-16">
+                                <h3 class="font-syne text-xl md:text-2xl font-bold text-white uppercase">Essentiel</h3>
+                                <div
+                                    class="w-3 h-3 rounded-full border border-white/30 group-hover:bg-accent group-hover:border-accent transition-colors">
+                                </div>
+                            </div>
+                            <div class="mb-12 md:mb-16">
+                                <p class="text-xs md:text-sm font-inter text-gray-400 uppercase tracking-widest mb-4">À
+                                    partir de</p>
+                                <p
+                                    class="font-syne text-5xl md:text-6xl font-bold text-white tracking-tighter group-hover:text-accent transition-colors">
+                                    549<span class="text-2xl md:text-3xl">€</span></p>
+                                <p class="mt-4 font-serif italic text-gray-500">Site One-Page</p>
+                            </div>
+                            <ul class="font-inter text-sm text-gray-400 space-y-4">
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
+                                    Configuration BDD</li>
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
+                                    Paramètres URL</li>
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
+                                    Hébergement 1 an</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pro -->
+                        <div class="group border-b md:border-b-0 md:border-r border-white/20 p-8 md:p-10 lg:p-16 hover:bg-accent transition-colors cursor-hover magnetic-area text-white hover:text-white"
+                            data-magnetic-strength="5">
+                            <div class="flex justify-between items-center mb-12 md:mb-16">
+                                <h3 class="font-syne text-xl md:text-2xl font-bold uppercase">Pro <span
+                                        class="text-[9px] md:text-[10px] ml-2 px-2 py-1 border border-current rounded-full">POPULAIRE</span>
+                                </h3>
+                                <div class="w-3 h-3 rounded-full bg-white group-hover:bg-white transition-colors"></div>
+                            </div>
+                            <div class="mb-12 md:mb-16">
+                                <p class="text-xs md:text-sm font-inter opacity-60 uppercase tracking-widest mb-4">À
+                                    partir de</p>
+                                <p class="font-syne text-5xl md:text-6xl font-bold tracking-tighter">990<span
+                                        class="text-2xl md:text-3xl">€</span></p>
+                                <p class="mt-4 font-serif italic opacity-70">Site 3 Pages</p>
+                            </div>
+                            <ul class="font-inter text-sm opacity-90 space-y-4">
+                                <li class="flex items-center gap-3"><span
+                                        class="w-1 h-1 bg-current rounded-full"></span> Configuration BDD complète</li>
+                                <li class="flex items-center gap-3"><span
+                                        class="w-1 h-1 bg-current rounded-full"></span> Paramètres avancés</li>
+                                <li class="flex items-center gap-3"><span
+                                        class="w-1 h-1 bg-current rounded-full"></span> Modèle multi-pages</li>
+                            </ul>
+                        </div>
+
+                        <!-- Premium -->
+                        <div class="group p-8 md:p-10 lg:p-16 hover:bg-surface transition-colors cursor-hover magnetic-area"
+                            data-magnetic-strength="5">
+                            <div class="flex justify-between items-center mb-12 md:mb-16">
+                                <h3 class="font-syne text-xl md:text-2xl font-bold text-white uppercase">Premium</h3>
+                                <div
+                                    class="w-3 h-3 rounded-full border border-white/30 group-hover:bg-accent group-hover:border-accent transition-colors">
+                                </div>
+                            </div>
+                            <div class="mb-12 md:mb-16">
+                                <p class="text-xs md:text-sm font-inter text-gray-400 uppercase tracking-widest mb-4">À
+                                    partir de</p>
+                                <p
+                                    class="font-syne text-5xl md:text-6xl font-bold text-white tracking-tighter group-hover:text-accent transition-colors">
+                                    1399<span class="text-2xl md:text-3xl">€</span></p>
+                                <p class="mt-4 font-serif italic text-gray-500">Site 5 Pages + Plugins</p>
+                            </div>
+                            <ul class="font-inter text-sm text-gray-400 space-y-4">
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
+                                    Setup Serveur complet</li>
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
+                                    Sécurité & Cache Premium</li>
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
+                                    Formulaires avancés</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Giant Footer -->
+        <footer class="bg-accent text-white pt-24 md:pt-32 pb-8 md:pb-12 px-6 md:px-12 relative overflow-hidden w-full">
+            <div
+                class="container mx-auto max-w-7xl relative z-10 flex flex-col justify-between h-full min-h-[30vh] md:min-h-[40vh]">
+
+                <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16 md:mb-20">
+                    <div>
+                        <h2
+                            class="font-syne text-3xl md:text-6xl font-bold tracking-tighter leading-none mb-6 text-white">
+                            Prêt à créer<br><span class="font-serif italic font-normal">l'inattendu ?</span></h2>
+                        <a href="mailto:hello@hariss-web.fr"
+                            class="inline-block font-inter text-lg md:text-xl font-medium border-b-2 border-white pb-1 opacity-90 hover:opacity-100 transition-opacity cursor-hover magnetic"
+                            data-magnetic-strength="20">hello@hariss-web.fr</a>
+                    </div>
+
+                    <div
+                        class="flex gap-10 md:gap-16 font-inter font-medium text-xs md:text-sm uppercase tracking-widest w-full md:w-auto">
+                        <div class="flex flex-col gap-4">
+                            <span class="text-white/50 text-[10px] md:text-xs mb-2">Navigation</span>
+                            <a href="index.html" class="hover:underline cursor-hover">Accueil</a>
+                            <a href="services.html" class="hover:underline cursor-hover">Services</a>
+                            <a href="portfolio.html" class="hover:underline cursor-hover">Portfolio</a>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <span class="text-white/50 text-[10px] md:text-xs mb-2">Socials</span>
+                            <a href="#" class="hover:underline cursor-hover">Instagram</a>
+                            <a href="#" class="hover:underline cursor-hover">LinkedIn</a>
+                            <a href="#" class="hover:underline cursor-hover">Awwwards</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-col md:flex-row justify-between items-start md:items-end border-t border-white/20 pt-6 md:pt-8 mt-auto gap-4 md:gap-0">
+                    <p class="font-inter text-[10px] md:text-xs font-semibold uppercase tracking-widest text-white/80">
+                        &copy; <span id="current-year"></span> Hariss Web. All rights reserved.</p>
+                    <p class="font-inter text-[10px] md:text-xs font-semibold uppercase tracking-widest text-white/80">
+                        Design : Brutalist / Code : Clean</p>
+                </div>
+            </div>
+
+            <!-- Giant background text -->
+            <div class="absolute -bottom-10 md:-bottom-20 left-0 w-full pointer-events-none select-none text-center">
+                <span
+                    class="font-syne text-[18vw] md:text-[15vw] font-black uppercase text-black/10 tracking-tighter whitespace-nowrap overflow-hidden block">HARISS
+                    WEB</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Vanilla JS Interactions -->
+    <script>
+        // 1. Smooth Scroll (Lenis)
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        })
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
+
+        // 2. Hide/Show Header on Scroll
+        let lastScrollY = window.scrollY;
+        const header = document.getElementById('main-header');
+
+        lenis.on('scroll', (e) => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > 100) {
+                if (currentScrollY > lastScrollY) {
+                    // Scrolling down - hide header
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up - show header
+                    header.style.transform = 'translateY(0)';
+                }
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollY = currentScrollY;
+        });
+
+        // 3. Custom Cursor (only on non-touch devices)
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+
+        if (window.matchMedia("(pointer: fine)").matches) {
+            let mouseX = 0, mouseY = 0;
+            let outlineX = 0, outlineY = 0;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+                // Dot follows instantly
+                dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+            });
+
+            // Lerp for outline
+            function animateCursor() {
+                let dx = mouseX - outlineX;
+                let dy = mouseY - outlineY;
+
+                outlineX += dx * 0.15;
+                outlineY += dy * 0.15;
+
+                outline.style.transform = `translate(${outlineX}px, ${outlineY}px)`;
+
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Hover state for cursor
+            const hoverables = document.querySelectorAll('.cursor-hover');
+            hoverables.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    outline.classList.add('hovering');
+                    dot.style.backgroundColor = 'transparent';
+                });
+                el.addEventListener('mouseleave', () => {
+                    outline.classList.remove('hovering');
+                    dot.style.backgroundColor = '#E25D1E';
+
+                    // Reset magnetic force if it's also a magnetic element
+                    if (el.classList.contains('magnetic') || el.classList.contains('magnetic-area')) {
+                        el.style.transform = 'translate(0px, 0px)';
+                    }
+                });
+            });
+
+            // Magnetic Elements
+            const magnetics = document.querySelectorAll('.magnetic, .magnetic-area');
+            magnetics.forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const strength = el.getAttribute('data-magnetic-strength') || 20;
+
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    el.style.transform = `translate(${x * (strength / 100)}px, ${y * (strength / 100)}px)`;
+                });
+
+                el.addEventListener('mouseleave', () => {
+                    el.style.transform = 'translate(0px, 0px)';
+                    el.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                });
+
+                el.addEventListener('mouseenter', () => {
+                    el.style.transition = 'none';
+                });
+            });
+        }
+
+        // 4. Scroll Reveal with Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Add slight delay for multiple items
+                    const lines = entry.target.querySelectorAll('.line');
+                    lines.forEach((line, index) => {
+                        line.style.transitionDelay = `${index * 0.15}s`;
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-text').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 5. Scrollytelling Horizontal Parallax
+        const methodSection = document.getElementById('methodology-scroll');
+        const methodTrack = document.getElementById('method-track');
+        const methodProgress = document.getElementById('method-progress');
+        const methodSteps = document.querySelectorAll('.method-step');
+
+        if (methodSection && methodTrack) {
+            lenis.on('scroll', (e) => {
+                const rect = methodSection.getBoundingClientRect();
+                const vh = window.innerHeight;
+
+                // When the section is sticky (top <= 0) and not yet scrolled past (bottom >= vh)
+                if (rect.top <= 0 && rect.bottom >= vh) {
+                    const totalScrollDistance = rect.height - vh;
+                    const scrolled = -rect.top;
+                    const progress = Math.max(0, Math.min(1, Math.abs(scrolled) / totalScrollDistance));
+
+                    // Translate Track
+                    const trackWidth = methodTrack.scrollWidth;
+                    const viewportWidth = window.innerWidth;
+                    // Max translate relies on track width vs viewport, we remove 10% just to leave some padding
+                    const maxTranslate = Math.max(0, trackWidth - viewportWidth);
+
+                    // Use progress to move left
+                    methodTrack.style.transform = `translate3d(${-maxTranslate * progress}px, 0, 0)`;
+
+                    // Update Progress bar height
+                    if (methodProgress) {
+                        methodProgress.style.height = `${progress * 100}%`;
+                    }
+
+                    // Update Opacity of steps to highlight the current one
+                    const stepFloat = progress * (methodSteps.length - 1); // 0 to 2
+                    methodSteps.forEach((step, idx) => {
+                        const distance = Math.abs(stepFloat - idx);
+                        // If perfectly centered, distance is 0. If > 0.6, fade it heavily.
+                        if (distance < 0.6) {
+                            step.style.opacity = '1';
+                        } else {
+                            step.style.opacity = '0.2';
+                        }
+                    });
+                } else if (rect.top > 0) {
+                    // Reset to start if above
+                    methodTrack.style.transform = `translate3d(0, 0, 0)`;
+                    if (methodProgress) methodProgress.style.height = `0%`;
+                    methodSteps.forEach((s, i) => s.style.opacity = i === 0 ? '1' : '0.2');
+                } else if (rect.bottom < vh) {
+                    // Lock to end if scrolled past
+                    const trackWidth = methodTrack.scrollWidth;
+                    const viewportWidth = window.innerWidth;
+                    const maxTranslate = Math.max(0, trackWidth - viewportWidth);
+                    methodTrack.style.transform = `translate3d(${-maxTranslate}px, 0, 0)`;
+                    if (methodProgress) methodProgress.style.height = `100%`;
+                    methodSteps.forEach((s, i) => s.style.opacity = i === (methodSteps.length - 1) ? '1' : '0.2');
+                }
+            });
+        }
+
+        // Utils
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

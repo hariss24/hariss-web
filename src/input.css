@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary text-text font-outfit antialiased selection:bg-accent selection:text-white;
+  }
+}
+
+@layer components {
+  /* Reusable buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full bg-accent text-primary font-semibold transition-all duration-300 hover:shadow-[0_0_15px_rgba(245,158,11,0.5)] hover:scale-105;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/20 text-white font-semibold transition-all duration-300 hover:bg-white/10;
+  }
+  
+  /* Glassmorphism containers used across the site */
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+}
+
+/* Custom Utilities for things difficult to do purely with standard Tailwind classes */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-yellow-200;
+  }
+}
