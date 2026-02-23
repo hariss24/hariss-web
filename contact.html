@@ -1,196 +1,243 @@
 <!DOCTYPE html>
-<html lang="fr-FR">
+<html lang="fr-FR" class="bg-black text-[#F3F4F6] antialiased">
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>Contact - Hariss Web</title>
-	<!-- Fonts -->
+
+	<!-- Fonts: Syne (Headings), Playfair Display (Serif Italic), Inter (Body) -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@1,500;1,600&family=Syne:wght@400;600;700;800&display=swap"
 		rel="stylesheet">
+
 	<!-- Favicon -->
 	<link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="./assets/css/style.css">
+	<!-- Lenis Smooth Scroll -->
+	<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+	<!-- Tailwind -->
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script>
 		tailwind.config = {
 			theme: {
 				extend: {
 					colors: {
-						primary: "#0B0F19",
-						accent: "#F59E0B",
-						text: "rgb(203, 213, 225)",
+						pitch: "#030303",
+						accent: "#E25D1E",
+						offwhite: "#F3F4F6",
+						surface: "#111111"
 					},
 					fontFamily: {
-						outfit: ["Outfit", "sans-serif"],
+						syne: ["Syne", "sans-serif"],
+						serif: ["Playfair Display", "serif"],
+						inter: ["Inter", "sans-serif"],
+					},
+					animation: {
+						'spin-slow': 'spin 12s linear infinite',
 					}
 				}
 			}
 		}
 	</script>
-	<style type="text/tailwindcss">
-		@layer components {
-        .btn-primary { @apply inline-flex items-center justify-center px-6 py-3 rounded-full bg-accent text-primary font-semibold transition-all duration-300 hover:shadow-[0_0_15px_rgba(245,158,11,0.5)] hover:scale-105; }
-        .btn-outline { @apply inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/20 text-white font-semibold transition-all duration-300 hover:bg-white/10; }
-        .glass-panel { @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl; }
-      }
-      @layer utilities {
-        .text-gradient { @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-yellow-200; }
-      }
-    </style>
+	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body
-	class="bg-primary text-text font-outfit antialiased selection:bg-accent selection:text-primary flex flex-col min-h-screen">
+<body class="bg-pitch font-inter relative w-full overflow-x-clip">
+
+	<!-- Custom Cursor -->
+	<div class="cursor-dot" id="cursor-dot"></div>
+	<div class="cursor-outline" id="cursor-outline"></div>
+
+	<!-- Global Noise Overlay -->
+	<div class="noise-overlay"></div>
 
 	<!-- Header -->
-	<header
-		class="fixed top-0 w-full z-50 transition-all duration-300 bg-primary/90 backdrop-blur-md border-b border-white/5 py-4">
-		<div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
-			<!-- Logo -->
-			<a href="index.html" class="flex items-center gap-2 group">
-				<svg width="38" height="30" viewBox="0 0 64 51" fill="none" xmlns="http://www.w3.org/2000/svg"
-					class="group-hover:scale-110 transition-transform duration-300">
-					<path fill-rule="evenodd" clip-rule="evenodd"
-						d="M12.0266 0V46.1664C12.0266 47.3247 11.5664 48.4357 10.7473 49.2548C9.9282 50.0739 8.81724 50.5341 7.65888 50.5341H0V12.0265C0 5.3845 5.38453 0 12.0266 0Z"
-						fill="#F59E0B" />
-					<path fill-rule="evenodd" clip-rule="evenodd"
-						d="M42.5761 29.9347C48.4687 29.4982 81.855 51.4048 51.2769 50.5344C51.7271 40.4701 47.9266 34.1985 42.5761 29.9347Z"
-						fill="#F59E0B" />
-					<path fill-rule="evenodd" clip-rule="evenodd"
-						d="M47.5753 50.5338C47.5753 50.5338 42.9025 50.507 39.4148 50.4869C37.4656 50.4757 35.7597 49.1742 35.234 47.2971C34.6802 45.3282 33.6254 43.511 32.1497 42.0353C27.4813 37.367 19.9444 37.3237 15.3294 41.9386C13.8873 43.3808 12.8604 45.1614 12.3235 47.0979C11.7995 49.002 10.0628 50.3176 8.08781 50.3062C4.6082 50.2869 0.00040828 50.2604 0.00040828 50.2604C-0.0358323 43.9516 2.43555 37.9156 6.87094 33.4802C16.101 24.2503 31.1748 24.3369 40.5116 33.6736C44.9982 38.1602 47.5392 44.225 47.5754 50.5338H47.5753Z"
-						fill="#F59E0B" />
-				</svg>
-				<span class="text-2xl font-bold text-white tracking-tight">Hariss <span
-						class="text-accent">Web</span></span>
-			</a>
-
-			<!-- Desktop Nav -->
-			<nav class="hidden md:flex items-center space-x-8">
-				<a href="index.html" class="text-gray-300 hover:text-white transition-colors font-medium">Accueil</a>
-				<a href="services.html"
-					class="text-gray-300 hover:text-white transition-colors font-medium">Services</a>
-				<a href="portfolio.html"
-					class="text-gray-300 hover:text-white transition-colors font-medium">Portfolio</a>
-				<a href="contact.html" class="text-white hover:text-accent transition-colors font-medium">Contact</a>
-			</nav>
-
-			<!-- CTA Desktop -->
-			<div class="hidden md:block">
-				<a href="contact.html" class="btn-primary py-2 px-5 text-sm">Devis Gratuit</a>
+	<header id="main-header"
+		class="fixed top-0 w-full z-50 py-5 px-6 md:px-12 bg-pitch/80 backdrop-blur-xl border-b border-white/5 flex justify-between items-center transition-transform duration-500 ease-in-out">
+		<!-- Logo -->
+		<a href="index.html" class="flex items-center gap-3 cursor-hover magnetic group" data-magnetic-strength="20">
+			<svg width="48" height="38" viewBox="0 0 64 51" fill="none" xmlns="http://www.w3.org/2000/svg"
+				class="group-hover:scale-110 transition-transform duration-300">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M12.0266 0V46.1664C12.0266 47.3247 11.5664 48.4357 10.7473 49.2548C9.9282 50.0739 8.81724 50.5341 7.65888 50.5341H0V12.0265C0 5.3845 5.38453 0 12.0266 0Z"
+					fill="#E25D1E" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M42.5761 29.9347C48.4687 29.4982 81.855 51.4048 51.2769 50.5344C51.7271 40.4701 47.9266 34.1985 42.5761 29.9347Z"
+					fill="#E25D1E" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M47.5753 50.5338C47.5753 50.5338 42.9025 50.507 39.4148 50.4869C37.4656 50.4757 35.7597 49.1742 35.234 47.2971C34.6802 45.3282 33.6254 43.511 32.1497 42.0353C27.4813 37.367 19.9444 37.3237 15.3294 41.9386C13.8873 43.3808 12.8604 45.1614 12.3235 47.0979C11.7995 49.002 10.0628 50.3176 8.08781 50.3062C4.6082 50.2869 0.00040828 50.2604 0.00040828 50.2604C-0.0358323 43.9516 2.43555 37.9156 6.87094 33.4802C16.101 24.2503 31.1748 24.3369 40.5116 33.6736C44.9982 38.1602 47.5392 44.225 47.5754 50.5338H47.5753Z"
+					fill="#E25D1E" />
+			</svg>
+			<div class="flex flex-col items-start gap-0">
+				<span class="font-syne font-bold text-2xl tracking-tighter leading-none text-white">HARISS WEB</span>
+				<span class="font-serif italic text-sm text-accent leading-none">Creative Studio</span>
 			</div>
+		</a>
 
-			<!-- Mobile Menu Toggle -->
-			<button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Ouvrir le menu">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-					stroke="currentColor" class="w-8 h-8">
-					<path stroke-linecap="round" stroke-linejoin="round"
-						d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-				</svg>
-			</button>
-		</div>
+		<!-- Desktop Nav -->
+		<nav class="hidden md:flex items-center space-x-10">
+			<a href="index.html"
+				class="text-xs uppercase tracking-[0.2em] font-medium text-white hover:text-accent transition-colors cursor-hover magnetic"
+				data-magnetic-strength="15">Accueil</a>
+			<a href="services.html"
+				class="text-xs uppercase tracking-[0.2em] font-medium text-white hover:text-accent transition-colors cursor-hover magnetic"
+				data-magnetic-strength="15">Services</a>
+			<a href="portfolio.html"
+				class="text-xs uppercase tracking-[0.2em] font-medium text-white hover:text-accent transition-colors cursor-hover magnetic"
+				data-magnetic-strength="15">Portfolio</a>
+			<a href="contact.html"
+				class="group relative inline-flex items-center justify-center px-6 py-3 border border-accent bg-accent text-xs font-syne uppercase tracking-wider text-white overflow-hidden cursor-hover magnetic rounded-full hover:border-accent transition-colors duration-500"
+				data-magnetic-strength="20">
+				<span class="relative z-10 transition-colors group-hover:text-black font-bold">Contacter</span>
+				<div
+					class="absolute inset-0 bg-white translate-y-[101%] group-hover:translate-y-[0%] transition-transform duration-500 ease-out z-0">
+				</div>
+			</a>
+		</nav>
 
-		<!-- Mobile Nav -->
-		<div id="mobile-menu"
-			class="hidden md:hidden absolute top-full left-0 w-full bg-primary/95 backdrop-blur-xl border-b border-white/10 shadow-xl">
-			<nav class="flex flex-col items-center py-6 space-y-4">
-				<a href="index.html"
-					class="text-gray-300 hover:text-white font-medium text-lg w-full text-center py-2">Accueil</a>
-				<a href="services.html"
-					class="text-gray-300 hover:text-white font-medium text-lg w-full text-center py-2">Services</a>
-				<a href="portfolio.html"
-					class="text-gray-300 hover:text-white font-medium text-lg w-full text-center py-2">Portfolio</a>
-				<a href="contact.html"
-					class="text-white hover:text-accent font-medium text-lg w-full text-center py-2">Contact</a>
-				<a href="contact.html" class="btn-primary mt-4 w-3/4 max-w-xs">Devis Gratuit</a>
-			</nav>
-		</div>
+		<!-- Mobile Menu Toggle -->
+		<button id="mobile-menu-btn" class="md:hidden text-white cursor-hover magnetic" data-magnetic-strength="30"
+			aria-label="Ouvrir le menu">
+			<span class="text-xs uppercase tracking-[0.2em] font-medium">Menu</span>
+		</button>
 	</header>
 
-	<!-- Main Content -->
-	<main class="flex-grow pt-24 pb-20">
+	<!-- Mobile Nav -->
+	<div id="mobile-menu"
+		class="hidden md:hidden fixed top-0 left-0 w-full h-[100svh] bg-pitch/95 backdrop-blur-3xl z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500">
+		<nav class="flex flex-col items-center space-y-8">
+			<a href="index.html"
+				class="text-2xl font-syne uppercase tracking-tighter font-bold text-gray-400 hover:text-accent transition-colors menu-link">Accueil</a>
+			<a href="services.html"
+				class="text-2xl font-syne uppercase tracking-tighter font-bold text-gray-400 hover:text-accent transition-colors menu-link">Services</a>
+			<a href="portfolio.html"
+				class="text-2xl font-syne uppercase tracking-tighter font-bold text-gray-400 hover:text-accent transition-colors menu-link">Portfolio</a>
+			<a href="contact.html"
+				class="mt-8 group relative inline-flex items-center justify-center px-8 py-4 border border-accent bg-accent text-sm font-syne uppercase tracking-wider text-white overflow-hidden rounded-full menu-link">
+				<span
+					class="relative z-10 transition-colors text-white group-hover:text-black font-bold">Contacter</span>
+				<div
+					class="absolute inset-0 bg-white translate-y-[101%] group-hover:translate-y-[0%] transition-transform duration-500 ease-out z-0">
+				</div>
+			</a>
+		</nav>
+	</div>
 
-		<!-- Page Header -->
-		<section class="py-20 lg:py-24 text-center relative overflow-hidden">
+	<!-- Content Wrap for Lenis -->
+	<div id="smooth-wrapper" class="overflow-x-clip w-full">
+		<main id="smooth-content" class="w-full flex-grow pt-24 pb-20">
+
+			<!-- Page Header -->
+			<section class="py-20 lg:py-24 text-center relative grid-lines overflow-hidden w-full">
+				<div class="container mx-auto px-4 relative z-10">
+					<h1
+						class="font-syne text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 uppercase tracking-tighter">
+						Mise en relation <span class="text-gradient">Rapide</span>
+					</h1>
+					<p class="font-inter text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+						Parlez-moi de votre projet. Je reviens vers vous dans les plus brefs délais pour en discuter de
+						vive
+						voix.
+					</p>
+				</div>
+			</section>
+
+			<!-- Form Section -->
+			<section class="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
+				<div class="bg-surface border border-white/10 p-5 md:p-10 shadow-2xl relative overflow-hidden">
+
+					<div class="relative z-10">
+						<iframe
+							data-tally-src="https://tally.so/embed/aQ5oxB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
+							loading="lazy" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0"
+							title="Contactez moi pour développer votre présence sur le web"></iframe>
+						<script>var d = document, w = "https://tally.so/widgets/embed.js", v = function () { "undefined" != typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function (e) { e.src = e.dataset.tallySrc })) }; if ("undefined" != typeof Tally) v(); else if (d.querySelector('script[src="' + w + '"]') == null) { var s = d.createElement("script"); s.src = w, s.onload = v, s.onerror = v, d.body.appendChild(s); }</script>
+					</div>
+				</div>
+
+				<div class="mt-12 text-center flex flex-col items-center justify-center space-y-4">
+					<p class="text-gray-400">Ou contactez-moi directement et retrouvez-moi sur les réseaux :</p>
+					<div class="flex items-center space-x-6">
+						<a href="mailto:hariss.hafeji@gmail.com"
+							class="text-gray-300 hover:text-accent transition-colors flex items-center space-x-2">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+								stroke="currentColor" class="w-5 h-5">
+								<path stroke-linecap="round" stroke-linejoin="round"
+									d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+							</svg>
+							<span>hariss.hafeji@gmail.com</span>
+						</a>
+						<a href="https://www.linkedin.com/in/hariss-hafeji-6a2374246/" target="_blank"
+							rel="noopener noreferrer"
+							class="text-gray-300 hover:text-accent transition-colors flex items-center space-x-2">
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+								<path fill-rule="evenodd"
+									d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+									clip-rule="evenodd" />
+							</svg>
+							<span>LinkedIn</span>
+						</a>
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		</main>
+
+		<!-- Giant Footer -->
+		<footer class="bg-accent text-white pt-24 md:pt-32 pb-8 md:pb-12 px-6 md:px-12 relative overflow-hidden w-full">
 			<div
-				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 blur-[120px] rounded-full pointer-events-none">
-			</div>
-			<div class="container mx-auto px-4 relative z-10">
-				<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-					Mise en relation <span class="text-gradient">Rapide</span>
-				</h1>
-				<p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-					Parlez-moi de votre projet. Je reviens vers vous dans les plus brefs délais pour en discuter de vive
-					voix.
-				</p>
-			</div>
-		</section>
+				class="container mx-auto max-w-7xl relative z-10 flex flex-col justify-between h-full min-h-[30vh] md:min-h-[40vh]">
 
-		<!-- Form Section -->
-		<section class="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
-			<div class="glass-panel p-5 md:p-10 shadow-2xl relative overflow-hidden">
+				<div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16 md:mb-20">
+					<div>
+						<h2
+							class="font-syne text-3xl md:text-6xl font-bold tracking-tighter leading-none mb-6 text-white">
+							Prêt à créer<br><span class="font-serif italic font-normal">l'inattendu ?</span></h2>
+						<a href="mailto:contact@hariss-web.fr"
+							class="inline-block font-inter text-lg md:text-xl font-medium border-b-2 border-white pb-1 opacity-90 hover:opacity-100 transition-opacity cursor-hover magnetic"
+							data-magnetic-strength="20">contact@hariss-web.fr</a>
+					</div>
+
+					<div
+						class="flex gap-10 md:gap-16 font-inter font-medium text-xs md:text-sm uppercase tracking-widest w-full md:w-auto">
+						<div class="flex flex-col gap-4">
+							<span class="text-white/50 text-[10px] md:text-xs mb-2">Navigation</span>
+							<a href="index.html" class="hover:underline cursor-hover">Accueil</a>
+							<a href="services.html" class="hover:underline cursor-hover">Services</a>
+							<a href="portfolio.html" class="hover:underline cursor-hover">Portfolio</a>
+						</div>
+						<div class="flex flex-col gap-4">
+							<span class="text-white/50 text-[10px] md:text-xs mb-2">Socials</span>
+							<a href="#" class="hover:underline cursor-hover">Instagram</a>
+							<a href="#" class="hover:underline cursor-hover">LinkedIn</a>
+							<a href="#" class="hover:underline cursor-hover">Awwwards</a>
+						</div>
+					</div>
+				</div>
+
 				<div
-					class="absolute -top-32 -right-32 w-64 h-64 bg-accent/20 blur-[100px] rounded-full pointer-events-none">
-				</div>
-				<div
-					class="absolute -bottom-32 -left-32 w-64 h-64 bg-blue-500/10 blur-[100px] rounded-full pointer-events-none">
-				</div>
-
-				<div class="relative z-10">
-					<iframe
-						data-tally-src="https://tally.so/embed/aQ5oxB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
-						loading="lazy" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0"
-						title="Contactez moi pour développer votre présence sur le web"></iframe>
-					<script>var d = document, w = "https://tally.so/widgets/embed.js", v = function () { "undefined" != typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function (e) { e.src = e.dataset.tallySrc })) }; if ("undefined" != typeof Tally) v(); else if (d.querySelector('script[src="' + w + '"]') == null) { var s = d.createElement("script"); s.src = w, s.onload = v, s.onerror = v, d.body.appendChild(s); }</script>
+					class="flex flex-col md:flex-row justify-between items-start md:items-end border-t border-white/20 pt-6 md:pt-8 mt-auto gap-4 md:gap-0">
+					<p class="font-inter text-[10px] md:text-xs font-semibold uppercase tracking-widest text-white/80">
+						&copy; <span id="current-year"></span> Hariss Web. All rights reserved.</p>
+					<p class="font-inter text-[10px] md:text-xs font-semibold uppercase tracking-widest text-white/80">
+						Design : Brutalist / Code : Clean</p>
 				</div>
 			</div>
 
-			<div class="mt-12 text-center flex flex-col items-center justify-center space-y-4">
-				<p class="text-gray-400">Ou contactez-moi directement et retrouvez-moi sur les réseaux :</p>
-				<div class="flex items-center space-x-6">
-					<a href="mailto:hariss.hafeji@gmail.com"
-						class="text-gray-300 hover:text-accent transition-colors flex items-center space-x-2">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-							stroke="currentColor" class="w-5 h-5">
-							<path stroke-linecap="round" stroke-linejoin="round"
-								d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-						</svg>
-						<span>hariss.hafeji@gmail.com</span>
-					</a>
-					<a href="https://www.linkedin.com/in/hariss-hafeji-6a2374246/" target="_blank"
-						rel="noopener noreferrer"
-						class="text-gray-300 hover:text-accent transition-colors flex items-center space-x-2">
-						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-							<path fill-rule="evenodd"
-								d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-								clip-rule="evenodd" />
-						</svg>
-						<span>LinkedIn</span>
-					</a>
-				</div>
+			<!-- Giant background text -->
+			<div class="absolute -bottom-10 md:-bottom-20 left-0 w-full pointer-events-none select-none text-center">
+				<span
+					class="font-syne text-[18vw] md:text-[15vw] font-black uppercase text-black/10 tracking-tighter whitespace-nowrap overflow-hidden block">HARISS
+					WEB</span>
 			</div>
-		</section>
-
-	</main>
-
-	<!-- Footer -->
-	<footer class="bg-primary/95 border-t border-white/10 py-8 md:py-12 mt-auto">
-		<div class="container mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-			<div class="flex items-center space-x-6">
-				<a href="index.html" class="text-gray-400 hover:text-white transition-colors text-sm">Accueil</a>
-				<a href="services.html" class="text-gray-400 hover:text-white transition-colors text-sm">Services</a>
-				<a href="portfolio.html" class="text-gray-400 hover:text-white transition-colors text-sm">Portfolio</a>
-				<a href="contact.html" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a>
-			</div>
-			<div class="text-gray-500 text-sm">
-				&copy; <span id="current-year"></span> Hariss Web. Tous droits réservés.
-			</div>
-		</div>
-	</footer>
+		</footer>
+	</div>
 
 	<!-- Scripts -->
 	<script src="./assets/js/main.js"></script>
