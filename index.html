@@ -13,6 +13,9 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@1,500;1,600&family=Syne:wght@400;600;700;800&display=swap"
         rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
@@ -168,9 +171,23 @@
     <header id="main-header"
         class="fixed top-0 w-full z-50 py-5 px-6 md:px-12 bg-pitch/80 backdrop-blur-xl border-b border-white/5 flex justify-between items-center transition-transform duration-500 ease-in-out">
         <!-- Logo -->
-        <a href="index.html" class="flex flex-col items-start gap-0 cursor-hover magnetic" data-magnetic-strength="20">
-            <span class="font-syne font-bold text-2xl tracking-tighter leading-none text-white">HARISS WEB</span>
-            <span class="font-serif italic text-sm text-accent leading-none">Creative Studio</span>
+        <a href="index.html" class="flex items-center gap-3 cursor-hover magnetic group" data-magnetic-strength="20">
+            <svg width="48" height="38" viewBox="0 0 64 51" fill="none" xmlns="http://www.w3.org/2000/svg"
+                class="group-hover:scale-110 transition-transform duration-300">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12.0266 0V46.1664C12.0266 47.3247 11.5664 48.4357 10.7473 49.2548C9.9282 50.0739 8.81724 50.5341 7.65888 50.5341H0V12.0265C0 5.3845 5.38453 0 12.0266 0Z"
+                    fill="#E25D1E" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M42.5761 29.9347C48.4687 29.4982 81.855 51.4048 51.2769 50.5344C51.7271 40.4701 47.9266 34.1985 42.5761 29.9347Z"
+                    fill="#E25D1E" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M47.5753 50.5338C47.5753 50.5338 42.9025 50.507 39.4148 50.4869C37.4656 50.4757 35.7597 49.1742 35.234 47.2971C34.6802 45.3282 33.6254 43.511 32.1497 42.0353C27.4813 37.367 19.9444 37.3237 15.3294 41.9386C13.8873 43.3808 12.8604 45.1614 12.3235 47.0979C11.7995 49.002 10.0628 50.3176 8.08781 50.3062C4.6082 50.2869 0.00040828 50.2604 0.00040828 50.2604C-0.0358323 43.9516 2.43555 37.9156 6.87094 33.4802C16.101 24.2503 31.1748 24.3369 40.5116 33.6736C44.9982 38.1602 47.5392 44.225 47.5754 50.5338H47.5753Z"
+                    fill="#E25D1E" />
+            </svg>
+            <div class="flex flex-col items-start gap-0">
+                <span class="font-syne font-bold text-2xl tracking-tighter leading-none text-white">HARISS WEB</span>
+                <span class="font-serif italic text-sm text-accent leading-none">Creative Studio</span>
+            </div>
         </a>
 
         <!-- Desktop Nav -->
@@ -427,15 +444,17 @@
                                 <p
                                     class="font-syne text-5xl md:text-6xl font-bold text-white tracking-tighter group-hover:text-accent transition-colors">
                                     549<span class="text-2xl md:text-3xl">€</span></p>
-                                <p class="mt-4 font-serif italic text-gray-500">Site One-Page</p>
+                                <p class="mt-4 font-serif italic text-gray-500">Landing Page / One-Page</p>
                             </div>
                             <ul class="font-inter text-sm text-gray-400 space-y-4">
                                 <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
-                                    Configuration BDD</li>
+                                    Design sur-mesure (sans template)</li>
                                 <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
-                                    Paramètres URL</li>
+                                    Optimisation mobile & tablette</li>
                                 <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
-                                    Hébergement 1 an</li>
+                                    Intégration de vos contenus</li>
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
+                                    Hébergement & Domaines (1 an)</li>
                             </ul>
                         </div>
 
@@ -453,15 +472,18 @@
                                     partir de</p>
                                 <p class="font-syne text-5xl md:text-6xl font-bold tracking-tighter">990<span
                                         class="text-2xl md:text-3xl">€</span></p>
-                                <p class="mt-4 font-serif italic opacity-70">Site 3 Pages</p>
+                                <p class="mt-4 font-serif italic opacity-70">Site Vitrine (jusqu'à 5 pages)</p>
                             </div>
                             <ul class="font-inter text-sm opacity-90 space-y-4">
                                 <li class="flex items-center gap-3"><span
-                                        class="w-1 h-1 bg-current rounded-full"></span> Configuration BDD complète</li>
+                                        class="w-1 h-1 bg-current rounded-full"></span> Tout du pack Essentiel</li>
                                 <li class="flex items-center gap-3"><span
-                                        class="w-1 h-1 bg-current rounded-full"></span> Paramètres avancés</li>
+                                        class="w-1 h-1 bg-current rounded-full"></span> Back-office simplifié (CMS)</li>
                                 <li class="flex items-center gap-3"><span
-                                        class="w-1 h-1 bg-current rounded-full"></span> Modèle multi-pages</li>
+                                        class="w-1 h-1 bg-current rounded-full"></span> Optimisation SEO de base</li>
+                                <li class="flex items-center gap-3"><span
+                                        class="w-1 h-1 bg-current rounded-full"></span> Intégration Google Analytics
+                                </li>
                             </ul>
                         </div>
 
@@ -480,15 +502,17 @@
                                 <p
                                     class="font-syne text-5xl md:text-6xl font-bold text-white tracking-tighter group-hover:text-accent transition-colors">
                                     1399<span class="text-2xl md:text-3xl">€</span></p>
-                                <p class="mt-4 font-serif italic text-gray-500">Site 5 Pages + Plugins</p>
+                                <p class="mt-4 font-serif italic text-gray-500">Site Avancé / Sur-Mesure</p>
                             </div>
                             <ul class="font-inter text-sm text-gray-400 space-y-4">
                                 <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
-                                    Setup Serveur complet</li>
+                                    Design Premium & Animations</li>
                                 <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
-                                    Sécurité & Cache Premium</li>
+                                    Référencement SEO Avancé</li>
                                 <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
-                                    Formulaires avancés</li>
+                                    Performances maximales & Sécurité</li>
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>
+                                    Modules spécifiques (Blog, RDV...)</li>
                             </ul>
                         </div>
 
