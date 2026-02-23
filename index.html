@@ -212,10 +212,31 @@
         </nav>
 
         <!-- Mobile Menu Toggle -->
-        <button id="mobile-menu-btn" class="md:hidden text-white cursor-hover magnetic" data-magnetic-strength="30">
+        <button id="mobile-menu-btn" class="md:hidden text-white cursor-hover magnetic" data-magnetic-strength="30"
+            aria-label="Ouvrir le menu">
             <span class="text-xs uppercase tracking-[0.2em] font-medium">Menu</span>
         </button>
     </header>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu"
+        class="hidden md:hidden fixed top-0 left-0 w-full h-[100svh] bg-pitch/95 backdrop-blur-3xl z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500">
+        <nav class="flex flex-col items-center space-y-8">
+            <a href="index.html"
+                class="text-2xl font-syne uppercase tracking-tighter font-bold text-white hover:text-accent transition-colors menu-link">Accueil</a>
+            <a href="services.html"
+                class="text-2xl font-syne uppercase tracking-tighter font-bold text-gray-400 hover:text-accent transition-colors menu-link">Services</a>
+            <a href="portfolio.html"
+                class="text-2xl font-syne uppercase tracking-tighter font-bold text-gray-400 hover:text-accent transition-colors menu-link">Portfolio</a>
+            <a href="contact.html"
+                class="mt-8 group relative inline-flex items-center justify-center px-8 py-4 border border-white/20 text-sm font-syne uppercase tracking-wider text-white overflow-hidden rounded-full menu-link">
+                <span class="relative z-10 transition-colors group-hover:text-black font-bold">Contacter</span>
+                <div
+                    class="absolute inset-0 bg-accent translate-y-[101%] group-hover:translate-y-[0%] transition-transform duration-500 ease-out z-0">
+                </div>
+            </a>
+        </nav>
+    </div>
 
     <!-- Content Wrap for Lenis -->
     <div id="smooth-wrapper" class="overflow-clip w-full">
@@ -759,6 +780,52 @@
 
         // Utils
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 6. Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuLinks = document.querySelectorAll('.menu-link');
+        let isMenuOpen = false;
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+
+                if (isMenuOpen) {
+                    // Open Menu
+                    mobileMenu.classList.remove('hidden');
+                    // Small delay to allow display:block to apply before animating opacity
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        mobileMenu.classList.add('opacity-100');
+                    }, 10);
+                    mobileMenuBtn.querySelector('span').textContent = 'Fermer';
+                    // Stop scrolling
+                    lenis.stop();
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    // Close Menu
+                    mobileMenu.classList.remove('opacity-100');
+                    mobileMenu.classList.add('opacity-0');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 500); // Wait for transition to finish
+                    mobileMenuBtn.querySelector('span').textContent = 'Menu';
+                    // Resume scrolling
+                    lenis.start();
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close menu when clicking a link
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isMenuOpen) {
+                        mobileMenuBtn.click();
+                    }
+                });
+            });
+        }
     </script>
 </body>
 
