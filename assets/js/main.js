@@ -237,31 +237,32 @@ if (mobileMenuBtn && mobileMenu) {
 
 // 7. Services Mobile Carousel Logic
 const servicesCarousel = document.getElementById('services-carousel');
-const servicesPrevBtn = document.getElementById('services-prev');
-const servicesNextBtn = document.getElementById('services-next');
+const carouselProgress = document.getElementById('carousel-progress');
 
 if (servicesCarousel) {
     let isDown = false;
     let startX;
     let scrollLeft;
 
-    // Arrow Navigation
-    if (servicesPrevBtn && servicesNextBtn) {
-        // Calculate the scroll distance based on one card width + gap
-        const getScrollDistance = () => {
-            const card = servicesCarousel.querySelector('div.grid');
-            if (!card) return window.innerWidth * 0.9;
-            // Get card width and compute exact scroll step
-            return card.offsetWidth + 24; // 24 is gap-6 in pixels
+    // Update Progress Bar on Scroll
+    if (carouselProgress) {
+        const updateProgressBar = () => {
+            // Calculate how far we've scrolled (0 to 1)
+            const maxScrollLeft = servicesCarousel.scrollWidth - servicesCarousel.clientWidth;
+            if (maxScrollLeft > 0) {
+                const scrollFraction = servicesCarousel.scrollLeft / maxScrollLeft;
+                // The progress bar starts at 33% (1 out of 3 cards)
+                // It expands to 100% as we scroll
+                const minWidth = 33.33;
+                const progressWidth = minWidth + (scrollFraction * (100 - minWidth));
+                carouselProgress.style.width = `${progressWidth}%`;
+            }
         };
 
-        servicesNextBtn.addEventListener('click', () => {
-            servicesCarousel.scrollBy({ left: getScrollDistance(), behavior: 'smooth' });
-        });
-
-        servicesPrevBtn.addEventListener('click', () => {
-            servicesCarousel.scrollBy({ left: -getScrollDistance(), behavior: 'smooth' });
-        });
+        // Listen for both native scrolling and our JS dragging
+        servicesCarousel.addEventListener('scroll', updateProgressBar);
+        // Initial setup
+        updateProgressBar();
     }
 
     // Drag to Scroll Logic (for Desktop/Tablet touching)

@@ -149,29 +149,27 @@
             <section class="py-16 lg:py-24">
                 <div class="container mx-auto px-4 md:px-8 relative">
 
-                    <!-- Mobile Carousel Navigation Controls -->
-                    <div class="flex justify-end gap-2 mb-4 lg:hidden">
-                        <button id="services-prev"
-                            class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/50 transition-colors bg-pitch z-10">
+                    <!-- Mobile Carousel Navigation Controls (UX Improved) -->
+                    <div class="flex flex-col items-center gap-3 mb-6 lg:hidden">
+                        <div class="flex items-center gap-2 text-white/50 text-xs font-inter uppercase tracking-widest">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                                stroke="currentColor" class="w-4 h-4 animate-pulse">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                             </svg>
-                        </button>
-                        <button id="services-next"
-                            class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/50 transition-colors bg-pitch z-10">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </button>
+                            <span>Glissez pour découvrir</span>
+                        </div>
+                        <div class="w-full h-[2px] bg-white/10 rounded-full overflow-hidden">
+                            <div id="carousel-progress"
+                                class="h-full bg-accent rounded-full w-[33%] transition-all duration-300"></div>
+                        </div>
                     </div>
 
                     <div id="services-carousel"
                         class="flex lg:block overflow-x-auto lg:overflow-visible snap-x snap-mandatory hide-scrollbars cursor-grab active:cursor-grabbing lg:space-y-24 gap-6 lg:gap-0 pb-8 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
                         <!-- Service 1 -->
                         <div
-                            class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-[90vw] md:w-[70vw] shrink-0 lg:w-full snap-center lg:snap-align-none">
+                            class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-[85vw] md:w-[70vw] shrink-0 lg:w-full snap-center lg:snap-align-none">
                             <div class="order-2 lg:order-1">
                                 <div
                                     class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
@@ -232,7 +230,7 @@
 
                         <!-- Service 2 -->
                         <div
-                            class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-[90vw] md:w-[70vw] shrink-0 lg:w-full snap-center lg:snap-align-none">
+                            class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-[85vw] md:w-[70vw] shrink-0 lg:w-full snap-center lg:snap-align-none">
                             <div class="order-1 lg:order-1">
                                 <div class="bg-surface border border-white/10 w-full aspect-[4/3] flex items-center justify-center relative overflow-hidden group hover:border-accent/50 transition-colors duration-500 magnetic-area"
                                     data-magnetic-strength="10">
@@ -295,7 +293,7 @@
 
                         <!-- Service 3 -->
                         <div
-                            class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-[90vw] md:w-[70vw] shrink-0 lg:w-full snap-center lg:snap-align-none">
+                            class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-[85vw] md:w-[70vw] shrink-0 lg:w-full snap-center lg:snap-align-none">
                             <div class="order-2 lg:order-1">
                                 <div
                                     class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
