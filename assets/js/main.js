@@ -234,3 +234,64 @@ if (mobileMenuBtn && mobileMenu) {
         });
     });
 }
+
+// 7. Services Mobile Carousel Logic
+const servicesCarousel = document.getElementById('services-carousel');
+const servicesPrevBtn = document.getElementById('services-prev');
+const servicesNextBtn = document.getElementById('services-next');
+
+if (servicesCarousel) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Arrow Navigation
+    if (servicesPrevBtn && servicesNextBtn) {
+        // Calculate the scroll distance based on one card width + gap
+        const getScrollDistance = () => {
+            const card = servicesCarousel.querySelector('div.grid');
+            if (!card) return window.innerWidth * 0.9;
+            // Get card width and compute exact scroll step
+            return card.offsetWidth + 24; // 24 is gap-6 in pixels
+        };
+
+        servicesNextBtn.addEventListener('click', () => {
+            servicesCarousel.scrollBy({ left: getScrollDistance(), behavior: 'smooth' });
+        });
+
+        servicesPrevBtn.addEventListener('click', () => {
+            servicesCarousel.scrollBy({ left: -getScrollDistance(), behavior: 'smooth' });
+        });
+    }
+
+    // Drag to Scroll Logic (for Desktop/Tablet touching)
+    servicesCarousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        servicesCarousel.classList.add('active');
+        // Disable scroll snapping during drag for smoother experience
+        servicesCarousel.style.scrollSnapType = 'none';
+
+        startX = e.pageX - servicesCarousel.offsetLeft;
+        scrollLeft = servicesCarousel.scrollLeft;
+    });
+
+    servicesCarousel.addEventListener('mouseleave', () => {
+        isDown = false;
+        servicesCarousel.classList.remove('active');
+        servicesCarousel.style.scrollSnapType = '';
+    });
+
+    servicesCarousel.addEventListener('mouseup', () => {
+        isDown = false;
+        servicesCarousel.classList.remove('active');
+        servicesCarousel.style.scrollSnapType = '';
+    });
+
+    servicesCarousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - servicesCarousel.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll-fast multiplier
+        servicesCarousel.scrollLeft = scrollLeft - walk;
+    });
+}

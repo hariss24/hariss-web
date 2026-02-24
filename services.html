@@ -147,190 +147,213 @@
 
             <!-- Detailed Services List -->
             <section class="py-16 lg:py-24">
-                <div class="container mx-auto px-4 md:px-8 space-y-24">
+                <div class="container mx-auto px-4 md:px-8 relative">
 
-                    <!-- Service 1 -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="order-2 lg:order-1">
-                            <div
-                                class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                                </svg>
-                            </div>
-                            <h2
-                                class="font-syne text-3xl md:text-5xl font-bold tracking-tighter uppercase text-white mb-6">
-                                Création & Refonte de Sites Web</h2>
-                            <p class="text-gray-300 text-lg mb-6 leading-relaxed">
-                                Votre site internet est le reflet de votre entreprise sur le web. Je conçois des
-                                sites
-                                vitrines modernes, performants et optimisés pour la conversion. Que ce soit une
-                                création de
-                                A à Z ou la refonte d'un site existant, mon approche garantit un design unique
-                                (UI/UX), sans
-                                thème préconçu, adapté à votre image de marque.
-                            </p>
-                            <ul class="space-y-4 text-gray-400 mb-8">
-                                <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg> Sites Vitrines & E-commerce</li>
-                                <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg> Design responsive et mobile-first</li>
-                                <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg> Architecture sémantique pour le SEO</li>
-                            </ul>
-                            <a href="contact.html" class="btn-magnetic cursor-hover magnetic"
-                                data-magnetic-strength="20">
-                                <span class="relative z-10 flex items-center gap-3">
-                                    Discuter de mon projet
-                                </span>
-                            </a>
-                        </div>
-                        <div class="order-1 lg:order-2">
-                            <div class="bg-surface border border-white/10 w-full aspect-[4/3] flex items-center justify-center relative overflow-hidden group hover:border-accent/50 transition-colors duration-500 magnetic-area"
-                                data-magnetic-strength="10">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500">
-                                </div>
-                                <span
-                                    class="font-syne text-xl text-white/40 uppercase tracking-widest font-bold">Illustration
-                                    Web</span>
-                            </div>
-                        </div>
+                    <!-- Mobile Carousel Navigation Controls -->
+                    <div class="flex justify-end gap-2 mb-4 lg:hidden">
+                        <button id="services-prev"
+                            class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/50 transition-colors bg-pitch z-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                            </svg>
+                        </button>
+                        <button id="services-next"
+                            class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/50 transition-colors bg-pitch z-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
                     </div>
 
-                    <!-- Service 2 -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="order-1 lg:order-1">
-                            <div class="bg-surface border border-white/10 w-full aspect-[4/3] flex items-center justify-center relative overflow-hidden group hover:border-accent/50 transition-colors duration-500 magnetic-area"
-                                data-magnetic-strength="10">
+                    <div id="services-carousel"
+                        class="flex lg:block overflow-x-auto lg:overflow-visible snap-x snap-mandatory hide-scrollbars cursor-grab active:cursor-grabbing lg:space-y-24 gap-6 lg:gap-0 pb-8 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
+                        <!-- Service 1 -->
+                        <div
+                            class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-[90vw] md:w-[70vw] shrink-0 lg:w-full snap-center lg:snap-align-none">
+                            <div class="order-2 lg:order-1">
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-bl from-accent/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                                    class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                                    </svg>
                                 </div>
-                                <span
-                                    class="font-syne text-xl text-white/40 uppercase tracking-widest font-bold">Illustration
-                                    SEO</span>
+                                <h2
+                                    class="font-syne text-3xl md:text-5xl font-bold tracking-tighter uppercase text-white mb-6">
+                                    Création & Refonte de Sites Web</h2>
+                                <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                                    Votre site internet est le reflet de votre entreprise sur le web. Je conçois des
+                                    sites
+                                    vitrines modernes, performants et optimisés pour la conversion. Que ce soit une
+                                    création de
+                                    A à Z ou la refonte d'un site existant, mon approche garantit un design unique
+                                    (UI/UX), sans
+                                    thème préconçu, adapté à votre image de marque.
+                                </p>
+                                <ul class="space-y-4 text-gray-400 mb-8">
+                                    <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg> Sites Vitrines & E-commerce</li>
+                                    <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg> Design responsive et mobile-first</li>
+                                    <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg> Architecture sémantique pour le SEO</li>
+                                </ul>
+                                <a href="contact.html" class="btn-magnetic cursor-hover magnetic"
+                                    data-magnetic-strength="20">
+                                    <span class="relative z-10 flex items-center gap-3">
+                                        Discuter de mon projet
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="order-1 lg:order-2">
+                                <div class="bg-surface border border-white/10 w-full aspect-[4/3] flex items-center justify-center relative overflow-hidden group hover:border-accent/50 transition-colors duration-500 magnetic-area"
+                                    data-magnetic-strength="10">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                    <span
+                                        class="font-syne text-xl text-white/40 uppercase tracking-widest font-bold">Illustration
+                                        Web</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="order-2 lg:order-2">
-                            <div
-                                class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                                </svg>
-                            </div>
-                            <h2
-                                class="font-syne text-3xl md:text-5xl font-bold tracking-tighter uppercase text-white mb-6">
-                                Optimisation SEO & Visibilité Locale</h2>
-                            <p class="text-gray-300 text-lg mb-6 leading-relaxed">
-                                Avoir un beau site ne sert à rien s'il n'est pas visible. J'implémente les
-                                meilleures
-                                pratiques SEO dès la conception pour assurer que votre site se positionne
-                                favorablement sur
-                                les moteurs de recherche. Pour les entreprises locales, j'optimise votre présence
-                                sur des
-                                requêtes géolocalisées.
-                            </p>
-                            <ul class="space-y-4 text-gray-400 mb-8">
-                                <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg> Recherche de mots clés stratégiques</li>
-                                <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg> Optimisation on-page (Balises, structure)</li>
-                                <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg> Amélioration des scores de vitesse (Lighthouse)</li>
-                            </ul>
-                            <a href="contact.html" class="btn-magnetic cursor-hover magnetic"
-                                data-magnetic-strength="20">
-                                <span class="relative z-10 flex items-center gap-3">
-                                    Atteindre le top Google
-                                </span>
-                            </a>
-                        </div>
-                    </div>
 
-                    <!-- Service 3 -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="order-2 lg:order-1">
-                            <div
-                                class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.83-5.83M15.25 15.25l-3.32-3.32m2.46-9.14a4.992 4.992 0 00-6.72 6.72l-5.69 5.69a2.002 2.002 0 002.83 2.83l5.69-5.69a4.992 4.992 0 006.72-6.72z" />
-                                </svg>
+                        <!-- Service 2 -->
+                        <div
+                            class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-[90vw] md:w-[70vw] shrink-0 lg:w-full snap-center lg:snap-align-none">
+                            <div class="order-1 lg:order-1">
+                                <div class="bg-surface border border-white/10 w-full aspect-[4/3] flex items-center justify-center relative overflow-hidden group hover:border-accent/50 transition-colors duration-500 magnetic-area"
+                                    data-magnetic-strength="10">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-bl from-accent/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                    <span
+                                        class="font-syne text-xl text-white/40 uppercase tracking-widest font-bold">Illustration
+                                        SEO</span>
+                                </div>
                             </div>
-                            <h2
-                                class="font-syne text-3xl md:text-5xl font-bold tracking-tighter uppercase text-white mb-6">
-                                Support technique & Évolutions</h2>
-                            <p class="text-gray-300 text-lg mb-6 leading-relaxed">
-                                Un site web doit vivre et évoluer avec votre activité. Je vous propose un
-                                accompagnement sur
-                                le long terme : mises à jour de contenu, ajout de nouvelles fonctionnalités,
-                                correctifs de
-                                sécurité et monitorage continu pour garantir la meilleure expérience à vos
-                                utilisateurs.
-                            </p>
-                            <ul class="space-y-4 text-gray-400 mb-8">
-                                <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg> Maintenance préventive et curative</li>
-                                <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg> Sauvegardes régulières</li>
-                                <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg> Support réactif</li>
-                            </ul>
-                            <a href="contact.html" class="btn-magnetic cursor-hover magnetic"
-                                data-magnetic-strength="20">
-                                <span class="relative z-10 flex items-center gap-3">
-                                    Déléguer la gestion
-                                </span>
-                            </a>
-                        </div>
-                        <div class="order-1 lg:order-2">
-                            <div class="bg-surface border border-white/10 w-full aspect-[4/3] flex items-center justify-center relative overflow-hidden group hover:border-accent/50 transition-colors duration-500 magnetic-area"
-                                data-magnetic-strength="10">
+                            <div class="order-2 lg:order-2">
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                                    class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                                    </svg>
                                 </div>
-                                <span
-                                    class="font-syne text-xl text-white/40 uppercase tracking-widest font-bold">Illustration
-                                    Support</span>
+                                <h2
+                                    class="font-syne text-3xl md:text-5xl font-bold tracking-tighter uppercase text-white mb-6">
+                                    Optimisation SEO & Visibilité Locale</h2>
+                                <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                                    Avoir un beau site ne sert à rien s'il n'est pas visible. J'implémente les
+                                    meilleures
+                                    pratiques SEO dès la conception pour assurer que votre site se positionne
+                                    favorablement sur
+                                    les moteurs de recherche. Pour les entreprises locales, j'optimise votre présence
+                                    sur des
+                                    requêtes géolocalisées.
+                                </p>
+                                <ul class="space-y-4 text-gray-400 mb-8">
+                                    <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg> Recherche de mots clés stratégiques</li>
+                                    <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg> Optimisation on-page (Balises, structure)</li>
+                                    <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg> Amélioration des scores de vitesse (Lighthouse)</li>
+                                </ul>
+                                <a href="contact.html" class="btn-magnetic cursor-hover magnetic"
+                                    data-magnetic-strength="20">
+                                    <span class="relative z-10 flex items-center gap-3">
+                                        Atteindre le top Google
+                                    </span>
+                                </a>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                        <!-- Service 3 -->
+                        <div
+                            class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-[90vw] md:w-[70vw] shrink-0 lg:w-full snap-center lg:snap-align-none">
+                            <div class="order-2 lg:order-1">
+                                <div
+                                    class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.83-5.83M15.25 15.25l-3.32-3.32m2.46-9.14a4.992 4.992 0 00-6.72 6.72l-5.69 5.69a2.002 2.002 0 002.83 2.83l5.69-5.69a4.992 4.992 0 006.72-6.72z" />
+                                    </svg>
+                                </div>
+                                <h2
+                                    class="font-syne text-3xl md:text-5xl font-bold tracking-tighter uppercase text-white mb-6">
+                                    Support technique & Évolutions</h2>
+                                <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                                    Un site web doit vivre et évoluer avec votre activité. Je vous propose un
+                                    accompagnement sur
+                                    le long terme : mises à jour de contenu, ajout de nouvelles fonctionnalités,
+                                    correctifs de
+                                    sécurité et monitorage continu pour garantir la meilleure expérience à vos
+                                    utilisateurs.
+                                </p>
+                                <ul class="space-y-4 text-gray-400 mb-8">
+                                    <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg> Maintenance préventive et curative</li>
+                                    <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg> Sauvegardes régulières</li>
+                                    <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg> Support réactif</li>
+                                </ul>
+                                <a href="contact.html" class="btn-magnetic cursor-hover magnetic"
+                                    data-magnetic-strength="20">
+                                    <span class="relative z-10 flex items-center gap-3">
+                                        Déléguer la gestion
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="order-1 lg:order-2">
+                                <div class="bg-surface border border-white/10 w-full aspect-[4/3] flex items-center justify-center relative overflow-hidden group hover:border-accent/50 transition-colors duration-500 magnetic-area"
+                                    data-magnetic-strength="10">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                                    </div>
+                                    <span
+                                        class="font-syne text-xl text-white/40 uppercase tracking-widest font-bold">Illustration
+                                        Support</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
             </section>
 
             <!-- Pricing Detailed Grid -->
