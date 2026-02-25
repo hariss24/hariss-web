@@ -277,12 +277,14 @@ if (servicesCarousel) {
     });
 
     servicesCarousel.addEventListener('mouseleave', () => {
+        if (!isDown) return;
         isDown = false;
         servicesCarousel.classList.remove('active');
         servicesCarousel.style.scrollSnapType = '';
     });
 
     servicesCarousel.addEventListener('mouseup', () => {
+        if (!isDown) return;
         isDown = false;
         servicesCarousel.classList.remove('active');
         servicesCarousel.style.scrollSnapType = '';
@@ -292,7 +294,7 @@ if (servicesCarousel) {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - servicesCarousel.offsetLeft;
-        const walk = (x - startX) * 2; // Scroll-fast multiplier
+        const walk = (x - startX) * 1.5; // Slightly reduced multiplier for smoother feel
         servicesCarousel.scrollLeft = scrollLeft - walk;
     });
 }
