@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio photographique - Découvrez mes travaux de portraits, mariages et événements à travers une expérience interactive unique.">
+    <title>Portfolio | Studio Lumière</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        /* Styles spécifiques à la page portfolio */
+        .portfolio-page {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--color-background);
+        }
+
+        .portfolio-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            cursor: crosshair;
+        }
+
+        .portfolio-info {
+            position: fixed;
+            bottom: var(--space-xl);
+            left: var(--space-xl);
+            z-index: 100;
+            max-width: 400px;
+            pointer-events: none;
+        }
+
+        .portfolio-info__title {
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            font-weight: 300;
+            margin-bottom: var(--space-xs);
+            color: var(--color-text-primary);
+        }
+
+        .portfolio-info__description {
+            font-size: var(--text-base);
+            color: var(--color-text-secondary);
+        }
+
+        .portfolio-counter {
+            position: fixed;
+            bottom: var(--space-xl);
+            right: var(--space-xl);
+            z-index: 100;
+            font-family: var(--font-display);
+            font-size: var(--text-4xl);
+            font-weight: 300;
+            color: var(--color-text-muted);
+            pointer-events: none;
+        }
+
+        .portfolio-counter span {
+            color: var(--color-text-primary);
+        }
+
+        .portfolio-instruction {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+            text-align: center;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+        }
+
+        .portfolio-instruction.hidden {
+            opacity: 0;
+        }
+
+        .portfolio-instruction__text {
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            font-weight: 300;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .portfolio-instruction__hint {
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+            letter-spacing: 0.1em;
+        }
+
+        /* Trail image styling - managed by JS but base styles here */
+        .trail-image {
+            position: absolute;
+            width: 280px;
+            height: 380px;
+            object-fit: cover;
+            pointer-events: none;
+            will-change: transform, opacity;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Header adjustments for portfolio page */
+        .header {
+            background-color: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        .header.scrolled {
+            background-color: rgba(247, 244, 240, 0.9) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+        }
+
+        /* Mobile fallback */
+        @media (max-width: 768px) {
+            .portfolio-canvas {
+                cursor: pointer;
+            }
+            
+            .portfolio-info {
+                bottom: var(--space-lg);
+                left: var(--space-lg);
+                right: var(--space-lg);
+                max-width: none;
+            }
+            
+            .portfolio-counter {
+                top: calc(var(--header-height) + var(--space-lg));
+                bottom: auto;
+                right: var(--space-lg);
+            }
+            
+            .portfolio-instruction__text {
+                font-size: var(--text-xl);
+            }
+            
+            .trail-image {
+                width: 200px;
+                height: 270px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header__inner">
+            <a href="accueil" class="logo">Studio <span>Lumière</span></a>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li><a href="accueil" class="nav__link active">Accueil</a></li>
+                    <li><a href="portfolio" class="nav__link">Portfolio</a></li>
+                    <li><a href="services" class="nav__link">Services</a></li>
+                    <li><a href="a-propos" class="nav__link">À propos</a></li>
+                    <li><a href="contact" class="nav__link">Contact</a></li>
+                </ul>
+                <button class="nav__toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="portfolio-page">
+        <!-- Canvas interactif où les images apparaissent -->
+        <div class="portfolio-canvas" id="portfolioCanvas"></div>
+        
+        <!-- Instructions initiales -->
+        <div class="portfolio-instruction" id="portfolioInstruction">
+            <p class="portfolio-instruction__text">Déplacez votre souris pour explorer</p>
+            <p class="portfolio-instruction__hint">Les images suivront votre mouvement</p>
+        </div>
+        
+        <!-- Informations sur l'image courante -->
+        <div class="portfolio-info">
+            <h2 class="portfolio-info__title">Portfolio</h2>
+            <p class="portfolio-info__description">Déplacez le curseur pour découvrir les images</p>
+        </div>
+        
+        <!-- Compteur d'images -->
+        <div class="portfolio-counter">
+            <span>01</span> / 44
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/portfolio.js"></script>
+    
+    <script>
+        // Hide instruction after first mouse move
+        let instructionHidden = false;
+        document.addEventListener('mousemove', function() {
+            if (!instructionHidden) {
+                const instruction = document.getElementById('portfolioInstruction');
+                if (instruction) {
+                    instruction.classList.add('hidden');
+                    setTimeout(() => {
+                        instruction.style.display = 'none';
+                    }, 600);
+                }
+                instructionHidden = true;
+            }
+        }, { once: false });
+        
+        // Touch support for mobile
+        document.addEventListener('touchstart', function() {
+            if (!instructionHidden) {
+                const instruction = document.getElementById('portfolioInstruction');
+                if (instruction) {
+                    instruction.classList.add('hidden');
+                    setTimeout(() => {
+                        instruction.style.display = 'none';
+                    }, 600);
+                }
+                instructionHidden = true;
+            }
+        }, { once: false });
+    </script>
+</body>
+</html>

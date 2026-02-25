@@ -161,10 +161,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                     <!-- Project 1 -->
-                    <div class="project-card"
-                        onclick="openModal('Atelier vélo', 'https://hariss-web.fr/projet/au-petit-velo/', 'Site vitrine one-page moderne pour son atelier vélo')">
-                        <img loading="lazy" src="https://hariss-web.fr/wp-content/uploads/2026/01/hero-atelier.webp"
-                            alt="Atelier vélo">
+                    <a href="projet/au-petit-velo/index.html" target="_blank" class="project-card block">
+                        <img loading="lazy" src="projet/au-petit-velo/hero-atelier.png" alt="Atelier vélo">
                         <div class="project-overlay">
                             <h3 class="text-2xl font-bold text-white mb-2">Atelier vélo</h3>
                             <p class="text-gray-300 text-sm mb-4">Site vitrine one-page moderne pour son atelier vélo
@@ -175,13 +173,11 @@
                                 <span class="project-tag">Moderne</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Project 2 -->
-                    <div class="project-card"
-                        onclick="openModal('Studio Lumière', 'https://hariss-web.fr/projet/studio-lumiere/', 'Site vitrine multi-pages intéractif et portfolio dynamique')">
-                        <img loading="lazy"
-                            src="https://hariss-web.fr/wp-content/uploads/2026/01/portfolio-photographie.png"
+                    <a href="projet/studio-lumiere/accueil.html" target="_blank" class="project-card block">
+                        <img loading="lazy" src="projet/images-projets/portfolio-photographie-1024x626.webp"
                             alt="Studio Lumière">
                         <div class="project-overlay">
                             <h3 class="text-2xl font-bold text-white mb-2">Portfolio photographique</h3>
@@ -194,13 +190,11 @@
                                 <span class="project-tag">Design avancé</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Project 3 -->
-                    <div class="project-card"
-                        onclick="openModal('Artisan plombier', 'https://hariss-web.fr/projet/l-artisan-plombier/', 'Site vitrine multipage professionnel, services détaillés pour un plombier à Paris.')">
-                        <img loading="lazy"
-                            src="https://hariss-web.fr/wp-content/uploads/2026/01/Cover-artisan-plombier.jpg"
+                    <a href="projet/l-artisan-plombier/accueil.html" target="_blank" class="project-card block">
+                        <img loading="lazy" src="projet/images-projets/Cover-artisan-plombier-1024x618.jpg"
                             alt="Artisan plombier">
                         <div class="project-overlay">
                             <h3 class="text-2xl font-bold text-white mb-2">Artisan plombier</h3>
@@ -213,68 +207,14 @@
                                 <span class="project-tag">Dépannage</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
                 </div>
             </section>
 
         </main>
 
-        <!-- Modal Project View -->
-        <div class="modal" id="projectModal">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h3 class="text-2xl font-bold text-white tracking-tight" id="modalTitle">Titre du Projet</h3>
-                    <div class="modal-controls">
-                        <div class="device-toggle">
-                            <button class="toggle-btn active" id="desktopBtn" onclick="switchView('desktop')">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
-                                </svg>
-                                Desktop
-                            </button>
-                            <button class="toggle-btn" id="mobileBtn" onclick="switchView('mobile')">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                                </svg>
-                                Mobile
-                            </button>
-                        </div>
-                        <button class="close-btn" onclick="closeModal()" aria-label="Fermer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
 
-                <!-- Modal Body -->
-                <div class="flex-grow flex items-center justify-center p-4 md:p-8 bg-[#0a0a0a] overflow-hidden">
-                    <div class="iframe-container desktop-view" id="iframeContainer">
-                        <div class="iframe-wrapper">
-                            <iframe id="projectIframe" src="" title="Aperçu du projet"
-                                class="w-full h-full border-none"></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal Footer -->
-                <div
-                    class="p-5 md:p-6 border-t border-white/10 bg-[#1a1a1a] flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p class="text-gray-400 text-sm text-center md:text-left" id="projectInfo">Description du projet</p>
-                    <a href="#" id="visitLink" target="_blank"
-                        class="px-6 py-3 bg-white text-black font-semibold rounded-lg text-sm transition-all duration-300 hover:bg-gray-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/10 w-full md:w-auto text-center">
-                        Visiter le site →
-                    </a>
-                </div>
-            </div>
-        </div>
 
         <!-- Giant Footer -->
         <footer class="bg-accent text-white pt-24 md:pt-32 pb-8 md:pb-12 px-6 md:px-12 relative overflow-hidden w-full">

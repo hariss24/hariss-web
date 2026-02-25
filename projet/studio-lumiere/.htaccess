@@ -1,0 +1,17 @@
+# Définir "accueil" comme page par défaut du dossier
+DirectoryIndex accueil
+
+# Activer la réécriture d'URL
+RewriteEngine On
+
+# Servir les fichiers sans extension comme HTML
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Si le fichier existe sans extension, le servir directement
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f
+RewriteRule ^ - [L]

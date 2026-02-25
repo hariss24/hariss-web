@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="À propos de Studio Lumière - Découvrez mon parcours, ma philosophie et ma passion pour la photographie artistique.">
+    <title>À Propos | Studio Lumière</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__inner">
+            <a href="accueil" class="logo">Studio <span>Lumière</span></a>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li><a href="accueil" class="nav__link active">Accueil</a></li>
+                    <li><a href="portfolio" class="nav__link">Portfolio</a></li>
+                    <li><a href="services" class="nav__link">Services</a></li>
+                    <li><a href="a-propos" class="nav__link">À propos</a></li>
+                    <li><a href="contact" class="nav__link">Contact</a></li>
+                </ul>
+                <button class="nav__toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="about-hero__image-wrapper reveal">
+                <!-- ═══════════════════════════════════════════════════════════════
+                     REMPLACER : Votre portrait principal
+                     Chemin recommandé : assets/images/about-portrait.jpg
+                     ═══════════════════════════════════════════════════════════════ -->
+                <img src="assets/images/about-portrait.jpg" alt="Portrait du photographe" class="about-hero__image">
+                <span class="about-hero__image-caption">Paris, 2024</span>
+            </div>
+
+            <div class="about-hero__content reveal">
+                <p class="about-hero__label">À Propos</p>
+                <!-- ═══════════════════════════════════════════════════════════════
+                     PERSONNALISER : Votre nom et titre
+                     ═══════════════════════════════════════════════════════════════ -->
+                <h1 class="about-hero__title">
+                    Bonjour, je suis<br><em>Hariss HAFEJI</em>
+                </h1>
+                <div class="about-hero__text">
+                    <p>
+                        Studio Lumière, c'est l'espace où je documente ma vie en images, entre villes,
+                        paysages et moments partagés avec les personnes qui comptent.
+                    </p>
+                    <p>
+                        Armé de mon Fujifilm X100V, je recherche une esthétique vintage et chaleureuse
+                        qui transforme chaque scène du quotidien en souvenir visuel.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="about-story">
+            <div class="container">
+                <div class="about-story__grid">
+                    <div class="about-story__content reveal">
+                        <div class="about-story__quote">
+                            À travers mes images, je cherche à transmettre de la chaleur,
+                            de la nostalgie et de l'apaisement.
+                        </div>
+                        <p style="color: var(--color-text-secondary); line-height: 1.8;">
+                            Je photographie d'abord des paysages et des rues, puis les voyages,
+                            la famille et les amis qui rythment mon quotidien. Mon appareil est
+                            toujours avec moi : je capture ce qui se présente, sans mise en scène
+                            forcée, en laissant la lumière, l'ambiance et les gens vivre naturellement
+                            devant l'objectif.
+                        </p>
+                        <p style="color: var(--color-text-secondary); line-height: 1.8; margin-top: var(--space-md);">
+                            Que le rendu soit ciné, sombre, coloré ou plus doux, l'important reste
+                            la sensation d'un moment vrai, pris sur le vif.
+                        </p>
+                    </div>
+
+                    <div class="reveal" style="position: relative;">
+                        <!-- ═══════════════════════════════════════════════════════════
+                             REMPLACER : Image secondaire
+                             Chemin recommandé : assets/images/about-story.jpg
+                             ═══════════════════════════════════════════════════════════ -->
+                        <img src="assets/images/about-story.jpg" alt="En train de photographier"
+                            style="width: 100%; aspect-ratio: 4/5; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="about-values">
+            <div class="container">
+                <div class="section__header reveal">
+                    <p class="section__label">Ma philosophie</p>
+                    <h2 class="section__title">Mes valeurs</h2>
+                </div>
+
+                <div class="about-values__grid reveal-stagger">
+                    <!-- Value 1 -->
+                    <div class="about-value">
+                        <div class="about-value__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 6v6l4 2"></path>
+                            </svg>
+                        </div>
+                        <h3 class="about-value__title">Spontanéité</h3>
+                        <p class="about-value__text">
+                            Je ne demande presque jamais de poser, je préfère les gestes naturels,
+                            les regards volés et les instants imparfaits mais sincères.
+                        </p>
+                    </div>
+
+                    <!-- Value 2 -->
+                    <div class="about-value">
+                        <div class="about-value__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="about-value__title">Authenticité</h3>
+                        <p class="about-value__text">
+                            Je cherche à raconter la vraie vie, avec ses ambiances, ses silences,
+                            ses rires et ses petites scènes du quotidien.
+                        </p>
+                    </div>
+
+                    <!-- Value 3 -->
+                    <div class="about-value">
+                        <div class="about-value__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="about-value__title">Sensibilité</h3>
+                        <p class="about-value__text">
+                            Je veux que chaque image évoque une histoire et laisse une trace
+                            émotionnelle, comme un souvenir qui revient en mémoire.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mon Histoire Section -->
+        <section class="section section--alt">
+            <div class="container container--narrow">
+                <div class="section__header reveal">
+                    <p class="section__label">Mon parcours</p>
+                    <h2 class="section__title">Mon histoire avec l'image</h2>
+                </div>
+                <div class="reveal" style="margin-top: var(--space-xl);">
+                    <p
+                        style="font-size: var(--text-lg); color: var(--color-text-secondary); line-height: 1.8; margin-bottom: var(--space-md);">
+                        Attiré par les appareils photo depuis l'enfance, la photographie m'accompagne
+                        dans un coin de la tête depuis mes 5 ans. Avec l'arrivée de mon premier téléphone,
+                        cette curiosité est revenue petit à petit, nourrie par les films, les séries et
+                        les jeux vidéo qui m'ont ouvert à la composition visuelle et à l'art des scènes.
+                    </p>
+                    <p
+                        style="font-size: var(--text-lg); color: var(--color-text-secondary); line-height: 1.8; margin-bottom: var(--space-md);">
+                        En mai 2024, j'ai franchi un cap en achetant mon Fujifilm X100V, devenu mon
+                        compagnon de tous les jours pour documenter ma vie. Depuis, j'apprends en continu,
+                        j'expérimente, je joue avec la lumière et les ombres, en construisant un univers
+                        qui mêle souvenirs personnels et envies futures de projets professionnels.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ma façon de travailler Section -->
+        <section class="section">
+            <div class="container container--narrow">
+                <div class="section__header reveal">
+                    <p class="section__label">Processus créatif</p>
+                    <h2 class="section__title">Ma façon de travailler</h2>
+                </div>
+
+                <div class="reveal" style="text-align: center; margin-top: var(--space-xl);">
+                    <p
+                        style="font-size: var(--text-lg); color: var(--color-text-secondary); line-height: 1.8; margin-bottom: var(--space-md);">
+                        Je retouche mes photos de manière simple et mesurée, principalement via les
+                        outils intégrés de l'app Photos ou, pour des ajustements plus poussés, avec
+                        Davinci Resolve. L'idée n'est pas de transformer la scène, mais de renforcer
+                        ce qui fait déjà la force de l'instant : la lumière, les couleurs et l'émotion
+                        qui s'en dégagent.
+                    </p>
+                    <p style="font-size: var(--text-lg); color: var(--color-text-secondary); line-height: 1.8;">
+                        Ce portfolio a vocation à évoluer vers des projets professionnels, notamment
+                        en mariage, immobilier ou reportages lifestyle, en parallèle de mon activité
+                        dans le webdesign. Chaque série publiée ici est une étape de ce chemin :
+                        une manière de montrer ma vision, ma sensibilité et la direction que je
+                        souhaite prendre dans la photographie.
+                    </p>
+
+                    <div
+                        style="display: flex; justify-content: center; gap: var(--space-xl); margin-top: var(--space-2xl); flex-wrap: wrap;">
+                        <span
+                            style="font-size: var(--text-sm); color: var(--color-text-muted); letter-spacing: 0.1em; text-transform: uppercase;">Fujifilm
+                            X100V</span>
+                        <span
+                            style="font-size: var(--text-sm); color: var(--color-text-muted); letter-spacing: 0.1em; text-transform: uppercase;">Photos
+                            App</span>
+                        <span
+                            style="font-size: var(--text-sm); color: var(--color-text-muted); letter-spacing: 0.1em; text-transform: uppercase;">Davinci
+                            Resolve</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section section--alt" style="text-align: center;">
+            <div class="container container--narrow reveal">
+                <p class="section__label">Envie de collaborer ?</p>
+                <h2 class="section__title">Parlons de<br><em>votre projet</em></h2>
+                <p class="section__description" style="margin-bottom: var(--space-xl);">
+                    Mariage, immobilier, lifestyle ou autre projet créatif —
+                    je suis ouvert aux collaborations.
+                </p>
+                <a href="contact.html" class="btn btn--primary">Me contacter</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <div class="footer__logo">Studio <span>Lumière</span></div>
+                    <p class="footer__tagline">Photographe documentant la vie en images — paysages, rues, voyages et
+                        moments partagés. Esthétique vintage et chaleureuse.</p>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Navigation</h4>
+                    <ul class="footer__nav">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Services</h4>
+                    <ul class="footer__nav">
+                        <li><a href="services.html#portraits">Portraits</a></li>
+                        <li><a href="services.html#mariages">Mariages</a></li>
+                        <li><a href="services.html#evenements">Événements</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Suivez-moi</h4>
+                    <div class="footer__social">
+                        <a href="https://instagram.com" class="footer__social-link" aria-label="Instagram"
+                            target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://pinterest.com" class="footer__social-link" aria-label="Pinterest"
+                            target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 11.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5-2.5 5.5-5.5 5.5"></path>
+                            </svg>
+                        </a>
+                        <a href="https://facebook.com" class="footer__social-link" aria-label="Facebook" target="_blank"
+                            rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">© <span class="current-year">2024</span> Studio Lumière. Tous droits
+                    réservés.</p>
+                <div class="footer__legal">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

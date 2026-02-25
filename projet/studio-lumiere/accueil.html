@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Studio Lumière - Photographie artistique de portraits, mariages et événements. Capturer l'essence de vos moments les plus précieux.">
+    <meta name="keywords" content="photographe, portrait, mariage, photographie artistique, séance photo">
+    <meta name="author" content="Studio Lumière">
+
+    <meta property="og:title" content="Studio Lumière | Photographie Artistique">
+    <meta property="og:description"
+        content="Capturer l'essence de vos moments les plus précieux avec une approche artistique et authentique.">
+    <meta property="og:type" content="website">
+
+    <title>Studio Lumière | Photographie Artistique</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__inner">
+            <a href="accueil" class="logo">Studio <span>Lumière</span></a>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li><a href="accueil" class="nav__link active">Accueil</a></li>
+                    <li><a href="portfolio" class="nav__link">Portfolio</a></li>
+                    <li><a href="services" class="nav__link">Services</a></li>
+                    <li><a href="a-propos" class="nav__link">À propos</a></li>
+                    <li><a href="contact" class="nav__link">Contact</a></li>
+                </ul>
+                <button class="nav__toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero__background">
+                <!-- REMPLACER : Ajoutez votre image hero dans assets/images/hero-bg.jpg -->
+                <img src="assets/images/hero-bg.jpg" alt="" class="hero__image" loading="eager">
+            </div>
+
+            <div class="hero__content">
+                <p class="hero__subtitle">Photographie Artistique</p>
+                <h1 class="hero__title">Capturer<br><em>l'invisible</em></h1>
+                <p class="hero__description">
+                    Des ruelles de Paris aux couchers de soleil en vacances,
+                    je capture les instants simples, les amis, les trajets et les paysages qui racontent ta vie.
+                </p>
+                <a href="https://hariss-web.fr/projets/nouvelle-lumiere/portfolio" class="btn btn--outline">Découvrir
+                    les séries</a>
+            </div>
+
+            <div class="hero__scroll">
+                <span class="hero__scroll-text">Découvrir</span>
+                <div class="hero__scroll-line"></div>
+            </div>
+        </section>
+
+        <section class="portfolio-preview section">
+            <div class="container">
+                <div class="section__header reveal">
+                    <p class="section__label">Travaux Récents</p>
+                    <h2 class="section__title">Sélection du Portfolio</h2>
+                    <p class="section__description">
+                        Une collection d'instants figés dans le temps,
+                        où la lumière rencontre l'émotion.
+                    </p>
+                </div>
+
+                <div class="portfolio-preview__grid reveal-stagger">
+                    <!-- REMPLACER : Vos images portfolio dans assets/images/portfolio/ -->
+                    <div class="portfolio-preview__item">
+                        <img src="assets/images/portfolio/preview-1.jpg" alt="Portrait d'un musicien"
+                            class="portfolio-preview__image" loading="lazy">
+                        <div class="portfolio-preview__overlay"></div>
+                        <div class="portfolio-preview__caption">
+                            <p class="portfolio-preview__category">Portrait</p>
+                            <h3 class="portfolio-preview__title">Instant musical</h3>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-preview__item">
+                        <img src="assets/images/portfolio/preview-2.jpg" alt="Paysage" class="portfolio-preview__image"
+                            loading="lazy">
+                        <div class="portfolio-preview__overlay"></div>
+                        <div class="portfolio-preview__caption">
+                            <p class="portfolio-preview__category">Paysage</p>
+                            <h3 class="portfolio-preview__title">Mont-Blanc</h3>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-preview__item">
+                        <img src="assets/images/portfolio/preview-3.jpg" alt="Paysage" class="portfolio-preview__image"
+                            loading="lazy">
+                        <div class="portfolio-preview__overlay"></div>
+                        <div class="portfolio-preview__caption">
+                            <p class="portfolio-preview__category">Urbain</p>
+                            <h3 class="portfolio-preview__title">Tour Eiffel</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-preview__cta reveal">
+                    <a href="portfolio" class="btn btn--text">Voir tout le portfolio →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt">
+            <div class="container">
+                <div class="about-teaser">
+                    <!-- Label affiché en haut sur mobile -->
+                    <p class="section__label about-teaser__label">À Propos</p>
+
+                    <div class="about-teaser__image reveal">
+                        <!-- REMPLACER : Votre photo portrait dans assets/images/about-teaser.jpg -->
+                        <img src="assets/images/about-teaser.jpg" alt="Portrait du photographe" loading="lazy">
+                    </div>
+
+                    <div class="about-teaser__content reveal">
+                        <p class="section__label about-teaser__label--desktop">À Propos</p>
+                        <h2 class="section__title">L'art de<br><em>voir autrement</em></h2>
+                        <p class="about-teaser__text">
+                            Armé de mon Fujifilm X100V, je documente la vie au quotidien
+                            avec une esthétique vintage et chaleureuse. Chaque image
+                            est un souvenir visuel, un instant figé dans le temps.
+                        </p>
+                        <a href="a-propos" class="btn btn--outline">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section__header reveal">
+                    <p class="section__label">Thématiques</p>
+                    <h2 class="section__title">Ce que je photographie</h2>
+                </div>
+
+                <div class="reveal-stagger"
+                    style="display: flex; flex-wrap: wrap;  ; margin-top: var(--space-2xl); align-items:center;margin: 0 auto;">
+                    <div
+                        style="text-align: center; padding: var(--space-xl); flex:0 0 33.333%;align-items:center;margin: 0 auto;">
+                        <h3
+                            style="font-family: var(--font-display); font-size: var(--text-2xl); margin-bottom: var(--space-sm);">
+                            Paysages & Rues</h3>
+                        <p style="color: var(--color-text-secondary);">Villes, ambiances urbaines, détails
+                            architecturaux
+                            et lumières naturelles.</p>
+                    </div>
+                    <div
+                        style="text-align: center; padding: var(--space-xl); flex:0 0 33.333%;align-items:center;margin: 0 auto;">
+                        <h3
+                            style="font-family: var(--font-display); font-size: var(--text-2xl); margin-bottom: var(--space-sm);">
+                            Voyages</h3>
+                        <p style="color: var(--color-text-secondary);">Découvertes, lieux marquants et scènes
+                            capturées sur le vif.</p>
+                    </div>
+                    <div
+                        style="text-align: center; padding: var(--space-xl); flex:0 0 33.333%;align-items:center;margin: 0 auto;">
+                        <h3
+                            style="font-family: var(--font-display); font-size: var(--text-2xl); margin-bottom: var(--space-sm);">
+                            Moments partagés</h3>
+                        <p style="color: var(--color-text-secondary);">Famille, amis et instants du quotidien
+                            saisis avec spontanéité.</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="text-align: center; margin-top: var(--space-2xl);">
+                    <a href="portfolio" class="btn btn--primary">Voir le portfolio</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt" style="text-align: center;">
+            <div class="container container--narrow reveal">
+                <p class="section__label">Envie de collaborer ?</p>
+                <h2 class="section__title">Parlons de<br><em>votre projet</em></h2>
+                <p class="section__description" style="margin-bottom: var(--space-xl);">
+                    Mariage, immobilier, lifestyle ou autre projet créatif —
+                    je suis ouvert aux collaborations.
+                </p>
+                <a href="contact" class="btn btn--primary">Me contacter</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <div class="footer__logo">Studio <span>Lumière</span></div>
+                    <p class="footer__tagline">Photographe documentant la vie en images — paysages, rues,
+                        voyages et moments partagés. Esthétique vintage et chaleureuse.</p>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Navigation</h4>
+                    <ul class="footer__nav">
+                        <li><a href="accueil">Accueil</a></li>
+                        <li><a href="portfolio">Portfolio</a></li>
+                        <li><a href="a-propos">À propos</a></li>
+                        <li><a href="contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Suivez-moi</h4>
+                    <div class="footer__social">
+                        <!-- REMPLACER : Vos liens réseaux sociaux -->
+                        <a href="https://instagram.com" class="footer__social-link" aria-label="Instagram"
+                            target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://pinterest.com" class="footer__social-link" aria-label="Pinterest"
+                            target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 11.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5-2.5 5.5-5.5 5.5"></path>
+                            </svg>
+                        </a>
+                        <a href="https://facebook.com" class="footer__social-link" aria-label="Facebook" target="_blank"
+                            rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">© <span class="current-year">2024</span> Studio Lumière. Tous droits
+                    réservés.</p>
+                <div class="footer__legal">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
