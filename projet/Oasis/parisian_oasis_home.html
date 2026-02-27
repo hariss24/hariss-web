@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Oasis Parisienne | Architecte Paysagiste de Prestige</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #C5A059;
+            --gold-light: #E2C99F;
+            --deep-green: #0F1A15;
+            --stone: #F2F0ED;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--deep-green);
+            color: var(--stone);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Noise Texture Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.04;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.15s ease-out;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.3s ease-out;
+        }
+
+        /* Typography & Structure */
+        .h-prestige {
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            line-height: 1.1;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* Hyper-Borders & Elements */
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(var(--deep-green), var(--deep-green)) padding-box,
+                linear-gradient(135deg, var(--gold), transparent, var(--gold-light)) border-box;
+        }
+
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            width: 100%;
+        }
+
+        /* Hero Video Mask */
+        .hero-video-container {
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+            overflow: hidden;
+        }
+
+        /* Reveal Animations */
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover States */
+        .magnetic-btn {
+            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .gold-link {
+            position: relative;
+            color: var(--stone);
+            transition: color 0.3s ease;
+        }
+
+        .gold-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.4s ease;
+        }
+
+        .gold-link:hover::after {
+            width: 100%;
+        }
+
+        .mask-image {
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+    </style>
+</head>
+
+<body x-data="{ 
+    scrolled: false, 
+    mobileMenu: false,
+    mouseX: 0, mouseY: 0,
+    cursorX: 0, cursorY: 0,
+    init() {
+        window.addEventListener('mousemove', (e) => {
+            this.mouseX = e.clientX;
+            this.mouseY = e.clientY;
+        });
+        const animate = () => {
+            this.cursorX += (this.mouseX - this.cursorX) * 0.1;
+            this.cursorY += (this.mouseY - this.cursorY) * 0.1;
+            requestAnimationFrame(animate);
+        };
+        animate();
+    }
+}" @scroll.window="scrolled = (window.pageYOffset > 50)">
+
+    <div class="noise-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" :style="`left: ${mouseX}px; top: ${mouseY}px`" :class="mobileMenu ? 'hidden' : ''"></div>
+    <div class="cursor-follower" :style="`left: ${cursorX - 14}px; top: ${cursorY - 14}px`"
+        :class="mobileMenu ? 'hidden' : ''"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 py-6 px-8 md:px-16"
+        :class="scrolled ? 'bg-black/90 backdrop-blur-md py-4' : 'bg-transparent'">
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <a href="parisian_oasis_home.html" class="flex items-center gap-4 group">
+                    <span class="text-2xl font-bold h-prestige tracking-[0.4em] text-white">OASIS</span>
+                    <div class="h-8 w-[1px] bg-white/20 hidden md:block"></div>
+                    <span
+                        class="text-[10px] h-prestige text-white/60 hidden md:block group-hover:text-[var(--gold)] transition-colors">Architecture<br>Paysagère
+                        Paris</span>
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-12">
+                <a href="urban_expertise_menu.html" class="gold-link text-[11px] h-prestige">Expertise</a>
+                <a href="the_collection.html" class="gold-link text-[11px] h-prestige">Collection</a>
+                <a href="contact.html" class="gold-link text-[11px] h-prestige">Contact</a>
+                <a href="contact.html"
+                    class="gold-border-gradient px-8 py-3 text-[11px] h-prestige hover:bg-stone hover:text-black transition-all duration-500 inline-block">
+                    Prendre Rendez-vous
+                </a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button @click="mobileMenu = !mobileMenu" class="lg:hidden flex flex-col gap-1.5 z-50">
+                <span class="w-8 h-[1px] bg-white transition-all"
+                    :class="mobileMenu ? 'rotate-45 translate-y-2' : ''"></span>
+                <span class="w-8 h-[1px] bg-white transition-all" :class="mobileMenu ? 'opacity-0' : ''"></span>
+                <span class="w-8 h-[1px] bg-white transition-all"
+                    :class="mobileMenu ? '-rotate-45 -translate-y-2' : ''"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <template x-if="mobileMenu">
+        <div class="fixed inset-0 z-[49] bg-black flex flex-col items-center justify-center gap-8" x-transition.opacity>
+            <a href="urban_expertise_menu.html" class="text-3xl h-prestige" @click="mobileMenu = false">Expertise</a>
+            <a href="the_collection.html" class="text-3xl h-prestige" @click="mobileMenu = false">Collection</a>
+            <a href="contact.html" class="text-3xl h-prestige text-[var(--gold)]"
+                @click="mobileMenu = false">Contact</a>
+        </div>
+    </template>
+
+    <main class="flex-grow">
+
+        <!-- Hero Section -->
+        <section class="relative min-height-[100vh] pt-32 pb-20 px-8 md:px-16 overflow-hidden">
+            <div class="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Hero Content -->
+                <div class="lg:col-span-5 z-10">
+                    <div class="reveal-up active">
+                        <span class="text-[var(--gold)] h-prestige text-xs mb-4 block">Établi à Paris — 1994</span>
+                        <h1 class="text-5xl md:text-7xl lg:text-8xl h-prestige mb-8">
+                            La Nature <br>
+                            <span class="text-transparent"
+                                style="-webkit-text-stroke: 1px var(--stone);">S'invite</span> <br>
+                            Chez Vous
+                        </h1>
+                        <p class="text-stone/60 text-lg max-w-md mb-12 font-light leading-relaxed">
+                            Conception de jardins suspendus et terrasses d'exception au cœur de l'architecture
+                            Haussmannienne.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-6">
+                            <a href="the_collection.html"
+                                class="bg-[var(--gold)] text-black px-10 py-5 text-xs h-prestige font-bold hover:brightness-110 transition-all inline-block text-center">
+                                Découvrir nos projets
+                            </a>
+                            <a href="urban_expertise_menu.html"
+                                class="border border-white/20 px-10 py-5 text-xs h-prestige hover:bg-white hover:text-black transition-all inline-block text-center">
+                                Notre Expertise
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Media -->
+                <div class="lg:col-span-7 relative flex justify-center lg:justify-end">
+                    <div class="hero-video-container aspect-[4/5] md:aspect-video w-full relative group">
+                        <!-- Remplaced video with high-quality image fallback since mixkit videos block specific referrals -->
+                        <img src="images/rooftop_garden.png" alt="Jardin de luxe parisien"
+                            class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000">
+                        <div
+                            class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-700">
+                        </div>
+                    </div>
+                    <!-- Decorative Element (hidden on mobile to prevent overlap) -->
+                    <div
+                        class="absolute -bottom-10 -left-10 w-40 h-40 border border-[var(--gold)] opacity-20 hidden lg:block">
+                    </div>
+                    <div
+                        class="vertical-text absolute -right-8 top-1/2 -translate-y-1/2 text-[10px] h-prestige text-white/40 hidden xl:block z-10">
+                        LUXE & SÉRÉNITÉ URBAINE
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Signals / Logos -->
+        <section class="py-20 border-y border-white/5 bg-white/[0.02]">
+            <div class="max-w-screen-2xl mx-auto px-8">
+                <p class="text-center h-prestige text-[10px] text-white/40 mb-12">Ils nous font confiance pour leur
+                    patrimoine</p>
+                <div
+                    class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all">
+                    <!-- Placeholder SVG Logos representing high-end brands/press -->
+                    <div class="h-6 w-32 bg-stone/20"></div>
+                    <div class="h-8 w-24 bg-stone/20"></div>
+                    <div class="h-5 w-40 bg-stone/20"></div>
+                    <div class="h-7 w-28 bg-stone/20"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Section (Asymmetric) -->
+        <section class="py-32 px-8 md:px-16 overflow-hidden">
+            <div class="max-w-screen-2xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-end">
+
+                    <div class="relative" x-intersect="$el.classList.add('active')">
+                        <div class="reveal-up">
+                            <h2 class="h-prestige text-4xl mb-12">L'Excellence <br> du Sur-Mesure</h2>
+                            <div class="space-y-16">
+                                <div class="group cursor-pointer">
+                                    <span class="text-[var(--gold)] h-prestige text-sm">01.</span>
+                                    <h3
+                                        class="text-2xl h-prestige mt-2 mb-4 group-hover:translate-x-4 transition-transform duration-500">
+                                        Jardins Haussmanniens</h3>
+                                    <p class="text-stone/50 font-light max-w-md">L'art de transformer les balcons et
+                                        cours intérieures historiques en havres de paix biodiversifiés.</p>
+                                    <div class="gold-line mt-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                                    </div>
+                                </div>
+                                <div class="group cursor-pointer">
+                                    <span class="text-[var(--gold)] h-prestige text-sm">02.</span>
+                                    <h3
+                                        class="text-2xl h-prestige mt-2 mb-4 group-hover:translate-x-4 transition-transform duration-500">
+                                        Rooftops Panoramiques</h3>
+                                    <p class="text-stone/50 font-light max-w-md">Ingénierie de structure et
+                                        végétalisation de toitures-terrasses avec vue sur la Tour Eiffel.</p>
+                                    <div class="gold-line mt-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="aspect-[3/4] overflow-hidden gold-border-gradient p-2">
+                            <img src="images/balcony_garden.png" alt="Jardin balcon parisien"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -top-12 -right-12 w-64 h-64 bg-stone/5 -z-10 rounded-full blur-3xl"></div>
+                        <div
+                            class="absolute bottom-12 -left-12 bg-[var(--deep-green)] p-8 border border-white/10 hidden xl:block">
+                            <p class="h-prestige text-[10px] text-[var(--gold)] mb-2">Certification</p>
+                            <p class="text-sm font-medium italic">"Expert du Patrimoine Vert"</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Signature Quote (Full Width) -->
+        <section class="py-40 relative bg-[#0a120e]">
+            <div class="absolute inset-0 opacity-20 mask-image">
+                <img src="images/courtyard_garden.png" class="w-full h-full object-cover" alt="Jardin parisien">
+            </div>
+            <div class="relative z-10 text-center px-8">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl md:text-5xl lg:text-6xl h-prestige italic font-extralight leading-tight mb-8">
+                        "Un jardin à Paris n'est pas un luxe, c'est une respiration nécessaire au prestige de l'âme."
+                    </h2>
+                    <p class="h-prestige text-xs text-[var(--gold)]">— Jean-Marc Lefebvre, Fondateur</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-32 px-8">
+            <div class="max-w-screen-xl mx-auto gold-border-gradient relative overflow-hidden group">
+                <div
+                    class="absolute inset-0 bg-[var(--gold)] translate-y-full group-hover:translate-y-0 transition-transform duration-700">
+                </div>
+                <div class="relative z-10 p-12 md:p-24 text-center">
+                    <h2 class="text-4xl md:text-6xl h-prestige mb-8 group-hover:text-black transition-colors">Donnez vie
+                        à votre espace</h2>
+                    <p class="text-stone/60 group-hover:text-black/70 mb-12 max-w-xl mx-auto transition-colors">
+                        Nos experts se déplacent dans tout Paris et l'Île-de-France pour une première étude de
+                        faisabilité de votre projet.
+                    </p>
+                    <a href="contact.html"
+                        class="bg-white text-black px-12 py-6 text-xs h-prestige font-bold hover:scale-105 transition-all inline-block">
+                        Commencer l'Étude
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-20 border-t border-white/10 px-8">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-4 mb-8">
+                        <a href="parisian_oasis_home.html"
+                            class="text-3xl font-bold h-prestige tracking-[0.4em] hover:text-[var(--gold)] transition-colors">OASIS</a>
+                    </div>
+                    <p class="text-stone/40 max-w-xs text-sm leading-relaxed">
+                        L'excellence paysagère au service des plus belles adresses de la capitale française.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="h-prestige text-xs mb-8 text-[var(--gold)]">Navigation</h4>
+                    <ul class="space-y-4 text-sm text-stone/60">
+                        <li><a href="parisian_oasis_home.html" class="hover:text-white transition-colors">Accueil</a>
+                        </li>
+                        <li><a href="urban_expertise_menu.html" class="hover:text-white transition-colors">Expertise</a>
+                        </li>
+                        <li><a href="the_collection.html" class="hover:text-white transition-colors">Collection</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="h-prestige text-xs mb-8 text-[var(--gold)]">Contact</h4>
+                    <ul class="space-y-4 text-sm text-stone/60">
+                        <li>8, Rue de la Paix, 75002 Paris</li>
+                        <li>contact@oasis-paris.fr</li>
+                        <li>+33 (0)1 42 61 80 00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                <p class="text-[10px] h-prestige text-white/20">© 2024 L'Oasis Parisienne — Tous droits réservés.</p>
+                <div class="flex gap-8">
+                    <a href="#"
+                        class="text-[10px] h-prestige text-white/20 hover:text-[var(--gold)] transition-colors">Instagram</a>
+                    <a href="#"
+                        class="text-[10px] h-prestige text-white/20 hover:text-[var(--gold)] transition-colors">LinkedIn</a>
+                    <a href="#"
+                        class="text-[10px] h-prestige text-white/20 hover:text-[var(--gold)] transition-colors">Pinterest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal elements on scroll using Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-up').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>

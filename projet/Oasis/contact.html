@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | L'Oasis Parisienne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #C5A059;
+            --gold-light: #E2C99F;
+            --deep-green: #0F1A15;
+            --stone: #F2F0ED;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--deep-green);
+            color: var(--stone);
+            overflow-x: hidden;
+            cursor: none;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.04;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .custom-cursor {
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.15s ease-out;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.3s ease-out;
+        }
+
+        .h-prestige {
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            line-height: 1.1;
+        }
+
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(var(--deep-green), var(--deep-green)) padding-box,
+                linear-gradient(135deg, var(--gold), transparent, var(--gold-light)) border-box;
+        }
+
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            width: 100%;
+        }
+
+        .gold-link {
+            position: relative;
+            color: var(--stone);
+            transition: color 0.3s ease;
+        }
+
+        .gold-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.4s ease;
+        }
+
+        .gold-link:hover::after {
+            width: 100%;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        input,
+        textarea {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.25rem;
+            color: var(--stone);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            transition: border-color 0.3s ease;
+            outline: none;
+            width: 100%;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--gold);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(242, 240, 237, 0.3);
+            font-weight: 300;
+        }
+    </style>
+</head>
+
+<body x-data="{
+    scrolled: false,
+    mobileMenu: false,
+    mouseX: -100, mouseY: -100,
+    cursorX: -100, cursorY: -100,
+    formSent: false,
+    init() {
+        window.addEventListener('mousemove', (e) => {
+            this.mouseX = e.clientX;
+            this.mouseY = e.clientY;
+        });
+        const animate = () => {
+            this.cursorX += (this.mouseX - this.cursorX) * 0.1;
+            this.cursorY += (this.mouseY - this.cursorY) * 0.1;
+            requestAnimationFrame(animate);
+        };
+        animate();
+    }
+}" @scroll.window="scrolled = (window.pageYOffset > 50)">
+
+    <div class="noise-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" :style="`left: ${mouseX}px; top: ${mouseY}px`" :class="mobileMenu ? 'hidden' : ''"></div>
+    <div class="cursor-follower" :style="`left: ${cursorX - 14}px; top: ${cursorY - 14}px`"
+        :class="mobileMenu ? 'hidden' : ''"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 py-6 px-8 md:px-16"
+        :class="scrolled ? 'bg-black/90 backdrop-blur-md py-4' : 'bg-transparent'">
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <a href="parisian_oasis_home.html" class="flex items-center gap-4 group">
+                    <span class="text-2xl font-bold h-prestige tracking-[0.4em] text-white">OASIS</span>
+                    <div class="h-8 w-[1px] bg-white/20 hidden md:block"></div>
+                    <span
+                        class="text-[10px] h-prestige text-white/60 hidden md:block group-hover:text-[var(--gold)] transition-colors">Architecture<br>Paysagère
+                        Paris</span>
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-12">
+                <a href="urban_expertise_menu.html" class="gold-link text-[11px] h-prestige">Expertise</a>
+                <a href="the_collection.html" class="gold-link text-[11px] h-prestige">Collection</a>
+                <a href="contact.html" class="gold-link text-[11px] h-prestige text-[var(--gold)]">Contact</a>
+                <a href="contact.html"
+                    class="gold-border-gradient px-8 py-3 text-[11px] h-prestige hover:bg-stone hover:text-black transition-all duration-500 inline-block">
+                    Prendre Rendez-vous
+                </a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button @click="mobileMenu = !mobileMenu" class="lg:hidden flex flex-col gap-1.5 z-50">
+                <span class="w-8 h-[1px] bg-white transition-all"
+                    :class="mobileMenu ? 'rotate-45 translate-y-2' : ''"></span>
+                <span class="w-8 h-[1px] bg-white transition-all" :class="mobileMenu ? 'opacity-0' : ''"></span>
+                <span class="w-8 h-[1px] bg-white transition-all"
+                    :class="mobileMenu ? '-rotate-45 -translate-y-2' : ''"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <template x-if="mobileMenu">
+        <div class="fixed inset-0 z-[49] bg-black flex flex-col items-center justify-center gap-8" x-transition.opacity>
+            <a href="urban_expertise_menu.html" class="text-3xl h-prestige" @click="mobileMenu = false">Expertise</a>
+            <a href="the_collection.html" class="text-3xl h-prestige" @click="mobileMenu = false">Collection</a>
+            <a href="contact.html" class="text-3xl h-prestige text-[var(--gold)]"
+                @click="mobileMenu = false">Contact</a>
+        </div>
+    </template>
+
+    <main class="flex-grow pt-40 md:pt-56 pb-32">
+
+        <!-- Contact Header -->
+        <section class="px-8 md:px-16 mb-24">
+            <div class="max-w-screen-xl mx-auto">
+                <div class="reveal-up active">
+                    <span class="text-[var(--gold)] h-prestige text-[10px] mb-4 block">Échangeons</span>
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl h-prestige leading-none mb-8">Prendre<br>
+                        <span class="italic font-light opacity-50">Rendez-vous</span>
+                    </h1>
+                    <div class="gold-line max-w-xs opacity-30 mb-8"></div>
+                    <p class="text-stone/50 font-light leading-relaxed max-w-lg">
+                        Premier rendez-vous conseil offert. Nos experts se déplacent dans tout Paris
+                        et l'Île-de-France pour une étude de faisabilité de votre projet.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Content -->
+        <section class="px-8 md:px-16">
+            <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
+
+                <!-- Contact Form -->
+                <div class="reveal-up active" style="transition-delay: 0.1s;">
+                    <div x-show="!formSent">
+                        <h2 class="h-prestige text-xs text-[var(--gold)] mb-12">Votre Projet</h2>
+                        <form @submit.prevent="formSent = true" class="space-y-8">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                <input type="text" placeholder="Nom complet" required>
+                                <input type="email" placeholder="Email" required>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                <input type="tel" placeholder="Téléphone">
+                                <select
+                                    style="background: transparent; border: 1px solid rgba(255,255,255,0.1); padding: 1rem 1.25rem; color: var(--stone); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; outline: none; width: 100%;"
+                                    class="focus:border-[var(--gold)] transition-all">
+                                    <option value="" disabled selected
+                                        style="color: rgba(242,240,237,0.3); background: #0F1A15;">Type de projet
+                                    </option>
+                                    <option value="rooftop" style="background: #0F1A15;">Rooftop / Toiture-terrasse
+                                    </option>
+                                    <option value="balcon" style="background: #0F1A15;">Balcon / Terrasse</option>
+                                    <option value="cour" style="background: #0F1A15;">Cour intérieure</option>
+                                    <option value="bureau" style="background: #0F1A15;">Bureau / Showroom</option>
+                                    <option value="autre" style="background: #0F1A15;">Autre</option>
+                                </select>
+                            </div>
+                            <input type="text" placeholder="Adresse du projet (arrondissement)">
+                            <textarea rows="5"
+                                placeholder="Décrivez votre projet, vos envies, vos contraintes..."></textarea>
+                            <button type="submit"
+                                class="bg-[var(--gold)] text-black px-12 py-5 text-xs h-prestige font-bold hover:brightness-110 transition-all w-full sm:w-auto">
+                                Envoyer la demande
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div x-show="formSent" x-transition class="py-20 text-center">
+                        <div
+                            class="w-20 h-20 border border-[var(--gold)] rounded-full flex items-center justify-center mx-auto mb-8">
+                            <svg class="w-8 h-8 text-[var(--gold)]" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="h-prestige text-xl mb-4">Demande envoyée</h3>
+                        <p class="text-stone/50 font-light">Notre équipe vous recontactera sous 48 heures.</p>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="reveal-up active" style="transition-delay: 0.3s;">
+                    <div class="gold-border-gradient p-1">
+                        <div class="bg-[var(--deep-green)] p-10 md:p-14">
+                            <h2 class="h-prestige text-xs text-[var(--gold)] mb-12">Le Studio</h2>
+
+                            <div class="space-y-10">
+                                <div>
+                                    <p class="h-prestige text-[10px] text-stone/40 mb-3">Adresse</p>
+                                    <p class="text-lg font-light">8, Rue de la Paix<br>75002 Paris</p>
+                                </div>
+
+                                <div class="gold-line opacity-10"></div>
+
+                                <div>
+                                    <p class="h-prestige text-[10px] text-stone/40 mb-3">Téléphone</p>
+                                    <p class="text-lg font-light">+33 (0)1 42 61 80 00</p>
+                                </div>
+
+                                <div class="gold-line opacity-10"></div>
+
+                                <div>
+                                    <p class="h-prestige text-[10px] text-stone/40 mb-3">Email</p>
+                                    <p class="text-lg font-light">contact@oasis-paris.fr</p>
+                                </div>
+
+                                <div class="gold-line opacity-10"></div>
+
+                                <div>
+                                    <p class="h-prestige text-[10px] text-stone/40 mb-3">Horaires</p>
+                                    <p class="text-sm font-light text-stone/60">
+                                        Lundi — Vendredi : 9h – 19h<br>
+                                        Samedi : Sur rendez-vous<br>
+                                        Dimanche : Fermé
+                                    </p>
+                                </div>
+
+                                <div class="gold-line opacity-10"></div>
+
+                                <div class="flex gap-8 pt-4">
+                                    <a href="#"
+                                        class="text-[10px] h-prestige text-stone/40 hover:text-[var(--gold)] transition-colors">Instagram</a>
+                                    <a href="#"
+                                        class="text-[10px] h-prestige text-stone/40 hover:text-[var(--gold)] transition-colors">LinkedIn</a>
+                                    <a href="#"
+                                        class="text-[10px] h-prestige text-stone/40 hover:text-[var(--gold)] transition-colors">Pinterest</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-20 border-t border-white/10 px-8">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-4 mb-8">
+                        <a href="parisian_oasis_home.html"
+                            class="text-3xl font-bold h-prestige tracking-[0.4em] hover:text-[var(--gold)] transition-colors">OASIS</a>
+                    </div>
+                    <p class="text-stone/40 max-w-xs text-sm leading-relaxed">
+                        L'excellence paysagère au service des plus belles adresses de la capitale française.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="h-prestige text-xs mb-8 text-[var(--gold)]">Navigation</h4>
+                    <ul class="space-y-4 text-sm text-stone/60">
+                        <li><a href="parisian_oasis_home.html" class="hover:text-white transition-colors">Accueil</a>
+                        </li>
+                        <li><a href="urban_expertise_menu.html" class="hover:text-white transition-colors">Expertise</a>
+                        </li>
+                        <li><a href="the_collection.html" class="hover:text-white transition-colors">Collection</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="h-prestige text-xs mb-8 text-[var(--gold)]">Contact</h4>
+                    <ul class="space-y-4 text-sm text-stone/60">
+                        <li>8, Rue de la Paix, 75002 Paris</li>
+                        <li>contact@oasis-paris.fr</li>
+                        <li>+33 (0)1 42 61 80 00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                <p class="text-[10px] h-prestige text-white/20">© 2024 L'Oasis Parisienne — Tous droits réservés.</p>
+                <div class="flex gap-8">
+                    <a href="#"
+                        class="text-[10px] h-prestige text-white/20 hover:text-[var(--gold)] transition-colors">Instagram</a>
+                    <a href="#"
+                        class="text-[10px] h-prestige text-white/20 hover:text-[var(--gold)] transition-colors">LinkedIn</a>
+                    <a href="#"
+                        class="text-[10px] h-prestige text-white/20 hover:text-[var(--gold)] transition-colors">Pinterest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>
