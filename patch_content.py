@@ -46,7 +46,7 @@ rep2_old = """                            <p class="font-inter text-gray-400 fon
 rep2_new = """                            <p class="font-inter text-gray-400 font-light text-base md:text-xl leading-relaxed">
                                 <span class="line block">Développeur freelance CMS, je conçois</span>
                                 <span class="line block">des sites web sur-mesure pour les</span>
-                                <span class="line block">PME, artisans et indépendants.</span>
+                                <span class="line block">TPE, artisans et indépendants.</span>
                             </p>"""
 
 rep3_old = """                            <h3
@@ -74,7 +74,7 @@ rep3_new = """                            <h3
                             </h3>
                             <div class="mt-12 md:mt-16 max-w-2xl reveal-text">
                                 <p class="font-inter text-lg md:text-xl text-gray-600 leading-relaxed font-light">
-                                    <span class="line inline-block">Les PME et artisans manquent souvent</span>
+                                    <span class="line inline-block">Les TPE et artisans manquent souvent</span>
                                     <span class="line inline-block">de temps pour soigner leur vitrine web.</span>
                                     <span class="line inline-block">En tant qu'indépendant, je vous aide à vous</span>
                                     <span class="line inline-block">développer avec un site moderne et sans friction.</span>
