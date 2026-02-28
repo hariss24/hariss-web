@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez Studio Lumière - Demandez un devis pour votre séance photo, mariage ou événement.">
+    <title>Contact | Studio Lumière</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__inner">
+            <a href="accueil.html" class="logo">Studio <span>Lumière</span></a>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li><a href="accueil.html" class="nav__link active">Accueil</a></li>
+                    <li><a href="portfolio.html" class="nav__link">Portfolio</a></li>
+                    <li><a href="services.html" class="nav__link">Services</a></li>
+                    <li><a href="a-propos.html" class="nav__link">À propos</a></li>
+                    <li><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+                <button class="nav__toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contact-page">
+        <div class="contact-grid">
+            <!-- Left Column - Contact Info -->
+            <div class="contact-info reveal">
+                <p class="contact-info__label">Contact</p>
+                <h1 class="contact-info__title">Parlons de<br><em>votre projet</em></h1>
+                <p class="contact-info__text">
+                    Vous avez un projet en tête ? Une question sur mes services ? 
+                    N'hésitez pas à me contacter. Je vous répondrai dans les 
+                    plus brefs délais.
+                </p>
+                
+                <div class="contact-details">
+                    <!-- ═══════════════════════════════════════════════════════════
+                         PERSONNALISER : Vos coordonnées
+                         ═══════════════════════════════════════════════════════════ -->
+                    <div class="contact-details__item">
+                        <p class="contact-details__label">Email</p>
+                        <p class="contact-details__value">
+                            <a href="mailto:contact@studio-lumiere.com">contact@studio-lumiere.com</a>
+                        </p>
+                    </div>
+                    
+                    <div class="contact-details__item">
+                        <p class="contact-details__label">Téléphone</p>
+                        <p class="contact-details__value">
+                            <a href="tel:+33612345678">+33 6 12 34 56 78</a>
+                        </p>
+                    </div>
+                    
+                    <div class="contact-details__item">
+                        <p class="contact-details__label">Localisation</p>
+                        <p class="contact-details__value">Paris, France</p>
+                    </div>
+                    
+                    <div class="contact-details__item">
+                        <p class="contact-details__label">Réseaux sociaux</p>
+                        <div style="display: flex; gap: var(--space-md); margin-top: var(--space-xs);">
+                            <!-- REMPLACER : Vos liens réseaux sociaux -->
+                            <a href="https://instagram.com" style="color: var(--color-text-secondary); transition: color var(--transition-fast);" target="_blank" rel="noopener">Instagram</a>
+                            <a href="https://pinterest.com" style="color: var(--color-text-secondary); transition: color var(--transition-fast);" target="_blank" rel="noopener">Pinterest</a>
+                            <a href="https://facebook.com" style="color: var(--color-text-secondary); transition: color var(--transition-fast);" target="_blank" rel="noopener">Facebook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Contact Form -->
+            <div class="contact-form-wrapper reveal">
+                <form class="contact-form" action="#" method="POST">
+                    <!-- ═══════════════════════════════════════════════════════════
+                         FORMULAIRE DE CONTACT
+                         Note : Ce formulaire est en HTML pur. Pour le faire fonctionner,
+                         vous devrez ajouter un backend (PHP, service externe comme
+                         Formspree, Netlify Forms, etc.)
+                         ═══════════════════════════════════════════════════════════ -->
+                    
+                    <div class="form-group">
+                        <label for="name" class="form-label">Votre nom *</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="form-input" 
+                            placeholder="Marie Dupont"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Votre email *</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="marie@exemple.com"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Téléphone</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            class="form-input" 
+                            placeholder="+33 6 00 00 00 00"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service" class="form-label">Type de prestation</label>
+                        <select id="service" name="service" class="form-input" style="cursor: pointer;">
+                            <option value="">Sélectionnez une option</option>
+                            <option value="portrait">Portrait</option>
+                            <option value="mariage">Mariage</option>
+                            <option value="evenement">Événement</option>
+                            <option value="famille">Famille</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date" class="form-label">Date souhaitée</label>
+                        <input 
+                            type="date" 
+                            id="date" 
+                            name="date" 
+                            class="form-input"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Votre message *</label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            class="form-textarea" 
+                            placeholder="Décrivez votre projet, vos attentes, le lieu envisagé..."
+                            required
+                        ></textarea>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn--primary" style="width: 100%;">
+                            Envoyer le message
+                        </button>
+                    </div>
+                    
+                    <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-md); text-align: center;">
+                        Je réponds généralement sous 24-48h. Les champs marqués d'un * sont obligatoires.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Optional: Map Section -->
+    <!-- 
+    <section class="section" style="padding-top: 0;">
+        <div style="height: 400px; background-color: var(--color-beige);">
+            ═══════════════════════════════════════════════════════════
+            OPTIONNEL : Intégrez une carte Google Maps ici
+            Exemple : <iframe src="votre-lien-google-maps" ...></iframe>
+            ═══════════════════════════════════════════════════════════
+        </div>
+    </section>
+    -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <div class="footer__logo">Studio <span>Lumière</span></div>
+                    <p class="footer__tagline">Photographe artistique spécialisé dans les portraits, mariages et événements. Basé à Paris.</p>
+                </div>
+                
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Navigation</h4>
+                    <ul class="footer__nav">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Services</h4>
+                    <ul class="footer__nav">
+                        <li><a href="services.html#portraits">Portraits</a></li>
+                        <li><a href="services.html#mariages">Mariages</a></li>
+                        <li><a href="services.html#evenements">Événements</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Suivez-moi</h4>
+                    <div class="footer__social">
+                        <a href="https://instagram.com" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="https://pinterest.com" class="footer__social-link" aria-label="Pinterest" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 11.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5-2.5 5.5-5.5 5.5"></path></svg>
+                        </a>
+                        <a href="https://facebook.com" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">© <span class="current-year">2024</span> Studio Lumière. Tous droits réservés.</p>
+                <div class="footer__legal">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

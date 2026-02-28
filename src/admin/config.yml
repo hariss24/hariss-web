@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: hariss24/hariss-web
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: "assets/images" # Folder where uploaded files will be saved
+public_folder: "/assets/images" # The src attribute for uploaded media
+
+collections: # A list of collections the CMS should be able to edit
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Page Accueil"
+        name: "home"
+        file: "src/index.njk"
+        fields:
+          - {label: "Titre SEO", name: "title", widget: "string"}
+          - {label: "Contenu (HTML/Nunjucks)", name: "body", widget: "text"}
+      - label: "Page Services"
+        name: "services"
+        file: "src/services.njk"
+        fields:
+          - {label: "Titre SEO", name: "title", widget: "string"}
+          - {label: "Contenu (HTML/Nunjucks)", name: "body", widget: "text"}
+      - label: "Page Contact"
+        name: "contact"
+        file: "src/contact.njk"
+        fields:
+          - {label: "Titre SEO", name: "title", widget: "string"}
+          - {label: "Contenu (HTML/Nunjucks)", name: "body", widget: "text"}
+      - label: "Page Portfolio"
+        name: "portfolio"
+        file: "src/portfolio.njk"
+        fields:
+          - {label: "Titre SEO", name: "title", widget: "string"}
+          - {label: "Contenu (HTML/Nunjucks)", name: "body", widget: "text"}

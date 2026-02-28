@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/style.css"
+    "start": "eleventy --serve",
+    "build": "eleventy && npm run build:css",
+    "build:css": "npx tailwindcss -i ./src/input.css -o ./_site/assets/css/style.css",
+    "watch:css": "npx tailwindcss -i ./src/input.css -o ./_site/assets/css/style.css --watch"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,7 @@
   },
   "homepage": "https://github.com/hariss24/hariss-web#readme",
   "devDependencies": {
-    "tailwindcss": "^4.2.0"
+    "@11ty/eleventy": "^2.0.1",
+    "tailwindcss": "^3.4.0"
   }
 }
