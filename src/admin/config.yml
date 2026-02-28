@@ -115,6 +115,29 @@ collections:
                 name: "features"
                 widget: "list"
                 field: {label: "Point", name: "feature", widget: "string"}
+          # Grille tarifaire
+          - label: "Grille Tarifaire — Forfaits"
+            name: "pricing_plans"
+            widget: "list"
+            max: 3
+            fields:
+              - {label: "Nom", name: "name", widget: "string"}
+              - {label: "Badge (ex: POPULAIRE)", name: "badge", widget: "string", required: false}
+              - {label: "Prix", name: "price", widget: "string"}
+              - {label: "Sous-titre", name: "subtitle", widget: "string"}
+              - {label: "Style hover (accent ou surface)", name: "hover_style", widget: "select", options: ["surface", "accent"], default: "surface"}
+              - label: "Catégories de fonctionnalités"
+                name: "categories"
+                widget: "list"
+                fields:
+                  - {label: "Nom de la catégorie", name: "cat_name", widget: "string"}
+                  - label: "Fonctionnalités"
+                    name: "items"
+                    widget: "list"
+                    fields:
+                      - {label: "Texte", name: "text", widget: "string"}
+                      - {label: "Type (inclus ou option)", name: "type", widget: "select", options: ["inclus", "option"], default: "inclus"}
+                      - {label: "Prix option (si type=option)", name: "option_price", widget: "string", required: false}
           # Options à la carte
           - label: "Options à la carte"
             name: "options"

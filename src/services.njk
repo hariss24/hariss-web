@@ -32,6 +32,70 @@ services_list:
       - "Maintenance préventive et curative"
       - "Sauvegardes régulières"
       - "Support réactif"
+pricing_plans:
+  - name: "Essentiel"
+    badge: ""
+    price: "549"
+    subtitle: "Site One-Page"
+    hover_style: "surface"
+    categories:
+      - cat_name: "Installation & Configuration"
+        items:
+          - {text: "Hébergement web & Nom de domaine (1 an)", type: "inclus"}
+          - {text: "Intégration CMS Headless (Éditeur de texte/image)", type: "inclus"}
+          - {text: "Installation & sécurisation de base (HTTPS, SSL)", type: "inclus"}
+      - cat_name: "Design & Optimisation"
+        items:
+          - {text: "Structure One-Page (Jusqu'à 6 sections)", type: "inclus"}
+          - {text: "Design UI/UX épuré et moderne", type: "inclus"}
+          - {text: "Intégration de vos textes et images", type: "inclus"}
+          - {text: "Adaptabilité basique (Mobile-friendly)", type: "inclus"}
+      - cat_name: "Fonctionnalités Essentielles"
+        items:
+          - {text: "Formulaire de contact basique", type: "inclus"}
+          - {text: "Optimisation SEO de base", type: "option", option_price: "+29€"}
+  - name: "Pro"
+    badge: "POPULAIRE"
+    price: "990"
+    subtitle: "Site Vitrine (jusqu'à 5 pages)"
+    hover_style: "accent"
+    categories:
+      - cat_name: "Installation & Configuration"
+        items:
+          - {text: "Hébergement web & Nom de domaine (1 an)", type: "inclus"}
+          - {text: "Intégration CMS Headless (Édition de base)", type: "inclus"}
+          - {text: "Intégration Google Analytics (suivi de trafic)", type: "inclus"}
+      - cat_name: "Design & Optimisation"
+        items:
+          - {text: "Jusqu'à 5 pages distinctes (Accueil, Services...)", type: "inclus"}
+          - {text: "Direction artistique Web sur-mesure", type: "inclus"}
+          - {text: "Intégration avancée et mise en page dynamique", type: "inclus"}
+          - {text: "Animations au défilement (Scroll animations)", type: "inclus"}
+      - cat_name: "Fonctionnalités & SEO"
+        items:
+          - {text: "Optimisation SEO de base (balises, métas)", type: "inclus"}
+          - {text: "Formulaire de contact avancé & Sécurité", type: "inclus"}
+  - name: "Premium"
+    badge: ""
+    price: "1399"
+    subtitle: "Site Avancé / Sur-Mesure"
+    hover_style: "surface"
+    categories:
+      - cat_name: "Architecture & Performances"
+        items:
+          - {text: "Hébergement web (1 an) & Domaine", type: "inclus"}
+          - {text: "Performances maximales (Temps de chargement optimisé)", type: "inclus"}
+          - {text: "Sécurité renforcée & protection anti-spam", type: "inclus"}
+      - cat_name: "Design Premium"
+        items:
+          - {text: "Architectures complexes / Nombre de pages libre", type: "inclus"}
+          - {text: "Éléments interactifs & Micro-animations Premium", type: "inclus"}
+          - {text: "Parcours utilisateur (UX) optimisé pour l'interaction", type: "inclus"}
+      - cat_name: "Fonctionnalités & SEO Sur-Mesure"
+        items:
+          - {text: "Référencement SEO Avancé & Stratégie d'indexation", type: "inclus"}
+          - {text: "Développements sur-mesure (IA, App métier...)", type: "inclus"}
+          - {text: "Intégrations d'outils tiers sur-mesure", type: "inclus"}
 options:
   - name: "Page Supplémentaire"
     price: "+50€"
@@ -181,323 +245,62 @@ cta_button_text: "Demander un devis gratuit"
                         </h2>
                         <p class="text-gray-400 font-inter text-lg max-w-2xl mx-auto">
                             Des solutions entièrement transparentes, sans coûts cachés. Personnalisez votre forfait
-                            selon
-                            vos besoins.
+                            selon vos besoins.
                         </p>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 border-y border-white/20">
-
-                        <!-- Essentiel -->
-                        <div class="group border-b lg:border-b-0 lg:border-r border-white/20 p-8 md:p-10 lg:p-16 hover:bg-surface transition-colors cursor-hover magnetic-area flex flex-col"
+                        {% for plan in pricing_plans %}
+                        <div class="group {{ 'border-b lg:border-b-0 lg:border-r' if not loop.last else '' }} border-white/20 p-8 md:p-10 lg:p-16 hover:bg-{{ plan.hover_style }} transition-colors cursor-hover magnetic-area {{ 'text-white hover:text-white' if plan.hover_style == 'accent' else '' }} flex flex-col"
                             data-magnetic-strength="5">
                             <div class="flex justify-between items-center mb-12 md:mb-16">
-                                <h3 class="font-syne text-xl md:text-2xl font-bold text-white uppercase">Essentiel</h3>
-                                <div
-                                    class="w-3 h-3 rounded-full border border-white/30 group-hover:bg-accent group-hover:border-accent transition-colors">
-                                </div>
+                                <h3 class="font-syne text-xl md:text-2xl font-bold {{ '' if plan.hover_style == 'accent' else 'text-white' }} uppercase">{{ plan.name }}{% if plan.badge %} <span
+                                        class="text-[9px] md:text-[10px] ml-2 px-2 py-1 border border-current rounded-full">{{ plan.badge }}</span>{% endif %}
+                                </h3>
+                                <div class="{{ 'w-3 h-3 rounded-full bg-white group-hover:bg-white transition-colors' if plan.hover_style == 'accent' else 'w-3 h-3 rounded-full border border-white/30 group-hover:bg-accent group-hover:border-accent transition-colors' }}"></div>
                             </div>
-
                             <div class="mb-12 md:mb-16">
-                                <p class="text-xs md:text-sm font-inter text-gray-400 uppercase tracking-widest mb-4">À
-                                    partir
-                                    de</p>
+                                <p class="text-xs md:text-sm font-inter {{ 'opacity-60' if plan.hover_style == 'accent' else 'text-gray-400' }} uppercase tracking-widest mb-4">À
+                                    partir de</p>
                                 <p
-                                    class="font-syne text-5xl md:text-6xl font-bold text-white tracking-tighter group-hover:text-accent transition-colors">
-                                    549<span class="text-2xl md:text-3xl">€</span></p>
-                                <p class="mt-4 font-serif italic text-gray-500">Site One-Page</p>
+                                    class="font-syne text-5xl md:text-6xl font-bold {{ '' if plan.hover_style == 'accent' else 'text-white' }} tracking-tighter {{ '' if plan.hover_style == 'accent' else 'group-hover:text-accent' }} transition-colors">
+                                    {{ plan.price }}<span class="text-2xl md:text-3xl">€</span></p>
+                                <p class="mt-4 font-serif italic {{ 'opacity-70' if plan.hover_style == 'accent' else 'text-gray-500' }}">{{ plan.subtitle }}</p>
                             </div>
 
                             <div class="flex-grow space-y-10">
-                                <!-- Category -->
+                                {% for cat in plan.categories %}
                                 <div>
                                     <h4
                                         class="font-inter text-xs text-white/50 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">
-                                        Installation & Configuration</h4>
-                                    <ul class="font-inter text-sm text-gray-300 space-y-4">
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Hébergement web & Nom de domaine (1 an)</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Intégration CMS Headless (Éditeur de texte/image)</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Installation & sécurisation de base (HTTPS, SSL)</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Category -->
-                                <div>
-                                    <h4
-                                        class="font-inter text-xs text-white/50 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">
-                                        Design & Optimisation</h4>
-                                    <ul class="font-inter text-sm text-gray-300 space-y-4">
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Structure One-Page (Jusqu'à 6 sections)</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Design UI/UX épuré et moderne</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Intégration de vos textes et images</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Adaptabilité basique (Mobile-friendly)</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Category -->
-                                <div>
-                                    <h4
-                                        class="font-inter text-xs text-white/50 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">
-                                        Fonctionnalités Essentielles</h4>
-                                    <ul class="font-inter text-sm text-gray-300 space-y-4">
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Formulaire de contact basique</li>
-
+                                        {{ cat.cat_name }}</h4>
+                                    <ul class="font-inter text-sm {{ 'text-gray-200' if plan.hover_style == 'accent' else 'text-gray-300' }} space-y-4">
+                                        {% for item in cat.items %}
+                                        {% if item.type == "option" %}
                                         <li class="flex items-start gap-3"><span
                                                 class="w-5 h-5 text-gray-500 flex items-center justify-center font-bold text-lg leading-none shrink-0">+</span>
-                                            <span class="flex-grow">Optimisation SEO de base</span> <span
-                                                class="text-accent font-bold">+29€</span>
+                                            <span class="flex-grow">{{ item.text }}</span> <span
+                                                class="text-accent font-bold">{{ item.option_price }}</span>
                                         </li>
+                                        {% else %}
+                                        <li class="flex items-start gap-3"><svg
+                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M5 13l4 4L19 7" />
+                                            </svg> {{ item.text }}</li>
+                                        {% endif %}
+                                        {% endfor %}
                                     </ul>
                                 </div>
+                                {% endfor %}
                             </div>
                         </div>
-
-                        <!-- Pro -->
-                        <div class="group border-b lg:border-b-0 lg:border-r border-white/20 p-8 md:p-10 lg:p-16 hover:bg-accent transition-colors cursor-hover magnetic-area text-white hover:text-white flex flex-col"
-                            data-magnetic-strength="5">
-                            <div class="flex justify-between items-center mb-12 md:mb-16">
-                                <h3 class="font-syne text-xl md:text-2xl font-bold uppercase">Pro <span
-                                        class="text-[9px] md:text-[10px] ml-2 px-2 py-1 border border-current rounded-full">POPULAIRE</span>
-                                </h3>
-                                <div class="w-3 h-3 rounded-full bg-white group-hover:bg-white transition-colors"></div>
-                            </div>
-                            <div class="mb-12 md:mb-16">
-                                <p class="text-xs md:text-sm font-inter opacity-60 uppercase tracking-widest mb-4">À
-                                    partir de</p>
-                                <p class="font-syne text-5xl md:text-6xl font-bold tracking-tighter">990<span
-                                        class="text-2xl md:text-3xl">€</span></p>
-                                <p class="mt-4 font-serif italic opacity-70">Site Vitrine (jusqu'à 5 pages)</p>
-                            </div>
-
-                            <div class="flex-grow space-y-10">
-                                <!-- Category -->
-                                <div>
-                                    <h4
-                                        class="font-inter text-xs text-white/50 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">
-                                        Installation & Configuration</h4>
-                                    <ul class="font-inter text-sm text-gray-200 space-y-4">
-
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Hébergement web & Nom de domaine (1 an)</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Intégration CMS Headless (Édition de base)</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Intégration Google Analytics (suivi de trafic)</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Category -->
-                                <div>
-                                    <h4
-                                        class="font-inter text-xs text-white/50 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">
-                                        Design & Optimisation</h4>
-                                    <ul class="font-inter text-sm text-gray-200 space-y-4">
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Jusqu'à 5 pages distinctes (Accueil, Services...)</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Direction artistique Web sur-mesure</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Intégration avancée et mise en page dynamique</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Animations au défilement (Scroll animations)</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Category -->
-                                <div>
-                                    <h4
-                                        class="font-inter text-xs text-white/50 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">
-                                        Fonctionnalités & SEO</h4>
-                                    <ul class="font-inter text-sm text-gray-200 space-y-4">
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Optimisation SEO de base (balises, métas)</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Formulaire de contact avancé & Sécurité</li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Premium -->
-                        <div class="group p-8 md:p-10 lg:p-16 hover:bg-surface transition-colors cursor-hover magnetic-area flex flex-col"
-                            data-magnetic-strength="5">
-                            <div class="flex justify-between items-center mb-12 md:mb-16">
-                                <h3 class="font-syne text-xl md:text-2xl font-bold text-white uppercase">Premium</h3>
-                                <div
-                                    class="w-3 h-3 rounded-full border border-white/30 group-hover:bg-accent group-hover:border-accent transition-colors">
-                                </div>
-                            </div>
-                            <div class="mb-12 md:mb-16">
-                                <p class="text-xs md:text-sm font-inter text-gray-400 uppercase tracking-widest mb-4">À
-                                    partir de</p>
-                                <p
-                                    class="font-syne text-5xl md:text-6xl font-bold text-white tracking-tighter group-hover:text-accent transition-colors">
-                                    1399<span class="text-2xl md:text-3xl">€</span></p>
-                                <p class="mt-4 font-serif italic text-gray-500">Site Avancé / Sur-Mesure</p>
-                            </div>
-
-                            <div class="flex-grow space-y-10">
-                                <!-- Category -->
-                                <div>
-                                    <h4
-                                        class="font-inter text-xs text-white/50 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">
-                                        Architecture & Performances</h4>
-                                    <ul class="font-inter text-sm text-gray-300 space-y-4">
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Hébergement web (1 an) & Domaine</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Performances maximales (Temps de chargement optimisé)</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Sécurité renforcée & protection anti-spam</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Category -->
-                                <div>
-                                    <h4
-                                        class="font-inter text-xs text-white/50 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">
-                                        Design Premium</h4>
-                                    <ul class="font-inter text-sm text-gray-300 space-y-4">
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Architectures complexes / Nombre de pages libre</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Éléments interactifs & Micro-animations Premium</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Parcours utilisateur (UX) optimisé pour l'interaction</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Category -->
-                                <div>
-                                    <h4
-                                        class="font-inter text-xs text-white/50 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">
-                                        Fonctionnalités & SEO Sur-Mesure</h4>
-                                    <ul class="font-inter text-sm text-gray-300 space-y-4">
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Référencement SEO Avancé & Stratégie d'indexation</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Développements sur-mesure (IA, App métier...)</li>
-                                        <li class="flex items-start gap-3"><svg
-                                                class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7" />
-                                            </svg> Intégrations d'outils tiers sur-mesure</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
+
+
 
                 <!-- À la carte options -->
                 <div class="container mx-auto px-4 lg:px-8 max-w-[1400px] mt-24 md:mt-32">
