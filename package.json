@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy && npm run build:css",
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy && npm run build:css",
     "build:css": "npx tailwindcss -i ./src/input.css -o ./_site/assets/css/style.css",
     "watch:css": "npx tailwindcss -i ./src/input.css -o ./_site/assets/css/style.css --watch"
   },
