@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "name": "Atelier vélo",
+      "description": "Site vitrine one-page moderne pour son atelier vélo",
+      "url": "/projet/au-petit-velo/",
+      "image": "/assets/images/Capture d'écran 2026-02-28 192658.jpg",
+      "image_alt": "Atelier vélo",
+      "tags": ["One page", "Moderne"]
+    },
+    {
+      "name": "Artisan plombier",
+      "description": "Site vitrine multipage professionnel, services détaillés pour un plombier à Paris.",
+      "url": "/projet/l-artisan-plombier/accueil.html",
+      "image": "/projet/images-projets/Cover-artisan-plombier-1024x618.jpg",
+      "image_alt": "Artisan plombier",
+      "tags": ["Services", "Artisan", "Dépannage"]
+    },
+    {
+      "name": "Oasis",
+      "description": "Site vitrine multi-pages pour un architecte paysagiste de prestige à Paris. Design ultra-luxe avec animations, curseur personnalisé et esthétique haut de gamme.",
+      "url": "projet/Oasis/parisian_oasis_home.html",
+      "image": "/assets/images/Capture d'écran oasis.jpg",
+      "image_alt": "Oasis aperçu",
+      "tags": ["Prestige", "Multi-pages", "Immersif"]
+    }
+  ]
+}

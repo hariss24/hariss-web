@@ -3,33 +3,6 @@ layout: base.njk
 title: Portfolio - Hariss Web
 page_title: Portfolio
 page_description: Découvrez mes dernières réalisations et projets démo
-projects:
-  - name: Atelier vélo
-    description: Site vitrine one-page moderne pour son atelier vélo
-    url: /projet/au-petit-velo/
-    image: /assets/images/Capture d'écran 2026-02-28 192658.jpg
-    image_alt: Atelier vélo
-    tags:
-      - One page
-      - Moderne
-  - name: Artisan plombier
-    description: Site vitrine multipage professionnel, services détaillés pour un plombier à Paris.
-    url: /projet/l-artisan-plombier/accueil.html
-    image: /projet/images-projets/Cover-artisan-plombier-1024x618.jpg
-    image_alt: Artisan plombier
-    tags:
-      - Services
-      - Artisan
-      - Dépannage
-  - name: Oasis
-    description: Site vitrine multi-pages pour un architecte paysagiste de prestige à Paris. Design ultra-luxe avec animations, curseur personnalisé et esthétique haut de gamme.
-    url: projet/Oasis/parisian_oasis_home.html
-    image: /assets/images/Capture d'écran oasis.jpg
-    image_alt: Oasis aperçu
-    tags:
-      - Prestige
-      - Multi-pages
-      - Immersif
 ---
 
 <!-- Page Header -->
@@ -57,7 +30,7 @@ projects:
 <section class="portfolio-slider-section">
     <div class="portfolio-slider-component" id="portfolio-slider" data-lenis-prevent>
         <div class="portfolio-slider-wrapper" id="portfolio-slider-wrapper">
-            {% for project in projects %}
+            {% for project in projects.projects %}
             <a href="{{ project.url }}" target="_blank" class="portfolio-slider-slide">
                 <div class="project-card block">
                     <img loading="lazy" src="{{ project.image }}" alt="{{ project.image_alt }}" class="w-full h-full object-cover">
