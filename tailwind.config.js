@@ -4,12 +4,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#0B0F19",
-        accent: "#F59E0B",
-        text: "rgb(203, 213, 225)",
+        pitch: "#030303",
+        accent: "#E25D1E",
+        offwhite: "#F3F4F6",
+        surface: "#111111",
       },
       fontFamily: {
-        outfit: ["Outfit", "sans-serif"],
+        syne: ["Syne", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
+        inter: ["Inter", "sans-serif"],
+      },
+      animation: {
+        'spin-slow': 'spin 12s linear infinite',
       }
     },
   },
