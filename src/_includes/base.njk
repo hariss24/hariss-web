@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="kelfP6WkoZM2VVI_QYpnmEy_psMrWgQVI08vnLkgS30" />
-    <title>{{ title | default("Hariss Web - Creative Studio") }}</title>
-    <meta name="description" content="{{ description | default("Développeur freelance CMS, création de sites sur-mesure.") }}">
+    <title>{{ title | default("Hariss Web | Création de Sites Web pour TPE & Indépendants") }}</title>
+    <meta name="description" content="{{ description | default("Développeur freelance spécialisé en création de sites web sur-mesure pour TPE et indépendants. Sites vitrines, CMS et solutions digitales à prix accessible.") }}">
 
     <!-- Fonts: Syne (Headings), Playfair Display (Serif Italic), Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +63,7 @@
     {% include "./components/header.njk" %}
 
     <div id="smooth-wrapper" class="overflow-x-clip w-full">
-        <main id="smooth-content" class="w-full">
+        <main id="smooth-content" class="w-full min-h-screen">
 
             <!-- Le contenu spécifique de la page -->
             {{ content | safe }}
