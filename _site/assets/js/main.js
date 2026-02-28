@@ -299,7 +299,176 @@ if (servicesCarousel) {
     });
 }
 
-// 8. FAQ Accordion Logic
+// 8. Portfolio Infinite Drag & Scroll Carousel
+const sliderComponent = document.getElementById('portfolio-slider');
+const sliderWrapper = document.getElementById('portfolio-slider-wrapper');
+const sliderHint = document.getElementById('slider-hint');
+
+if (sliderComponent && sliderWrapper) {
+    const originalSlides = Array.from(sliderWrapper.querySelectorAll('.portfolio-slider-slide'));
+
+    if (originalSlides.length > 0) {
+        // Clone slides enough times to fill 3x viewport for seamless looping
+        const GAP = 24;
+        function measureSetWidth() {
+            let w = 0;
+            originalSlides.forEach(s => { w += s.offsetWidth + GAP; });
+            return w;
+        }
+
+        const viewportW = sliderComponent.offsetWidth;
+        const oneSetWidth = measureSetWidth();
+        // We need at least 3 full sets (1 before, 1 visible, 1 after)
+        const clonesNeeded = Math.max(2, Math.ceil((viewportW * 3) / oneSetWidth));
+
+        for (let c = 0; c < clonesNeeded; c++) {
+            originalSlides.forEach(slide => {
+                const clone = slide.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                sliderWrapper.appendChild(clone);
+            });
+        }
+
+        // All slides (originals + clones)
+        const allSlides = sliderWrapper.querySelectorAll('.portfolio-slider-slide');
+
+        // State
+        let currentX = 0;
+        let smoothX = 0;
+        let isDragging = false;
+        let dragStartX = 0;
+        let dragStartScroll = 0;
+        let velocity = 0;
+        let lastDragX = 0;
+        let hintHidden = false;
+        let hasDragged = false;
+
+        const LERP_FACTOR = 0.08;
+        const WHEEL_SPEED = 1.2;
+        const DRAG_SPEED = 1;
+        const INERTIA_DECAY = 0.95;
+        const INERTIA_THRESHOLD = 0.5;
+
+        function lerp(a, b, t) {
+            return a + (b - a) * t;
+        }
+
+        // Animation loop — moves the whole wrapper via translateX
+        // and silently resets position when crossing a set boundary
+        function animate() {
+            // Apply inertia when not dragging
+            if (!isDragging && Math.abs(velocity) > INERTIA_THRESHOLD) {
+                currentX += velocity;
+                velocity *= INERTIA_DECAY;
+            } else if (!isDragging) {
+                velocity = 0;
+            }
+
+            // Lerp toward target
+            smoothX = lerp(smoothX, currentX, LERP_FACTOR);
+
+            // Infinite loop: silently reset when we scroll past one full set
+            // This keeps the numbers from growing infinitely and ensures seamless wrapping
+            if (smoothX < -oneSetWidth) {
+                smoothX += oneSetWidth;
+                currentX += oneSetWidth;
+                dragStartScroll += oneSetWidth;
+            } else if (smoothX > 0) {
+                smoothX -= oneSetWidth;
+                currentX -= oneSetWidth;
+                dragStartScroll -= oneSetWidth;
+            }
+
+            sliderWrapper.style.transform = `translate3d(${smoothX}px, 0, 0)`;
+            requestAnimationFrame(animate);
+        }
+
+        // --- Wheel handler ---
+        sliderComponent.addEventListener('wheel', (e) => {
+            const delta = e.deltaY || e.deltaX;
+            currentX -= delta * WHEEL_SPEED;
+            velocity = 0;
+
+            if (!hintHidden && sliderHint) {
+                sliderHint.classList.add('hidden');
+                hintHidden = true;
+            }
+            e.preventDefault();
+        }, { passive: false });
+
+        // --- Mouse drag handlers ---
+        sliderComponent.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            hasDragged = false;
+            dragStartX = e.clientX;
+            dragStartScroll = currentX;
+            lastDragX = e.clientX;
+            velocity = 0;
+            sliderComponent.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = e.clientX - dragStartX;
+            if (Math.abs(dx) > 5) hasDragged = true;
+            velocity = (e.clientX - lastDragX) * DRAG_SPEED;
+            lastDragX = e.clientX;
+            currentX = dragStartScroll + dx * DRAG_SPEED;
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            sliderComponent.style.cursor = 'grab';
+            if (!hintHidden && sliderHint) {
+                sliderHint.classList.add('hidden');
+                hintHidden = true;
+            }
+        });
+
+        // --- Touch handlers ---
+        sliderComponent.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            hasDragged = false;
+            dragStartX = e.touches[0].clientX;
+            dragStartScroll = currentX;
+            lastDragX = e.touches[0].clientX;
+            velocity = 0;
+        }, { passive: true });
+
+        sliderComponent.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const dx = e.touches[0].clientX - dragStartX;
+            if (Math.abs(dx) > 5) hasDragged = true;
+            velocity = (e.touches[0].clientX - lastDragX) * DRAG_SPEED;
+            lastDragX = e.touches[0].clientX;
+            currentX = dragStartScroll + dx * DRAG_SPEED;
+        }, { passive: true });
+
+        sliderComponent.addEventListener('touchend', () => {
+            isDragging = false;
+            if (!hintHidden && sliderHint) {
+                sliderHint.classList.add('hidden');
+                hintHidden = true;
+            }
+        });
+
+        // --- Prevent link navigation during drag ---
+        allSlides.forEach(slide => {
+            slide.addEventListener('click', (e) => {
+                if (hasDragged) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            });
+        });
+
+        // Start
+        animate();
+    }
+}
+
+// 9. FAQ Accordion Logic
 const faqItems = document.querySelectorAll('.faq-item');
 
 if (faqItems.length > 0) {

@@ -139,13 +139,13 @@
             
 <!-- Page Header -->
 <section
-    class="pt-20 pb-6 lg:pt-28 lg:pb-10 flex flex-col justify-center items-center text-center relative grid-lines overflow-hidden w-full bg-pitch">
+    class="pt-24 pb-12 lg:pt-32 lg:pb-16 flex flex-col justify-center items-center text-center relative grid-lines overflow-hidden w-full bg-pitch">
     <div class="container mx-auto px-4 relative z-10 w-full flex flex-col items-center">
         <h1
-            class="font-syne text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 uppercase tracking-tighter">
+            class="font-syne text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-6 uppercase tracking-tighter">
             <span class="text-gradient">Portfolio</span>
         </h1>
-        <p class="font-inter text-base md:text-lg text-gray-400 max-w-2xl mx-auto">
+        <p class="font-inter text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
             Découvrez mes dernières réalisations et projets démo
         </p>
     </div>
@@ -158,61 +158,71 @@
     </div>
 </section>
 
-<!-- Projects Grid Section -->
-<section class="container mx-auto px-4 md:px-8 mb-24">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        
-        <a href="/projet/au-petit-velo/" target="_blank" class="project-card block">
-            <img loading="lazy" src="/assets/images/Capture d&#39;écran 2026-02-28 192658.jpg" alt="Atelier vélo" class="w-full h-72 object-cover">
-            <div class="project-overlay">
-                <h3 class="text-2xl font-bold text-white mb-2">Atelier vélo</h3>
-                <p class="text-gray-300 text-sm mb-4">Site vitrine one-page moderne pour son atelier vélo</p>
-                <div>
-                    
-                    <span class="project-tag">One page</span>
-                    
-                    <span class="project-tag">Moderne</span>
-                    
+<!-- Projects Slider Section -->
+<section class="portfolio-slider-section">
+    <div class="portfolio-slider-component" id="portfolio-slider" data-lenis-prevent>
+        <div class="portfolio-slider-wrapper" id="portfolio-slider-wrapper">
+            
+            <a href="/projet/au-petit-velo/" target="_blank" class="portfolio-slider-slide">
+                <div class="project-card block">
+                    <img loading="lazy" src="/assets/images/Capture d&#39;écran 2026-02-28 192658.jpg" alt="Atelier vélo" class="w-full h-full object-cover">
+                    <div class="project-overlay">
+                        <h3 class="text-2xl font-bold text-white mb-2">Atelier vélo</h3>
+                        <p class="text-gray-300 text-sm mb-4">Site vitrine one-page moderne pour son atelier vélo</p>
+                        <div>
+                            
+                            <span class="project-tag">One page</span>
+                            
+                            <span class="project-tag">Moderne</span>
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </a>
-        
-        <a href="/projet/l-artisan-plombier/accueil.html" target="_blank" class="project-card block">
-            <img loading="lazy" src="/projet/images-projets/Cover-artisan-plombier-1024x618.jpg" alt="Artisan plombier" class="w-full h-72 object-cover">
-            <div class="project-overlay">
-                <h3 class="text-2xl font-bold text-white mb-2">Artisan plombier</h3>
-                <p class="text-gray-300 text-sm mb-4">Site vitrine multipage professionnel, services détaillés pour un plombier à Paris.</p>
-                <div>
-                    
-                    <span class="project-tag">Services</span>
-                    
-                    <span class="project-tag">Artisan</span>
-                    
-                    <span class="project-tag">Dépannage</span>
-                    
+            </a>
+            
+            <a href="/projet/l-artisan-plombier/accueil.html" target="_blank" class="portfolio-slider-slide">
+                <div class="project-card block">
+                    <img loading="lazy" src="/projet/images-projets/Cover-artisan-plombier-1024x618.jpg" alt="Artisan plombier" class="w-full h-full object-cover">
+                    <div class="project-overlay">
+                        <h3 class="text-2xl font-bold text-white mb-2">Artisan plombier</h3>
+                        <p class="text-gray-300 text-sm mb-4">Site vitrine multipage professionnel, services détaillés pour un plombier à Paris.</p>
+                        <div>
+                            
+                            <span class="project-tag">Services</span>
+                            
+                            <span class="project-tag">Artisan</span>
+                            
+                            <span class="project-tag">Dépannage</span>
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </a>
-        
-        <a href="projet/Oasis/parisian_oasis_home.html" target="_blank" class="project-card block">
-            <img loading="lazy" src="/assets/images/Capture d&#39;écran 2026-02-28 190241.jpg" alt="Oasis aperçu" class="w-full h-72 object-cover">
-            <div class="project-overlay">
-                <h3 class="text-2xl font-bold text-white mb-2">Oasis</h3>
-                <p class="text-gray-300 text-sm mb-4">Site vitrine multi-pages pour un architecte paysagiste de prestige à Paris. Design ultra-luxe avec animations, curseur personnalisé et esthétique haut de gamme.</p>
-                <div>
-                    
-                    <span class="project-tag">Prestige</span>
-                    
-                    <span class="project-tag">Multi-pages</span>
-                    
-                    <span class="project-tag">Immersif</span>
-                    
+            </a>
+            
+            <a href="projet/Oasis/parisian_oasis_home.html" target="_blank" class="portfolio-slider-slide">
+                <div class="project-card block">
+                    <img loading="lazy" src="/assets/images/Capture d&#39;écran oasis.jpg" alt="Oasis aperçu" class="w-full h-full object-cover">
+                    <div class="project-overlay">
+                        <h3 class="text-2xl font-bold text-white mb-2">Oasis</h3>
+                        <p class="text-gray-300 text-sm mb-4">Site vitrine multi-pages pour un architecte paysagiste de prestige à Paris. Design ultra-luxe avec animations, curseur personnalisé et esthétique haut de gamme.</p>
+                        <div>
+                            
+                            <span class="project-tag">Prestige</span>
+                            
+                            <span class="project-tag">Multi-pages</span>
+                            
+                            <span class="project-tag">Immersif</span>
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </a>
-        
-
+            </a>
+            
+        </div>
+    </div>
+    <!-- Drag hint indicator -->
+    <div class="slider-hint" id="slider-hint">
+        <span>← Glisser pour explorer →</span>
     </div>
 </section>
 

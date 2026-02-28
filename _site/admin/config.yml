@@ -77,6 +77,13 @@ collections:
           - {label: "Titre SEO", name: "title", widget: "string"}
           - {label: "Titre de la page", name: "page_title", widget: "string"}
           - {label: "Description", name: "page_description", widget: "string"}
+
+      # ── Projets Portfolio (données séparées) ──
+      - label: "Projets Portfolio"
+        name: "projects"
+        file: "src/_data/projects.json"
+        format: "json"
+        fields:
           - label: "Projets"
             name: "projects"
             widget: "list"
