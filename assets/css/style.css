@@ -195,7 +195,7 @@ html.lenis {
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition-property: all;
     transition-duration: 500ms;
-    aspect-ratio: 4/3;
+    aspect-ratio: 16/9;
     border-radius: 0;
 }
 
