@@ -1,36 +1,92 @@
 backend:
   name: github
   repo: hariss24/hariss-web
-  branch: main # Branch to update (optional; defaults to master)
+  branch: main
 
-media_folder: "assets/images" # Folder where uploaded files will be saved
-public_folder: "/assets/images" # The src attribute for uploaded media
+media_folder: "assets/images"
+public_folder: "/assets/images"
 
-collections: # A list of collections the CMS should be able to edit
+collections:
   - name: "pages"
     label: "Pages"
     files:
+
+      # ── Page Accueil ──
       - label: "Page Accueil"
         name: "home"
         file: "src/index.njk"
         fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "base.njk"}
           - {label: "Titre SEO", name: "title", widget: "string"}
-          - {label: "Contenu (HTML/Nunjucks)", name: "body", widget: "text"}
-      - label: "Page Services"
-        name: "services"
-        file: "src/services.njk"
-        fields:
-          - {label: "Titre SEO", name: "title", widget: "string"}
-          - {label: "Contenu (HTML/Nunjucks)", name: "body", widget: "text"}
+          # Hero
+          - {label: "Hero — Sous-titre", name: "hero_subtitle", widget: "string"}
+          - {label: "Hero — Ligne 1 (gros titre)", name: "hero_line1", widget: "string"}
+          - {label: "Hero — Ligne 2 (texte italique)", name: "hero_line2", widget: "string"}
+          - {label: "Hero — Description", name: "hero_description", widget: "text"}
+          - {label: "Hero — Texte du bouton CTA", name: "hero_cta_text", widget: "string"}
+          # Manifesto
+          - {label: "Manifesto — Titre ligne 1", name: "manifesto_title1", widget: "string"}
+          - {label: "Manifesto — Titre ligne 2", name: "manifesto_title2", widget: "string"}
+          - {label: "Manifesto — Titre ligne 3 (italique)", name: "manifesto_title3", widget: "string"}
+          - {label: "Manifesto — Paragraphe", name: "manifesto_text", widget: "text"}
+          # Scrollytelling
+          - label: "Méthodologie (Scrollytelling)"
+            name: "methodology_steps"
+            widget: "list"
+            fields:
+              - {label: "Numéro", name: "number", widget: "string"}
+              - {label: "Label", name: "label", widget: "string"}
+              - {label: "Titre principal", name: "title_main", widget: "string"}
+              - {label: "Titre italique", name: "title_italic", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          # Pricing
+          - label: "Forfaits"
+            name: "pricing"
+            widget: "list"
+            max: 3
+            fields:
+              - {label: "Nom", name: "name", widget: "string"}
+              - {label: "Badge (ex: POPULAIRE)", name: "badge", widget: "string", required: false}
+              - {label: "Prix", name: "price", widget: "string"}
+              - {label: "Sous-titre prix", name: "price_subtitle", widget: "string"}
+              - label: "Fonctionnalités"
+                name: "features"
+                widget: "list"
+                field: {label: "Feature", name: "feature", widget: "string"}
+
+      # ── Page Contact ──
       - label: "Page Contact"
         name: "contact"
         file: "src/contact.njk"
         fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "base.njk"}
           - {label: "Titre SEO", name: "title", widget: "string"}
-          - {label: "Contenu (HTML/Nunjucks)", name: "body", widget: "text"}
+          - {label: "Titre de la page", name: "page_title", widget: "string"}
+          - {label: "Mot accentué dans le titre", name: "page_title_accent", widget: "string"}
+          - {label: "Description", name: "page_description", widget: "text"}
+          - {label: "URL du formulaire Tally", name: "tally_url", widget: "string"}
+          - {label: "Email de contact", name: "contact_email", widget: "string"}
+          - {label: "URL LinkedIn", name: "linkedin_url", widget: "string"}
+
+      # ── Page Portfolio ──
       - label: "Page Portfolio"
         name: "portfolio"
         file: "src/portfolio.njk"
         fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "base.njk"}
           - {label: "Titre SEO", name: "title", widget: "string"}
-          - {label: "Contenu (HTML/Nunjucks)", name: "body", widget: "text"}
+          - {label: "Titre de la page", name: "page_title", widget: "string"}
+          - {label: "Description", name: "page_description", widget: "string"}
+          - label: "Projets"
+            name: "projects"
+            widget: "list"
+            fields:
+              - {label: "Nom du projet", name: "name", widget: "string"}
+              - {label: "Description", name: "description", widget: "string"}
+              - {label: "URL du projet", name: "url", widget: "string"}
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Alt de l'image", name: "image_alt", widget: "string"}
+              - label: "Tags"
+                name: "tags"
+                widget: "list"
+                field: {label: "Tag", name: "tag", widget: "string"}

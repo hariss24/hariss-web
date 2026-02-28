@@ -1,6 +1,12 @@
 ---
 title: Contact - Hariss Web
 layout: base.njk
+page_title: "Mise en relation"
+page_title_accent: "Rapide"
+page_description: "Parlez-moi de votre projet. Je reviens vers vous dans les plus brefs délais pour en discuter de vive voix."
+tally_url: "https://tally.so/embed/aQ5oxB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
+contact_email: "contact@hariss-web.fr"
+linkedin_url: "https://www.linkedin.com/in/hariss-hafeji/"
 ---
 
 <!-- Page Header -->
@@ -8,12 +14,10 @@ layout: base.njk
     <div class="container mx-auto px-4 relative z-10">
         <h1
             class="font-syne text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 uppercase tracking-tighter">
-            Mise en relation <span class="text-gradient">Rapide</span>
+            {{ page_title }} <span class="text-gradient">{{ page_title_accent }}</span>
         </h1>
         <p class="font-inter text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-            Parlez-moi de votre projet. Je reviens vers vous dans les plus brefs délais pour en discuter de
-            vive
-            voix.
+            {{ page_description }}
         </p>
     </div>
 
@@ -31,26 +35,26 @@ layout: base.njk
 
         <div class="relative z-10">
             <iframe
-                data-tally-src="https://tally.so/embed/aQ5oxB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
+                data-tally-src="{{ tally_url }}"
                 loading="lazy" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0"
                 title="Contactez moi pour développer votre présence sur le web"></iframe>
-            <script>var d = document, w = "https://tally.so/widgets/embed.js", v = function () { "undefined" != typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function (e) { e.src = e.dataset.tallySrc })) }; if ("undefined" != typeof Tally) v(); else if (d.querySelector('script[src="' + w + '"]') == null) { var s = d.createElement("script"); s.src = w, s.onload = v, s.onerror = v, d.body.appendChild(s); }</script>
+            <script>var d = document, w = "https://tally.so/widgets/embed.js", v = function () { "undefined" != typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) { e.src = e.dataset.tallySrc }) }; if ("undefined" != typeof Tally) v(); else if (d.querySelector('script[src="' + w + '"]') == null) { var s = d.createElement("script"); s.src = w, s.onload = v, s.onerror = v, d.body.appendChild(s); }</script>
         </div>
     </div>
 
     <div class="mt-12 text-center flex flex-col items-center justify-center space-y-4">
         <p class="text-gray-400">Ou contactez-moi directement sur :</p>
         <div class="flex items-center space-x-6">
-            <a href="mailto:contact@hariss-web.fr"
+            <a href="mailto:{{ contact_email }}"
                 class="text-gray-300 hover:text-accent transition-colors flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                 </svg>
-                <span>contact@hariss-web.fr</span>
+                <span>{{ contact_email }}</span>
             </a>
-            <a href="https://www.linkedin.com/in/hariss-hafeji/" target="_blank" rel="noopener noreferrer"
+            <a href="{{ linkedin_url }}" target="_blank" rel="noopener noreferrer"
                 class="text-gray-300 hover:text-accent transition-colors flex items-center space-x-2">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path fill-rule="evenodd"

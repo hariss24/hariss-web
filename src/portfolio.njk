@@ -1,6 +1,36 @@
 ---
 title: Portfolio - Hariss Web
 layout: base.njk
+page_title: "Portfolio"
+page_description: "Découvrez mes dernières réalisations et projets démo"
+projects:
+  - name: "Atelier vélo"
+    description: "Site vitrine one-page moderne pour son atelier vélo"
+    url: "/projet/au-petit-velo/"
+    image: "/projet/au-petit-velo/hero-atelier.png"
+    image_alt: "Atelier vélo"
+    tags:
+      - "One page"
+      - "WordPress"
+      - "Moderne"
+  - name: "Portfolio photographique"
+    description: "Site vitrine multi-pages intéractif et portfolio dynamique"
+    url: "/projet/studio-lumiere/accueil.html"
+    image: "/projet/images-projets/portfolio-photographie-1024x626.webp"
+    image_alt: "Studio Lumière"
+    tags:
+      - "Animations"
+      - "Responsive"
+      - "Design avancé"
+  - name: "Artisan plombier"
+    description: "Site vitrine multipage professionnel, services détaillés pour un plombier à Paris."
+    url: "/projet/l-artisan-plombier/accueil.html"
+    image: "/projet/images-projets/Cover-artisan-plombier-1024x618.jpg"
+    image_alt: "Artisan plombier"
+    tags:
+      - "Services"
+      - "Artisan"
+      - "Dépannage"
 ---
 
 <!-- Page Header -->
@@ -9,10 +39,10 @@ layout: base.njk
     <div class="container mx-auto px-4 relative z-10 w-full flex flex-col items-center">
         <h1
             class="font-syne text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-6 uppercase tracking-tighter">
-            <span class="text-gradient">Portfolio</span>
+            <span class="text-gradient">{{ page_title }}</span>
         </h1>
         <p class="font-inter text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-            Découvrez mes dernières réalisations et projets démo
+            {{ page_description }}
         </p>
     </div>
 
@@ -28,113 +58,20 @@ layout: base.njk
 <section class="container mx-auto px-4 md:px-8 mb-24">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <!-- Project 1 -->
-        <a href="/projet/au-petit-velo/" target="_blank" class="project-card block">
-            <img loading="lazy" src="/projet/au-petit-velo/hero-atelier.png" alt="Atelier vélo" class="w-full h-72 object-cover">
+        {% for project in projects %}
+        <a href="{{ project.url }}" target="_blank" class="project-card block">
+            <img loading="lazy" src="{{ project.image }}" alt="{{ project.image_alt }}" class="w-full h-72 object-cover">
             <div class="project-overlay">
-                <h3 class="text-2xl font-bold text-white mb-2">Atelier vélo</h3>
-                <p class="text-gray-300 text-sm mb-4">Site vitrine one-page moderne pour son atelier vélo
-                </p>
+                <h3 class="text-2xl font-bold text-white mb-2">{{ project.name }}</h3>
+                <p class="text-gray-300 text-sm mb-4">{{ project.description }}</p>
                 <div>
-                    <span class="project-tag">One page</span>
-                    <span class="project-tag">WordPress</span>
-                    <span class="project-tag">Moderne</span>
+                    {% for tag in project.tags %}
+                    <span class="project-tag">{{ tag }}</span>
+                    {% endfor %}
                 </div>
             </div>
         </a>
-
-        <!-- Project 2 -->
-        <a href="/projet/studio-lumiere/accueil.html" target="_blank" class="project-card block">
-            <img loading="lazy" src="/projet/images-projets/portfolio-photographie-1024x626.webp"
-                alt="Studio Lumière" class="w-full h-72 object-cover">
-            <div class="project-overlay">
-                <h3 class="text-2xl font-bold text-white mb-2">Portfolio photographique</h3>
-                <p class="text-gray-300 text-sm mb-4">Site vitrine multi-pages intéractif et portfolio
-                    dynamique
-                </p>
-                <div>
-                    <span class="project-tag">Animations</span>
-                    <span class="project-tag">Responsive</span>
-                    <span class="project-tag">Design avancé</span>
-                </div>
-            </div>
-        </a>
-
-        <!-- Project 3 -->
-        <a href="/projet/l-artisan-plombier/accueil.html" target="_blank" class="project-card block">
-            <img loading="lazy" src="/projet/images-projets/Cover-artisan-plombier-1024x618.jpg"
-                alt="Artisan plombier" class="w-full h-72 object-cover">
-            <div class="project-overlay">
-                <h3 class="text-2xl font-bold text-white mb-2">Artisan plombier</h3>
-                <p class="text-gray-300 text-sm mb-4">Site vitrine multipage professionnel, services
-                    détaillés
-                    pour un plombier à Paris.</p>
-                <div>
-                    <span class="project-tag">Services</span>
-                    <span class="project-tag">Artisan</span>
-                    <span class="project-tag">Dépannage</span>
-                </div>
-            </div>
-        </a>
+        {% endfor %}
 
     </div>
 </section>
-
-<script>
-    // Project Modal Logic
-    let currentUrl = '';
-
-    function openModal(title, url, description) {
-        currentUrl = url;
-        document.getElementById('modalTitle').textContent = title;
-        document.getElementById('projectInfo').textContent = description;
-        document.getElementById('projectIframe').src = url;
-        document.getElementById('visitLink').href = url;
-        document.getElementById('projectModal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-        document.getElementById('projectModal').classList.remove('active');
-        // Slight delay to clear iframe source to allow transition out
-        setTimeout(() => {
-            document.getElementById('projectIframe').src = '';
-        }, 300);
-        document.body.style.overflow = 'auto';
-
-        // Reset to desktop view
-        switchView('desktop');
-    }
-
-    function switchView(view) {
-        const container = document.getElementById('iframeContainer');
-        const desktopBtn = document.getElementById('desktopBtn');
-        const mobileBtn = document.getElementById('mobileBtn');
-
-        if (view === 'desktop') {
-            container.classList.remove('mobile-view');
-            container.classList.add('desktop-view');
-            desktopBtn.classList.add('active');
-            mobileBtn.classList.remove('active');
-        } else {
-            container.classList.remove('desktop-view');
-            container.classList.add('mobile-view');
-            mobileBtn.classList.add('active');
-            desktopBtn.classList.remove('active');
-        }
-    }
-
-    // Close modal on Escape key
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-            closeModal();
-        }
-    });
-
-    // Close modal on background/overlay click
-    document.getElementById('projectModal').addEventListener('click', function (e) {
-        if (e.target === this) {
-            closeModal();
-        }
-    });
-</script>
