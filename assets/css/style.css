@@ -208,14 +208,16 @@ html.lenis {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: left top;
-    transition-property: transform;
+    object-position: center top;
+    transition-property: scale, opacity;
     transition-duration: 700ms;
     opacity: 1;
+    scale: 1.15;
+    translate: var(--parallax-x, 0%) 0;
 }
 
 .project-card:hover img {
-    transform: scale(1.05);
+    scale: 1.25;
     opacity: 1;
 }
 

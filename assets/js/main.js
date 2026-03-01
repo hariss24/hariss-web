@@ -380,6 +380,22 @@ if (sliderComponent && sliderWrapper) {
             }
 
             sliderWrapper.style.transform = `translate3d(${smoothX}px, 0, 0)`;
+
+            // --- Horizontal Parallax ---
+            const viewportHalf = window.innerWidth / 2;
+            allSlides.forEach(slide => {
+                const img = slide.querySelector('.project-card img');
+                if (img) {
+                    const rect = slide.getBoundingClientRect();
+                    const slideCenter = rect.left + rect.width / 2;
+                    let distFromCenter = (slideCenter - viewportHalf) / viewportHalf;
+                    distFromCenter = Math.max(-1, Math.min(1, distFromCenter));
+
+                    // -distFromCenter ensures background moves opposite to front scroll
+                    img.style.setProperty('--parallax-x', `${-distFromCenter * 7.5}%`);
+                }
+            });
+
             requestAnimationFrame(animate);
         }
 
