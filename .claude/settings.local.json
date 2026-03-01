@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(cd:*)",
-      "Bash(tail:*)"
+      "Bash(tail:*)",
+      "Bash(cd /c/Users/tahet/Documents/GitHub/hariss-web && npx @11ty/eleventy 2>&1)"
     ]
   }
 }
