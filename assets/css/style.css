@@ -211,7 +211,7 @@ html.lenis {
     object-position: left top;
     transition-property: transform;
     transition-duration: 700ms;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .project-card:hover img {
