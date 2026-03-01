@@ -6,7 +6,10 @@
       "url": "/projet/au-petit-velo/",
       "image": "/assets/images/Capture d'écran 2026-02-28 192658.jpg",
       "image_alt": "Atelier vélo",
-      "tags": ["One page", "Moderne"]
+      "tags": [
+        "One page",
+        "Moderne"
+      ]
     },
     {
       "name": "Artisan plombier",
@@ -14,7 +17,11 @@
       "url": "/projet/l-artisan-plombier/accueil.html",
       "image": "/projet/images-projets/Cover-artisan-plombier-1024x618.jpg",
       "image_alt": "Artisan plombier",
-      "tags": ["Services", "Artisan", "Dépannage"]
+      "tags": [
+        "Services",
+        "Artisan",
+        "Dépannage"
+      ]
     },
     {
       "name": "Oasis",
@@ -22,7 +29,23 @@
       "url": "projet/Oasis/parisian_oasis_home.html",
       "image": "/assets/images/Capture d'écran oasis.jpg",
       "image_alt": "Oasis aperçu",
-      "tags": ["Prestige", "Multi-pages", "Immersif"]
+      "tags": [
+        "Prestige",
+        "Multi-pages",
+        "Immersif"
+      ]
+    },
+    {
+      "name": "Maison dorée",
+      "description": "Site one-page d'une boulangerie artisanale fondée en 1987, dédiée à la tradition française.",
+      "url": "projet/Maison-Dorée/accueil.html",
+      "image": "/assets/images/Capture d’écran 2026-03-01 020227.jpg",
+      "image_alt": "Maison Dorée",
+      "tags": [
+        "Tradition",
+        "Expertise",
+        "Française"
+      ]
     }
   ]
 }
