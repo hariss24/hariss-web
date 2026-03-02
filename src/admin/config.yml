@@ -68,8 +68,6 @@ collections:
           # Stats
           - {label: "Stat 1 — Chiffre (ex: 3+)", name: "stat_1_number", widget: "string"}
           - {label: "Stat 1 — Label", name: "stat_1_label", widget: "string"}
-          - {label: "Stat 2 — Chiffre (ex: 20+)", name: "stat_2_number", widget: "string"}
-          - {label: "Stat 2 — Label", name: "stat_2_label", widget: "string"}
           # Bio
           - {label: "Bio — Titre accroche 1", name: "bio_headline_1", widget: "string"}
           - {label: "Bio — Titre accroche 2 (grisé)", name: "bio_headline_2", widget: "string"}
