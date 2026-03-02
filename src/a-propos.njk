@@ -2,6 +2,82 @@
 layout: base.njk
 title: À Propos | Hariss HAFEJI — Profil Hybride Tech × Créativité
 description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI, CMS, développement web — plusieurs cordes à son arc pour des résultats concrets.
+
+hero_tagline_1: "Ni purement dev. Ni purement marketeur."
+hero_tagline_2: "C'est là que le web devient intéressant."
+
+stat_1_number: "3+"
+stat_1_label: "Années d'expérience"
+stat_2_number: "20+"
+stat_2_label: "Projets livrés"
+
+bio_headline_1: "J'ai toujours gravitié autour de la tech."
+bio_headline_2: "Mais je refusais"
+bio_headline_3: "de rester dans une case."
+bio_text_1: "Coder, c'est bien. Mais concevoir l'expérience utilisateur, travailler le référencement, imaginer une identité visuelle qui frappe — c'est ce qui m'a toujours attiré."
+bio_text_2: "Alors j'ai tiré sur plusieurs fils à la fois. Le développement, le design, le SEO, la stratégie marketing. Pas par hasard — par choix."
+bio_text_3_a: "Aujourd'hui, mon profil hybride"
+bio_text_3_b: "tech × marketing"
+bio_text_3_c: "est ma valeur ajoutée — et surtout celle de mes clients."
+bio_signature: "Hariss HAFEJI — Freelance web hybride"
+
+obsessions:
+  - number: "01"
+    title: "La"
+    italic: "vitesse."
+    description: "Un site lent, c'est un client perdu. La performance n'est pas une option — c'est la fondation. Chaque milliseconde compte pour le SEO, l'UX, et la crédibilité de votre marque."
+  - number: "02"
+    title: "L'"
+    italic: "intention."
+    description: "Chaque pixel doit servir un but. Un bouton, un titre, un espace blanc — rien n'est là par hasard. L'intention derrière chaque choix graphique, c'est ce qui distingue un site qui convertit d'un site qui décore."
+  - number: "03"
+    title: "L'"
+    italic: "artisanat."
+    description: "Le web mérite mieux que les templates génériques. Chaque projet que je livre est pensé, conçu et développé sur-mesure. Pas de copier-coller. Pas de compromis. Un travail d'orfèvre."
+  - number: "04"
+    title: "L'"
+    italic: "autonomie."
+    description: "Vous ne devez pas dépendre de moi pour mettre à jour votre site. Mon objectif : vous livrer un outil que vous maîtrisez totalement. Un CMS simple, une prise en main claire, et vous voilà autonomes."
+
+cta_description: "Si vous cherchez quelqu'un qui comprend autant le code que la conversion, autant le design que le référencement — on devrait se parler."
+
+skills_technique:
+  - name: "HTML / CSS / JS"
+    tag: "Core"
+  - name: "Tailwind CSS"
+    tag: "Framework"
+  - name: "Eleventy (11ty)"
+    tag: "SSG"
+  - name: "WordPress"
+    tag: "CMS"
+  - name: "CMS Headless"
+    tag: "JAMstack"
+  - name: "Shopify"
+    tag: "E-commerce"
+  - name: "Vercel / cPanel"
+    tag: "Hébergement"
+
+skills_visuel:
+  - name: "Figma"
+    tag: "UI / UX"
+  - name: "Canva"
+    tag: "Graphisme"
+  - name: "Adobe Lightroom"
+    tag: "Photo"
+  - name: "Photoshop"
+    tag: "Retouche"
+
+skills_strategie:
+  - name: "SEO Technique"
+    tag: "GSC"
+  - name: "SEO Local"
+    tag: "BrightLocal"
+  - name: "Rédaction web"
+    tag: "YourTextGuru"
+  - name: "Analytics"
+    tag: "Umami / GA"
+  - name: "Rédaction IA"
+    tag: "Stratégie"
 ---
 
 <!-- =============================================
@@ -17,7 +93,7 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
         </div>
     </div>
 
-    <!-- Etiquette -->
+    <!-- Étiquette -->
     <div class="relative z-10 reveal-text">
         <p class="font-inter text-accent uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold">
             <span class="line block">( Le profil hybride )</span>
@@ -41,24 +117,21 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
         <!-- Tagline -->
         <div class="lg:col-span-5 reveal-text">
             <p class="font-inter text-gray-400 font-light text-base md:text-xl leading-relaxed">
-                <span class="line block">Ni purement dev. Ni purement marketeur.</span>
-                <span class="line block">C'est là que le web devient intéressant.</span>
+                <span class="line block">{{ hero_tagline_1 }}</span>
+                <span class="line block">{{ hero_tagline_2 }}</span>
             </p>
         </div>
 
         <!-- Photo de profil encadrée -->
         <div class="lg:col-span-4 lg:col-start-9 flex lg:justify-end reveal-text">
             <div class="line relative w-56 h-72 md:w-64 md:h-80">
-                <!-- Cadre décalé accent -->
                 <div class="absolute inset-0 border border-accent/50 translate-x-3 translate-y-3 z-0 pointer-events-none"></div>
-                <!-- Photo -->
                 <div class="absolute inset-0 overflow-hidden z-10 grayscale hover:grayscale-0 transition-all duration-700 cursor-hover">
                     <img
                         src="/assets/images/HAFEJI%20Hariss_photo-identit%C3%A9.jpg"
                         alt="Hariss HAFEJI — Développeur freelance"
                         class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700">
                 </div>
-                <!-- Label photo -->
                 <div class="absolute bottom-0 left-0 z-20 -translate-x-[1px] translate-y-[1px] bg-pitch px-3 py-1">
                     <p class="font-syne text-[10px] uppercase tracking-[0.2em] text-white/40">Hariss HAFEJI</p>
                 </div>
@@ -79,7 +152,6 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
      ============================================= -->
 <section class="relative py-32 md:py-40 px-6 md:px-12 bg-white text-black overflow-hidden w-full">
 
-    <!-- Numéro chapitre en fond -->
     <div class="absolute -top-8 right-0 font-syne font-bold leading-none text-black/[0.035] select-none pointer-events-none"
         style="font-size: 28vw;">01</div>
 
@@ -101,15 +173,15 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
             <div class="lg:col-span-3 flex flex-col gap-10 reveal-text">
                 <div class="border-t border-black/10 pt-6">
                     <p class="font-syne text-5xl md:text-6xl font-bold text-black tracking-tighter">
-                        <span class="line block">3+</span>
+                        <span class="line block">{{ stat_1_number }}</span>
                     </p>
-                    <p class="font-inter text-xs text-gray-400 mt-2 uppercase tracking-widest">Années d'expérience</p>
+                    <p class="font-inter text-xs text-gray-400 mt-2 uppercase tracking-widest">{{ stat_1_label }}</p>
                 </div>
                 <div class="border-t border-black/10 pt-6">
                     <p class="font-syne text-5xl md:text-6xl font-bold text-black tracking-tighter">
-                        <span class="line block">20+</span>
+                        <span class="line block">{{ stat_2_number }}</span>
                     </p>
-                    <p class="font-inter text-xs text-gray-400 mt-2 uppercase tracking-widest">Projets livrés</p>
+                    <p class="font-inter text-xs text-gray-400 mt-2 uppercase tracking-widest">{{ stat_2_label }}</p>
                 </div>
                 <div class="border-t border-accent/30 pt-6">
                     <p class="font-syne text-5xl md:text-6xl font-bold text-accent tracking-tighter">
@@ -123,27 +195,27 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
             <div class="lg:col-span-8 lg:col-start-5">
 
                 <p class="font-syne text-2xl md:text-3xl lg:text-4xl font-bold text-black tracking-tight leading-snug mb-10 reveal-text">
-                    <span class="line block">J'ai toujours gravitié autour de la tech.</span>
-                    <span class="line block text-gray-300">Mais je refusais</span>
-                    <span class="line block font-serif italic font-normal text-black">de rester dans une case.</span>
+                    <span class="line block">{{ bio_headline_1 }}</span>
+                    <span class="line block text-gray-300">{{ bio_headline_2 }}</span>
+                    <span class="line block font-serif italic font-normal text-black">{{ bio_headline_3 }}</span>
                 </p>
 
                 <div class="space-y-6 font-inter text-base md:text-lg text-gray-500 leading-relaxed font-light reveal-text">
+                    <p><span class="line block">{{ bio_text_1 }}</span></p>
+                    <p><span class="line block">{{ bio_text_2 }}</span></p>
                     <p>
-                        <span class="line block">Coder, c'est bien. Mais concevoir l'expérience utilisateur, travailler le référencement, imaginer une identité visuelle qui frappe — c'est ce qui m'a toujours attiré.</span>
-                    </p>
-                    <p>
-                        <span class="line block">Alors j'ai tiré sur plusieurs fils à la fois. Le développement, le design, le SEO, la stratégie marketing. Pas par hasard — par choix.</span>
-                    </p>
-                    <p>
-                        <span class="line block">Aujourd'hui, mon profil hybride <strong class="text-black font-semibold">tech × marketing</strong> est ma valeur ajoutée — et surtout celle de mes clients.</span>
+                        <span class="line block">
+                            {{ bio_text_3_a }}
+                            <strong class="text-black font-semibold">{{ bio_text_3_b }}</strong>
+                            {{ bio_text_3_c }}
+                        </span>
                     </p>
                 </div>
 
                 <div class="mt-12 flex items-center gap-4 reveal-text">
                     <div class="w-6 h-[1px] bg-accent flex-shrink-0"></div>
                     <p class="font-serif italic text-gray-400 text-lg">
-                        <span class="line block">Hariss HAFEJI — Freelance web hybride</span>
+                        <span class="line block">{{ bio_signature }}</span>
                     </p>
                 </div>
             </div>
@@ -157,7 +229,6 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
      ============================================= -->
 <section class="relative py-32 md:py-40 px-6 md:px-12 bg-pitch text-white overflow-hidden w-full grid-lines">
 
-    <!-- Numéro chapitre en fond -->
     <div class="absolute -top-8 left-0 font-syne font-bold leading-none text-white/[0.03] select-none pointer-events-none"
         style="font-size: 28vw;">02</div>
 
@@ -179,7 +250,6 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
             </p>
         </div>
 
-        <!-- Grille 3 colonnes -->
         <div class="grid grid-cols-1 md:grid-cols-3 border-y border-white/10">
 
             <!-- Colonne Technique -->
@@ -188,34 +258,12 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
                     <span class="line block">Technique</span>
                 </p>
                 <ul class="space-y-0">
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">HTML / CSS / JS</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">Core</span>
+                    {% for skill in skills_technique %}
+                    <li class="line flex items-center justify-between py-4 {% if not loop.last %}border-b border-white/5{% endif %}">
+                        <span class="font-syne text-sm uppercase tracking-wider text-white">{{ skill.name }}</span>
+                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">{{ skill.tag }}</span>
                     </li>
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Tailwind CSS</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">Framework</span>
-                    </li>
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Eleventy (11ty)</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">SSG</span>
-                    </li>
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">WordPress</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">CMS</span>
-                    </li>
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">CMS Headless</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">JAMstack</span>
-                    </li>
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Shopify</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">E-commerce</span>
-                    </li>
-                    <li class="line flex items-center justify-between py-4">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Vercel / cPanel</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">Hébergement</span>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
 
@@ -225,22 +273,12 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
                     <span class="line block">Visuel</span>
                 </p>
                 <ul class="space-y-0">
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Figma</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">UI / UX</span>
+                    {% for skill in skills_visuel %}
+                    <li class="line flex items-center justify-between py-4 {% if not loop.last %}border-b border-white/5{% endif %}">
+                        <span class="font-syne text-sm uppercase tracking-wider text-white">{{ skill.name }}</span>
+                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">{{ skill.tag }}</span>
                     </li>
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Canva</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">Graphisme</span>
-                    </li>
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Adobe Lightroom</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">Photo</span>
-                    </li>
-                    <li class="line flex items-center justify-between py-4">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Photoshop</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">Retouche</span>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
 
@@ -250,26 +288,12 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
                     <span class="line block">Stratégie</span>
                 </p>
                 <ul class="space-y-0">
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">SEO Technique</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">GSC</span>
+                    {% for skill in skills_strategie %}
+                    <li class="line flex items-center justify-between py-4 {% if not loop.last %}border-b border-white/5{% endif %}">
+                        <span class="font-syne text-sm uppercase tracking-wider text-white">{{ skill.name }}</span>
+                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">{{ skill.tag }}</span>
                     </li>
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">SEO Local</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">BrightLocal</span>
-                    </li>
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Rédaction web</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">YourTextGuru</span>
-                    </li>
-                    <li class="line flex items-center justify-between py-4 border-b border-white/5">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Analytics</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">Umami / GA</span>
-                    </li>
-                    <li class="line flex items-center justify-between py-4">
-                        <span class="font-syne text-sm uppercase tracking-wider text-white">Rédaction IA</span>
-                        <span class="font-inter text-[10px] text-gray-600 uppercase tracking-widest">Stratégie</span>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
 
@@ -285,83 +309,38 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
 
     <div class="sticky top-0 h-screen w-full flex items-center overflow-hidden">
 
-        <!-- Label chapitre fixe -->
         <div class="absolute top-8 left-6 md:left-12 z-30 reveal-text">
             <p class="font-inter text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">
                 <span class="line">( Chapter 03 )</span>
             </p>
         </div>
 
-        <!-- Barre de progression -->
         <div class="absolute top-1/2 left-6 md:left-12 transform -translate-y-1/2 w-[2px] h-24 bg-black/10 z-30 hidden md:block">
             <div id="about-progress"
                 class="w-full bg-accent absolute top-0 left-0 transition-none will-change-[height]"
                 style="height: 0%;"></div>
         </div>
 
-        <!-- Numéro chapitre en fond -->
         <div class="absolute bottom-0 right-0 font-syne font-bold leading-none text-black/[0.035] select-none pointer-events-none translate-y-[20%]"
             style="font-size: 28vw;">03</div>
 
-        <!-- Track horizontal -->
         <div id="about-track" class="w-max h-full flex items-center will-change-transform"
             style="transform: translate3d(0,0,0);">
 
-            <!-- Obsession 01 — La vitesse -->
-            <div class="w-screen h-full flex-shrink-0 flex items-center justify-center about-step px-6 md:px-24 lg:px-32">
-                <div class="max-w-3xl w-full about-content transition-transform duration-300">
+            {% for obs in obsessions %}
+            <div class="w-screen h-full flex-shrink-0 flex items-center justify-center about-step {% if not loop.first %}opacity-20{% endif %} px-6 md:px-24 lg:px-32">
+                <div class="max-w-3xl w-full about-content {% if not loop.first %}scale-[0.85]{% endif %} transition-transform duration-300">
                     <p class="font-syne text-accent text-lg md:text-xl mb-4 md:mb-6 uppercase tracking-widest font-bold">
-                        01. L'obsession</p>
+                        {{ obs.number }}. L'obsession</p>
                     <h3 class="font-syne text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter mb-8 leading-none text-black">
-                        La
-                        <br><span class="font-serif italic font-normal lowercase tracking-normal text-black/20">vitesse.</span>
+                        {{ obs.title }}
+                        <br><span class="font-serif italic font-normal lowercase tracking-normal text-black/20">{{ obs.italic }}</span>
                     </h3>
                     <p class="font-inter text-base md:text-xl text-gray-500 font-light max-w-xl leading-relaxed">
-                        Un site lent, c'est un client perdu. La performance n'est pas une option — c'est la fondation. Chaque milliseconde compte pour le SEO, l'UX, et la crédibilité de votre marque.</p>
+                        {{ obs.description }}</p>
                 </div>
             </div>
-
-            <!-- Obsession 02 — L'intention -->
-            <div class="w-screen h-full flex-shrink-0 flex items-center justify-center about-step opacity-20 px-6 md:px-24 lg:px-32">
-                <div class="max-w-3xl w-full about-content scale-[0.85] transition-transform duration-300">
-                    <p class="font-syne text-accent text-lg md:text-xl mb-4 md:mb-6 uppercase tracking-widest font-bold">
-                        02. L'obsession</p>
-                    <h3 class="font-syne text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter mb-8 leading-none text-black">
-                        L'
-                        <br><span class="font-serif italic font-normal lowercase tracking-normal text-black/20">intention.</span>
-                    </h3>
-                    <p class="font-inter text-base md:text-xl text-gray-500 font-light max-w-xl leading-relaxed">
-                        Chaque pixel doit servir un but. Un bouton, un titre, un espace blanc — rien n'est là par hasard. L'intention derrière chaque choix graphique, c'est ce qui distingue un site qui convertit d'un site qui décore.</p>
-                </div>
-            </div>
-
-            <!-- Obsession 03 — L'artisanat -->
-            <div class="w-screen h-full flex-shrink-0 flex items-center justify-center about-step opacity-20 px-6 md:px-24 lg:px-32">
-                <div class="max-w-3xl w-full about-content scale-[0.85] transition-transform duration-300">
-                    <p class="font-syne text-accent text-lg md:text-xl mb-4 md:mb-6 uppercase tracking-widest font-bold">
-                        03. L'obsession</p>
-                    <h3 class="font-syne text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter mb-8 leading-none text-black">
-                        L'
-                        <br><span class="font-serif italic font-normal lowercase tracking-normal text-black/20">artisanat.</span>
-                    </h3>
-                    <p class="font-inter text-base md:text-xl text-gray-500 font-light max-w-xl leading-relaxed">
-                        Le web mérite mieux que les templates génériques. Chaque projet que je livre est pensé, conçu et développé sur-mesure. Pas de copier-coller. Pas de compromis. Un travail d'orfèvre.</p>
-                </div>
-            </div>
-
-            <!-- Obsession 04 — L'autonomie -->
-            <div class="w-screen h-full flex-shrink-0 flex items-center justify-center about-step opacity-20 px-6 md:px-24 lg:px-32">
-                <div class="max-w-3xl w-full about-content scale-[0.85] transition-transform duration-300">
-                    <p class="font-syne text-accent text-lg md:text-xl mb-4 md:mb-6 uppercase tracking-widest font-bold">
-                        04. L'obsession</p>
-                    <h3 class="font-syne text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter mb-8 leading-none text-black">
-                        L'
-                        <br><span class="font-serif italic font-normal lowercase tracking-normal text-black/20">autonomie.</span>
-                    </h3>
-                    <p class="font-inter text-base md:text-xl text-gray-500 font-light max-w-xl leading-relaxed">
-                        Vous ne devez pas dépendre de moi pour mettre à jour votre site. Mon objectif : vous livrer un outil que vous maîtrisez totalement. Un CMS simple, une prise en main claire, et vous voilà autonomes.</p>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
     </div>
@@ -373,7 +352,6 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
      ============================================= -->
 <section class="relative py-32 md:py-40 px-6 md:px-12 bg-pitch text-white overflow-hidden w-full">
 
-    <!-- Numéro chapitre en fond -->
     <div class="absolute bottom-0 right-0 font-syne font-bold leading-none text-white/[0.03] select-none pointer-events-none translate-y-[15%]"
         style="font-size: 28vw;">04</div>
 
@@ -391,8 +369,7 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
         </h2>
 
         <p class="font-inter text-gray-400 font-light text-lg md:text-xl max-w-lg mb-16 md:mb-20 leading-relaxed reveal-text">
-            <span class="line block">Si vous cherchez quelqu'un qui comprend autant le code que la conversion, autant le design que le référencement —</span>
-            <span class="line block mt-2 text-white">on devrait se parler.</span>
+            <span class="line block">{{ cta_description }}</span>
         </p>
 
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 reveal-text">
@@ -439,27 +416,27 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
 
 <script>
 (function () {
-    const section  = document.getElementById('about-obsessions');
-    const track    = document.getElementById('about-track');
-    const progress = document.getElementById('about-progress');
-    const steps    = document.querySelectorAll('.about-step');
+    var section  = document.getElementById('about-obsessions');
+    var track    = document.getElementById('about-track');
+    var progress = document.getElementById('about-progress');
+    var steps    = document.querySelectorAll('.about-step');
 
     if (!section || !track || steps.length === 0) return;
 
     function updateScroll() {
-        const rect = section.getBoundingClientRect();
-        const vh   = window.innerHeight;
+        var rect = section.getBoundingClientRect();
+        var vh   = window.innerHeight;
 
         if (rect.top <= 0 && rect.bottom >= vh) {
-            const total    = rect.height - vh;
-            const scrolled = -rect.top;
-            const p        = Math.max(0, Math.min(1, scrolled / total));
-            const maxVw    = (steps.length - 1) * 100;
+            var total    = rect.height - vh;
+            var scrolled = -rect.top;
+            var p        = Math.max(0, Math.min(1, scrolled / total));
+            var maxVw    = (steps.length - 1) * 100;
 
             track.style.transform = 'translate3d(-' + (p * maxVw) + 'vw, 0, 0)';
             if (progress) progress.style.height = (p * 100) + '%';
 
-            const stepFloat = p * (steps.length - 1);
+            var stepFloat = p * (steps.length - 1);
             steps.forEach(function (step, idx) {
                 var dist    = Math.abs(stepFloat - idx);
                 var opacity = Math.max(0.1, 1 - dist * 0.9);
@@ -491,14 +468,12 @@ description: Développeur freelance au profil hybride tech/marketing. SEO, UX/UI
         }
     }
 
-    // Lenis scroll event
     if (typeof lenis !== 'undefined') {
         lenis.on('scroll', updateScroll);
     } else {
         window.addEventListener('scroll', updateScroll, { passive: true });
     }
 
-    // Initial call
     updateScroll();
 })();
 </script>
