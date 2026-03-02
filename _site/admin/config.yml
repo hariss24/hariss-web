@@ -54,6 +54,64 @@ collections:
                 widget: "list"
                 field: {label: "Feature", name: "feature", widget: "string"}
 
+      # ── Page À propos ──
+      - label: "Page À propos"
+        name: "a-propos"
+        file: "src/a-propos.njk"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "base.njk"}
+          - {label: "Titre SEO", name: "title", widget: "string"}
+          - {label: "Description SEO", name: "description", widget: "text"}
+          # Hero
+          - {label: "Hero — Tagline ligne 1", name: "hero_tagline_1", widget: "string"}
+          - {label: "Hero — Tagline ligne 2", name: "hero_tagline_2", widget: "string"}
+          # Stats
+          - {label: "Stat 1 — Chiffre (ex: 3+)", name: "stat_1_number", widget: "string"}
+          - {label: "Stat 1 — Label", name: "stat_1_label", widget: "string"}
+          - {label: "Stat 2 — Chiffre (ex: 20+)", name: "stat_2_number", widget: "string"}
+          - {label: "Stat 2 — Label", name: "stat_2_label", widget: "string"}
+          # Bio
+          - {label: "Bio — Titre accroche 1", name: "bio_headline_1", widget: "string"}
+          - {label: "Bio — Titre accroche 2 (grisé)", name: "bio_headline_2", widget: "string"}
+          - {label: "Bio — Titre accroche 3 (italique)", name: "bio_headline_3", widget: "string"}
+          - {label: "Bio — Paragraphe 1", name: "bio_text_1", widget: "text"}
+          - {label: "Bio — Paragraphe 2", name: "bio_text_2", widget: "text"}
+          - {label: "Bio — Paragraphe 3 (début)", name: "bio_text_3_a", widget: "string"}
+          - {label: "Bio — Paragraphe 3 (mot en gras)", name: "bio_text_3_b", widget: "string"}
+          - {label: "Bio — Paragraphe 3 (fin)", name: "bio_text_3_c", widget: "string"}
+          - {label: "Bio — Signature", name: "bio_signature", widget: "string"}
+          # Obsessions (Scrollytelling)
+          - label: "Obsessions (Chapter 03)"
+            name: "obsessions"
+            widget: "list"
+            max: 4
+            fields:
+              - {label: "Numéro (ex: 01)", name: "number", widget: "string"}
+              - {label: "Titre (ex: La)", name: "title", widget: "string"}
+              - {label: "Titre italique (ex: vitesse.)", name: "italic", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          # CTA
+          - {label: "CTA — Description", name: "cta_description", widget: "text"}
+          # Skills
+          - label: "Skills — Technique"
+            name: "skills_technique"
+            widget: "list"
+            fields:
+              - {label: "Nom", name: "name", widget: "string"}
+              - {label: "Tag / Catégorie", name: "tag", widget: "string"}
+          - label: "Skills — Visuel"
+            name: "skills_visuel"
+            widget: "list"
+            fields:
+              - {label: "Nom", name: "name", widget: "string"}
+              - {label: "Tag / Catégorie", name: "tag", widget: "string"}
+          - label: "Skills — Stratégie"
+            name: "skills_strategie"
+            widget: "list"
+            fields:
+              - {label: "Nom", name: "name", widget: "string"}
+              - {label: "Tag / Catégorie", name: "tag", widget: "string"}
+
       # ── Page Contact ──
       - label: "Page Contact"
         name: "contact"
