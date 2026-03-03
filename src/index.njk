@@ -238,7 +238,7 @@ pricing:
                                 {% for feature in plan.features %}
                                 <li class="flex items-center gap-3"><span
                                         class="w-1 h-1 bg-{% if plan.badge %}current{% else %}white{% endif %} rounded-full"></span>
-                                    {{ feature }}</li>
+                                    <span class="{% if 'Tout' in feature %}text-accent font-semibold{% endif %}">{{ feature }}</span></li>
                                 {% endfor %}
                             </ul>
                         </div>

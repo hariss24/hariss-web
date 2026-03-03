@@ -47,15 +47,9 @@ pricing_plans:
           - text: CMS Headless — modifiez vos textes et images seul
             type: inclus
             option_price: ''
-          - text: HTTPS & SSL inclus
-            type: inclus
-            option_price: ''
       - cat_name: Design & Structure
         items:
           - text: Site one-page (jusqu'à 6 sections)
-            type: inclus
-            option_price: ''
-          - text: Design UI/UX sur-mesure
             type: inclus
             option_price: ''
           - text: Responsive — adapté mobile et tablette
@@ -294,7 +288,7 @@ cta_button_text: Demander un devis gratuit
                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M5 13l4 4L19 7" />
-                                            </svg> {{ item.text }}</li>
+                                            </svg> <span class="{% if 'Tout' in item.text %}text-accent font-semibold{% endif %}">{{ item.text }}</span></li>
                                         {% endif %}
                                         {% endfor %}
                                     </ul>
