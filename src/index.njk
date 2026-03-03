@@ -82,7 +82,7 @@ pricing:
                         <!-- Magnetic CTA -->
                         <div class="reveal-text">
                             <div class="line">
-                                <a href="contact.html" class="btn-magnetic cursor-hover magnetic"
+                                <a href="/contact/" class="btn-magnetic cursor-hover magnetic"
                                     data-magnetic-strength="50">
                                     <span class="relative z-10 flex items-center gap-3">
                                         {{ hero_cta_text }}
@@ -215,7 +215,7 @@ pricing:
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-y border-white/20">
 
                         {% for plan in pricing %}
-                        <div class="group {% if not loop.last %}border-b md:border-b-0 md:border-r{% endif %} border-white/20 p-8 md:p-10 lg:p-16 {% if plan.badge %}hover:bg-accent text-white hover:text-white{% else %}hover:bg-surface{% endif %} transition-colors cursor-hover magnetic-area"
+                        <div class="group border-b md:border-b-0 md:border-r border-white/20 p-8 md:p-10 lg:p-16 {% if plan.badge %}hover:bg-accent text-white hover:text-white{% else %}hover:bg-surface{% endif %} transition-colors cursor-hover magnetic-area"
                             data-magnetic-strength="5">
                             <div class="flex justify-between items-center mb-12 md:mb-16">
                                 <h3 class="font-syne text-xl md:text-2xl font-bold {% if not plan.badge %}text-white{% endif %} uppercase">{{ plan.name }}{% if plan.badge %} <span
@@ -241,11 +241,36 @@ pricing:
                         </div>
                         {% endfor %}
 
+                        <!-- Colonne Sur-mesure / E-commerce -->
+                        <div class="group p-8 md:p-10 lg:p-16 hover:bg-surface transition-colors cursor-hover magnetic-area" data-magnetic-strength="5">
+                            <div class="flex justify-between items-center mb-12 md:mb-16">
+                                <h3 class="font-syne text-xl md:text-2xl font-bold text-white uppercase">Sur-mesure</h3>
+                                <div class="w-3 h-3 rounded-full border border-accent/50 group-hover:bg-accent group-hover:border-accent transition-colors"></div>
+                            </div>
+                            <div class="mb-12 md:mb-16">
+                                <p class="text-xs md:text-sm font-inter text-gray-400 uppercase tracking-widest mb-4">Entièrement</p>
+                                <p class="font-syne text-5xl md:text-6xl font-bold text-white tracking-tighter group-hover:text-accent transition-colors">Sur<span class="text-2xl md:text-3xl font-serif italic font-normal tracking-normal"> devis</span></p>
+                                <p class="mt-4 font-serif italic text-gray-500">Boutique Shopify & projets spécifiques</p>
+                            </div>
+                            <ul class="font-inter text-sm text-gray-400 space-y-4 mb-10">
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>Boutique e-commerce Shopify</li>
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>Périmètre & fonctionnalités libres</li>
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>Intégrations sur-mesure</li>
+                                <li class="flex items-center gap-3"><span class="w-1 h-1 bg-white rounded-full"></span>Premier échange offert</li>
+                            </ul>
+                            <a href="/e-commerce/" class="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-widest text-accent hover:text-white transition-colors cursor-hover">
+                                Voir l'offre e-commerce
+                                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+
                     </div>
 
                     <!-- CTA Buttons -->
                     <div class="mt-16 md:mt-24 flex flex-col md:flex-row justify-center items-center gap-6">
-                        <a href="services.html"
+                        <a href="/services/"
                             class="group relative inline-flex items-center justify-center px-8 py-[1.25rem] border border-white/20 text-xs md:text-sm font-syne uppercase tracking-wider text-white overflow-hidden rounded-full cursor-hover magnetic hover:border-accent transition-colors duration-500"
                             data-magnetic-strength="50">
                             <span
@@ -256,7 +281,7 @@ pricing:
                                 class="absolute inset-0 bg-accent translate-y-[101%] group-hover:translate-y-[0%] transition-transform duration-500 ease-out z-0">
                             </div>
                         </a>
-                        <a href="contact.html" class="btn-magnetic cursor-hover magnetic" data-magnetic-strength="50">
+                        <a href="/contact/" class="btn-magnetic cursor-hover magnetic" data-magnetic-strength="50">
                             <span class="relative z-10 flex items-center gap-3">
                                 Demander un devis gratuit
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -277,33 +302,3 @@ pricing:
                 </div>
             </section>
 
-            <!-- Bande Shopify / E-commerce -->
-            <section class="relative w-full bg-accent overflow-hidden">
-                <div class="container mx-auto max-w-6xl px-6 md:px-12 py-16 md:py-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-                    <div class="reveal-text">
-                        <p class="font-inter text-white/70 uppercase tracking-[0.3em] text-[10px] font-bold mb-3">
-                            <span class="line block">( Vous vendez des produits ? )</span>
-                        </p>
-                        <h2 class="font-syne text-3xl md:text-5xl font-bold uppercase tracking-tighter text-white leading-tight reveal-text">
-                            <span class="line block">J'ai une offre</span>
-                            <span class="line block font-serif italic font-normal normal-case tracking-normal text-white/60">pour vous.</span>
-                        </h2>
-                        <p class="font-inter text-white/80 font-light text-base md:text-lg mt-4 max-w-md reveal-text">
-                            <span class="line block">Boutiques Shopify sur-mesure pour les professionnels du commerce. À partir de 990 €.</span>
-                        </p>
-                    </div>
-                    <div class="reveal-text flex-shrink-0">
-                        <a href="/e-commerce/"
-                            class="line group relative inline-flex items-center justify-center px-8 py-4 border border-white/40 text-xs font-syne uppercase tracking-wider text-white overflow-hidden cursor-hover magnetic rounded-full hover:border-white transition-colors duration-500"
-                            data-magnetic-strength="40">
-                            <span class="relative z-10 transition-colors group-hover:text-accent font-bold flex items-center gap-3">
-                                Voir l'offre e-commerce
-                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </span>
-                            <div class="absolute inset-0 bg-white translate-y-[101%] group-hover:translate-y-[0%] transition-transform duration-500 ease-out z-0"></div>
-                        </a>
-                    </div>
-                </div>
-            </section>
