@@ -44,32 +44,29 @@ pricing_plans:
           - text: Hébergement web & Nom de domaine (1 an)
             type: inclus
             option_price: ''
-          - text: Intégration CMS Headless (Éditeur de texte/image)
+          - text: CMS Headless — modifiez vos textes et images seul
             type: inclus
             option_price: ''
-          - text: Installation & sécurisation de base (HTTPS, SSL)
+          - text: HTTPS & SSL inclus
             type: inclus
             option_price: ''
-      - cat_name: Design & Optimisation
+      - cat_name: Design & Structure
         items:
-          - text: Structure One-Page (Jusqu'à 6 sections)
+          - text: Site one-page (jusqu'à 6 sections)
             type: inclus
             option_price: ''
-          - text: Design UI/UX épuré et moderne
+          - text: Design UI/UX sur-mesure
             type: inclus
             option_price: ''
-          - text: Intégration de vos textes et images
-            type: inclus
-            option_price: ''
-          - text: Adaptabilité basique (Mobile-friendly)
+          - text: Responsive — adapté mobile et tablette
             type: inclus
             option_price: ''
       - cat_name: Fonctionnalités & SEO
         items:
-          - text: Formulaire de contact basique
+          - text: Formulaire de contact
             type: inclus
             option_price: ''
-          - text: Optimisation SEO fondamentale
+          - text: SEO de base (balises, structure)
             type: inclus
             option_price: ''
   - name: Pro
@@ -78,82 +75,31 @@ pricing_plans:
     subtitle: Site Vitrine (jusqu'à 5 pages)
     hover_style: accent
     categories:
-      - cat_name: Installation & Configuration
+      - cat_name: Pages & Design
         items:
-          - text: Hébergement web & Nom de domaine (1 an)
+          - text: Tout l'offre Essentiel inclus
             type: inclus
             option_price: ''
-          - text: Intégration CMS Headless (Édition de base)
+          - text: Jusqu'à 5 pages distinctes
             type: inclus
             option_price: ''
-          - text: Intégration Google Analytics (suivi de trafic)
-            type: inclus
-            option_price: ''
-      - cat_name: Design & Optimisation
-        items:
-          - text: Jusqu'à 5 pages distinctes (Accueil, Services...)
-            type: inclus
-            option_price: ''
-          - text: Direction artistique Web sur-mesure
-            type: inclus
-            option_price: ''
-          - text: Intégration avancée et mise en page dynamique
-            type: inclus
-            option_price: ''
-          - text: Animations au défilement (Scroll animations)
+          - text: Animations au défilement (scroll)
             type: inclus
             option_price: ''
       - cat_name: Fonctionnalités & SEO
         items:
-          - text: Optimisation SEO de avancée (recherche de mots-clés, Search Console...))
+          - text: Formulaire de contact avancé & anti-spam
             type: inclus
             option_price: ''
-          - text: Formulaire de contact avancé & Sécurité
+          - text: SEO avancé (Analytics, Search Console, mots-clés)
             type: inclus
             option_price: ''
-  - name: Premium
-    badge: ''
-    price: '1290'
-    subtitle: Site Avancé / Sur-Mesure
-    hover_style: surface
-    categories:
-      - cat_name: Installation & Configuration
+      - cat_name: Accompagnement
         items:
-          - text: Hébergement web (1 an) & Domaine
+          - text: Maintenance incluse 3 mois
             type: inclus
             option_price: ''
-          - text: Performances maximales (Temps de chargement optimisé)
-            type: inclus
-            option_price: ''
-          - text: Sécurité renforcée & protection anti-spam formulaire
-            type: inclus
-            option_price: ''
-      - cat_name: Design & Optimisation
-        items:
-          - text: Architectures complexes / Nombre de pages libre
-            type: inclus
-            option_price: ''
-          - text: Éléments interactifs & Micro-animations Premium
-            type: inclus
-          - text: Parcours utilisateur (UX) optimisé pour l'interaction
-            type: inclus
-      - cat_name: Fonctionnalités & SEO
-        items:
-          - text: Stratégie SEO complète (maillage interne, GSC, Analytics avancé, suivi de positionnement..)
-            type: inclus
-            option_price: ''
-          - text: Développements sur-mesure (IA, App métier...)
-            type: inclus
-            option_price: ''
-          - text: Intégrations d'outils tiers sur-mesure
-            type: inclus
-            option_price: ''
-      - cat_name: BONUS
-        items:
-          - text: Maintenance inclus de 3 mois (ajout, modifications...)
-            type: inclus
-            option_price: ''
-          - text: Formation
+          - text: Formation à la prise en main
             type: inclus
             option_price: ''
 options:
@@ -271,7 +217,7 @@ cta_button_text: Demander un devis gratuit
                                         </svg> {{ feature }}</li>
                                     {% endfor %}
                                 </ul>
-                                <a href="contact.html" class="btn-magnetic cursor-hover magnetic pointer-events-auto"
+                                <a href="/contact/" class="btn-magnetic cursor-hover magnetic pointer-events-auto"
                                     data-magnetic-strength="20">
                                     <span class="relative z-10 flex items-center gap-3">
                                         {{ service.cta_text }}
@@ -309,7 +255,7 @@ cta_button_text: Demander un devis gratuit
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 border-y border-white/20">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 border-y border-white/20">
                         {% for plan in pricing_plans %}
                         <div class="group {{ 'border-b lg:border-b-0 lg:border-r' if not loop.last else '' }} border-white/20 p-8 md:p-10 lg:p-16 hover:bg-{{ plan.hover_style }} transition-colors cursor-hover magnetic-area {{ 'text-white hover:text-white' if plan.hover_style == 'accent' else '' }} flex flex-col"
                             data-magnetic-strength="5">
