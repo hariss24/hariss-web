@@ -11,7 +11,7 @@ eleventyExcludeFromCollections: true
   <script src="https://cloud.umami.is/script.js"
     data-website-id="6531755f-9d60-470d-a21a-3e047cc29f54"></script>
   <!-- Fallback : redirige après 3 secondes si le JS ne fonctionne pas -->
-  <meta http-equiv="refresh" content="3; url=/e-commerce">
+  <meta http-equiv="refresh" content="1; url=/e-commerce">
 </head>
 <body>
   <p>Redirection en cours...</p>
@@ -19,7 +19,7 @@ eleventyExcludeFromCollections: true
     // Attend 1.5 secondes pour que Umami enregistre la visite, puis redirige
     setTimeout(function() {
       window.location.href = "/e-commerce";
-    }, 1500);
+    }, 1000);
   </script>
 </body>
 </html>

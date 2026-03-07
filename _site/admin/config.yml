@@ -54,6 +54,57 @@ collections:
                 widget: "list"
                 field: {label: "Feature", name: "feature", widget: "string"}
 
+      # ── Page E-commerce ──
+      - label: "Page E-commerce"
+        name: "e-commerce"
+        file: "src/e-commerce.njk"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "base.njk"}
+          - {label: "Titre SEO", name: "title", widget: "string"}
+          - {label: "Description SEO", name: "description", widget: "text"}
+          # Hero
+          - {label: "Hero — Label", name: "hero_label", widget: "string"}
+          - {label: "Hero — Ligne 1", name: "hero_line1", widget: "string"}
+          - {label: "Hero — Ligne 2 (italique)", name: "hero_line2", widget: "string"}
+          - {label: "Hero — Description", name: "hero_description", widget: "text"}
+          - {label: "Hero — Texte CTA", name: "hero_cta", widget: "string"}
+          # Pourquoi Shopify
+          - {label: "Pourquoi — Label", name: "why_label", widget: "string"}
+          - {label: "Pourquoi — Titre", name: "why_title", widget: "string"}
+          - {label: "Pourquoi — Titre italique", name: "why_title_italic", widget: "string"}
+          - {label: "Pourquoi — Introduction", name: "why_intro", widget: "text"}
+          - label: "Pourquoi — 3 arguments"
+            name: "why_points"
+            widget: "list"
+            max: 3
+            fields:
+              - {label: "Titre", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          # Offre
+          - {label: "Offre — Label", name: "offer_label", widget: "string"}
+          - {label: "Offre — Titre", name: "offer_title", widget: "string"}
+          - {label: "Offre — Titre italique", name: "offer_title_italic", widget: "string"}
+          - {label: "Offre — Prix (chiffre)", name: "offer_price", widget: "string"}
+          - {label: "Offre — Sous-titre prix", name: "offer_subtitle", widget: "string"}
+          - {label: "Offre — Description", name: "offer_description", widget: "text"}
+          - label: "Offre — Ce qui est inclus"
+            name: "offer_includes"
+            widget: "list"
+            field: {label: "Item", name: "item", widget: "string"}
+          - {label: "Offre — Texte CTA", name: "offer_cta", widget: "string"}
+          # Offre de lancement
+          - {label: "Lancement — Label", name: "launch_label", widget: "string"}
+          - {label: "Lancement — Titre", name: "launch_title", widget: "string"}
+          - {label: "Lancement — Titre italique", name: "launch_title_italic", widget: "string"}
+          - {label: "Lancement — Description", name: "launch_description", widget: "text"}
+          - {label: "Lancement — Texte CTA", name: "launch_cta", widget: "string"}
+          # CTA final
+          - {label: "CTA — Label", name: "cta_label", widget: "string"}
+          - {label: "CTA — Titre", name: "cta_title", widget: "string"}
+          - {label: "CTA — Titre italique", name: "cta_title_italic", widget: "string"}
+          - {label: "CTA — Description", name: "cta_description", widget: "text"}
+          - {label: "CTA — Texte bouton", name: "cta_button", widget: "string"}
+
       # ── Page À propos ──
       - label: "Page À propos"
         name: "a-propos"
