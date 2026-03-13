@@ -116,6 +116,25 @@ document.querySelectorAll('.reveal-text').forEach(el => {
     observer.observe(el);
 });
 
+// Staggered reveal for metier tags
+const metierTags = document.querySelectorAll('.metier-tag');
+if (metierTags.length > 0) {
+    const metierObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const tags = entry.target.parentElement.querySelectorAll('.metier-tag');
+                tags.forEach((tag, i) => {
+                    setTimeout(() => {
+                        tag.classList.add('is-visible');
+                    }, i * 80);
+                });
+                metierObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    metierObserver.observe(metierTags[0]);
+}
+
 // 5. Scrollytelling Horizontal Parallax
 const methodSection = document.getElementById('methodology-scroll');
 const methodTrack = document.getElementById('method-track');
