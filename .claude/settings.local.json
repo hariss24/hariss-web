@@ -4,7 +4,8 @@
       "Bash(cd:*)",
       "Bash(tail:*)",
       "Bash(cd /c/Users/tahet/Documents/GitHub/hariss-web && npx @11ty/eleventy 2>&1)",
-      "Bash(npx:*)"
+      "Bash(npx:*)",
+      "Bash(cd \"C:/Users/tahet/Documents/GitHub/hariss-web\" && npm start)"
     ]
   }
 }
