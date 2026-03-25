@@ -365,9 +365,9 @@
             </section>
 
             <!-- Nouvelle section Méthodologie Grid -->
-            <section id="methodologie" class="snap-section min-h-[100svh] flex flex-col justify-center py-24 px-6 md:px-12 bg-[#F9F7F3] text-black relative z-20 w-full border-y border-black/5">
+            <section id="methodologie" class="snap-section min-h-[100svh] flex flex-col justify-center py-16 md:py-24 px-6 md:px-12 bg-[#F9F7F3] text-black relative z-20 w-full border-y border-black/5">
                 <div class="container mx-auto max-w-6xl">
-                    <div class="text-center mb-16 md:mb-20">
+                    <div class="text-center mb-8 md:mb-20">
                         <p class="text-xs md:text-sm font-bold uppercase tracking-[0.3em] font-inter text-accent mb-4 reveal-text"><span class="line block">C'est un travail d'équipe</span></p>
                         <h2 class="font-syne text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter reveal-text">
                             <span class="line block">Comment se déroule la création</span>
@@ -375,36 +375,90 @@
                         </h2>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8">
                         <!-- Card 1 -->
-                        <div class="bg-white p-8 md:p-10 hover:shadow-lg transition-shadow border border-black/5 reveal-text">
-                            <h3 class="font-syne text-xl md:text-2xl font-bold mb-4 text-center"><span class="line block">1. Prise de contact</span></h3>
-                            <p class="font-inter text-gray-600 text-sm leading-relaxed text-center"><span class="line block">J'échange avec vous afin de définir vos besoins et les étapes du projet.</span></p>
+                        <div class="bg-white hover:shadow-lg transition-shadow border border-black/5 reveal-text faq-item">
+                            <button class="faq-button w-full text-left py-3 px-4 md:p-10 flex items-center justify-between md:block md:text-center md:cursor-pointer" aria-expanded="false">
+                                <h3 class="font-syne text-lg md:text-2xl font-bold md:mb-4"><span class="line block">1. Prise de contact</span></h3>
+                                <div class="faq-icon md:hidden text-accent transition-transform duration-300 flex-shrink-0 ml-4">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-content overflow-hidden transition-all duration-300 h-0 opacity-0 md:!h-auto md:!opacity-100 px-4 pb-4 pt-0 md:px-10 md:pb-10 md:pt-0">
+                                <p class="font-inter text-gray-600 text-sm leading-relaxed text-left md:text-center"><span class="line block">J'échange avec vous afin de définir vos besoins et les étapes du projet.</span></p>
+                            </div>
                         </div>
                         <!-- Card 2 -->
-                        <div class="bg-white p-8 md:p-10 hover:shadow-lg transition-shadow border border-black/5 reveal-text">
-                            <h3 class="font-syne text-xl md:text-2xl font-bold mb-4 text-center"><span class="line block">2. Validation du devis</span></h3>
-                            <p class="font-inter text-gray-600 text-sm leading-relaxed text-center"><span class="line block">Un devis vous donnera le coût réel de conception du site internet. Après validation et signature du devis, le projet peut débuter !</span></p>
+                        <div class="bg-white hover:shadow-lg transition-shadow border border-black/5 reveal-text faq-item">
+                            <button class="faq-button w-full text-left py-3 px-4 md:p-10 flex items-center justify-between md:block md:text-center md:cursor-pointer" aria-expanded="false">
+                                <h3 class="font-syne text-lg md:text-2xl font-bold md:mb-4"><span class="line block">2. Validation du devis</span></h3>
+                                <div class="faq-icon md:hidden text-accent transition-transform duration-300 flex-shrink-0 ml-4">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-content overflow-hidden transition-all duration-300 h-0 opacity-0 md:!h-auto md:!opacity-100 px-4 pb-4 pt-0 md:px-10 md:pb-10 md:pt-0">
+                                <p class="font-inter text-gray-600 text-sm leading-relaxed text-left md:text-center"><span class="line block">Un devis vous donnera le coût réel de conception du site internet. Après validation et signature du devis, le projet peut débuter !</span></p>
+                            </div>
                         </div>
                         <!-- Card 3 -->
-                        <div class="bg-white p-8 md:p-10 hover:shadow-lg transition-shadow border border-black/5 reveal-text">
-                            <h3 class="font-syne text-xl md:text-2xl font-bold mb-4 text-center"><span class="line block">3. Les pré-requis</span></h3>
-                            <p class="font-inter text-gray-600 text-sm leading-relaxed text-center"><span class="line block">La création d'un site internet s'articule autour du contenu. Textes, images et certaines informations seront donc indispensables avant de commencer.</span></p>
+                        <div class="bg-white hover:shadow-lg transition-shadow border border-black/5 reveal-text faq-item">
+                            <button class="faq-button w-full text-left py-3 px-4 md:p-10 flex items-center justify-between md:block md:text-center md:cursor-pointer" aria-expanded="false">
+                                <h3 class="font-syne text-lg md:text-2xl font-bold md:mb-4"><span class="line block">3. Les pré-requis</span></h3>
+                                <div class="faq-icon md:hidden text-accent transition-transform duration-300 flex-shrink-0 ml-4">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-content overflow-hidden transition-all duration-300 h-0 opacity-0 md:!h-auto md:!opacity-100 px-4 pb-4 pt-0 md:px-10 md:pb-10 md:pt-0">
+                                <p class="font-inter text-gray-600 text-sm leading-relaxed text-left md:text-center"><span class="line block">La création d'un site internet s'articule autour du contenu. Textes, images et certaines informations seront donc indispensables avant de commencer.</span></p>
+                            </div>
                         </div>
                         <!-- Card 4 -->
-                        <div class="bg-white p-8 md:p-10 hover:shadow-lg transition-shadow border border-black/5 reveal-text">
-                            <h3 class="font-syne text-xl md:text-2xl font-bold mb-4 text-center"><span class="line block">4. Départ de la création du site</span></h3>
-                            <p class="font-inter text-gray-600 text-sm leading-relaxed text-center"><span class="line block">Une fois les éléments pré-requis reçus, la création du site internet peut débuter. Il faut compter en moyenne un mois avant la livraison.</span></p>
+                        <div class="bg-white hover:shadow-lg transition-shadow border border-black/5 reveal-text faq-item">
+                            <button class="faq-button w-full text-left py-3 px-4 md:p-10 flex items-center justify-between md:block md:text-center md:cursor-pointer" aria-expanded="false">
+                                <h3 class="font-syne text-lg md:text-2xl font-bold md:mb-4"><span class="line block">4. Départ de la conception</span></h3>
+                                <div class="faq-icon md:hidden text-accent transition-transform duration-300 flex-shrink-0 ml-4">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-content overflow-hidden transition-all duration-300 h-0 opacity-0 md:!h-auto md:!opacity-100 px-4 pb-4 pt-0 md:px-10 md:pb-10 md:pt-0">
+                                <p class="font-inter text-gray-600 text-sm leading-relaxed text-left md:text-center"><span class="line block">Une fois les éléments pré-requis reçus, la création du site internet peut débuter. Il faut compter en moyenne un mois avant la livraison.</span></p>
+                            </div>
                         </div>
                         <!-- Card 5 -->
-                        <div class="bg-white p-8 md:p-10 hover:shadow-lg transition-shadow border border-black/5 reveal-text">
-                            <h3 class="font-syne text-xl md:text-2xl font-bold mb-4 text-center"><span class="line block">5. Retour et échanges</span></h3>
-                            <p class="font-inter text-gray-600 text-sm leading-relaxed text-center"><span class="line block">Tout au long de la création nous échangeons ensemble sur le design du site internet et de possibles modifications à apporter.</span></p>
+                        <div class="bg-white hover:shadow-lg transition-shadow border border-black/5 reveal-text faq-item">
+                            <button class="faq-button w-full text-left py-3 px-4 md:p-10 flex items-center justify-between md:block md:text-center md:cursor-pointer" aria-expanded="false">
+                                <h3 class="font-syne text-lg md:text-2xl font-bold md:mb-4"><span class="line block">5. Retours et échanges</span></h3>
+                                <div class="faq-icon md:hidden text-accent transition-transform duration-300 flex-shrink-0 ml-4">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-content overflow-hidden transition-all duration-300 h-0 opacity-0 md:!h-auto md:!opacity-100 px-4 pb-4 pt-0 md:px-10 md:pb-10 md:pt-0">
+                                <p class="font-inter text-gray-600 text-sm leading-relaxed text-left md:text-center"><span class="line block">Tout au long de la création nous échangeons ensemble sur le design du site internet et de possibles modifications à apporter.</span></p>
+                            </div>
                         </div>
                         <!-- Card 6 -->
-                        <div class="bg-white p-8 md:p-10 hover:shadow-lg transition-shadow border border-black/5 reveal-text">
-                            <h3 class="font-syne text-xl md:text-2xl font-bold mb-4 text-center"><span class="line block">6. Livraison et Conseils</span></h3>
-                            <p class="font-inter text-gray-600 text-sm leading-relaxed text-center"><span class="line block">Après livraison du site internet, il vous appartient ! Un hébergement, une maintenance mensuelle et suivi, vous sont proposés.</span></p>
+                        <div class="bg-white hover:shadow-lg transition-shadow border border-black/5 reveal-text faq-item">
+                            <button class="faq-button w-full text-left py-3 px-4 md:p-10 flex items-center justify-between md:block md:text-center md:cursor-pointer" aria-expanded="false">
+                                <h3 class="font-syne text-lg md:text-2xl font-bold md:mb-4"><span class="line block">6. Livraison & Suivi</span></h3>
+                                <div class="faq-icon md:hidden text-accent transition-transform duration-300 flex-shrink-0 ml-4">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-content overflow-hidden transition-all duration-300 h-0 opacity-0 md:!h-auto md:!opacity-100 px-4 pb-4 pt-0 md:px-10 md:pb-10 md:pt-0">
+                                <p class="font-inter text-gray-600 text-sm leading-relaxed text-left md:text-center"><span class="line block">Après livraison du site internet, il vous appartient ! Un hébergement, une maintenance mensuelle et suivi, vous sont proposés.</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>

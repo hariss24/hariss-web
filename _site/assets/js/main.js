@@ -141,8 +141,8 @@ const dotNavs = document.querySelectorAll('.dot-nav');
 if (dotNavs.length > 0) {
     const dotObserverOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.5
+        rootMargin: '-49% 0px -49% 0px',
+        threshold: 0
     };
     
     const dotObserver = new IntersectionObserver((entries) => {
