@@ -171,6 +171,7 @@ if (dotNavs.length > 0) {
             // Smooth scroll click handler
             dot.addEventListener('click', (e) => {
                 e.preventDefault();
+                dot.blur(); // Remove phantom touch hover/focus state
                 if (targetSection) {
                     lenis.scrollTo(targetSection, { duration: 1.2 });
                 }
