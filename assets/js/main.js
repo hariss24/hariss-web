@@ -1,4 +1,5 @@
 // 1. Smooth Scroll (Lenis)
+const isSnapPage = document.querySelector('body').classList.contains('is-snap-page');
 const lenis = new Lenis({
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -9,13 +10,13 @@ const lenis = new Lenis({
     smoothTouch: false,
     touchMultiplier: 2,
     infinite: false,
-})
+});
 
 function raf(time) {
-    lenis.raf(time)
-    requestAnimationFrame(raf)
+    lenis.raf(time);
+    requestAnimationFrame(raf);
 }
-requestAnimationFrame(raf)
+requestAnimationFrame(raf);
 
 // 2. (Removed Hide/Show Header logic, header is now always fixed)
 
@@ -131,73 +132,128 @@ if (metierTags.length > 0) {
                 metierObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.3, root: null });
     metierObserver.observe(metierTags[0]);
 }
 
-// 5. Scrollytelling Horizontal Parallax
-const methodSection = document.getElementById('methodology-scroll');
-const methodTrack = document.getElementById('method-track');
-const methodProgress = document.getElementById('method-progress');
-const methodSteps = document.querySelectorAll('.method-step');
-
-if (methodSection && methodTrack && methodSteps.length > 0) {
-    lenis.on('scroll', (e) => {
-        const rect = methodSection.getBoundingClientRect();
-        const vh = window.innerHeight;
-
-        // When the section is sticky (top <= 0) and not yet scrolled past (bottom >= vh)
-        if (rect.top <= 0 && rect.bottom >= vh) {
-            const totalScrollDistance = rect.height - vh;
-            const scrolled = -rect.top;
-            const progress = Math.max(0, Math.min(1, Math.abs(scrolled) / totalScrollDistance));
-
-            // Each step takes exactly 100vw, so total translation is (N-1) * 100vw
-            const maxTranslateVw = (methodSteps.length - 1) * 100;
-            const translatePercent = progress * maxTranslateVw;
-
-            methodTrack.style.transform = `translate3d(-${translatePercent}vw, 0, 0)`;
-
-            // Update Progress bar height
-            if (methodProgress) {
-                methodProgress.style.height = `${progress * 100}%`;
+// 5. Dot Navigation Active State
+const dotNavs = document.querySelectorAll('.dot-nav');
+if (dotNavs.length > 0) {
+    const dotObserverOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+    };
+    
+    const dotObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                dotNavs.forEach(dot => {
+                    dot.classList.remove('bg-white', 'scale-125');
+                    if (dot.getAttribute('href') === `#${id}`) {
+                        dot.classList.add('bg-white', 'scale-125');
+                    }
+                });
             }
+        });
+    }, dotObserverOptions);
 
-            // Smooth Interpolation for Opacity and Scale
-            const stepFloat = progress * (methodSteps.length - 1); // 0 to 2
-            methodSteps.forEach((step, idx) => {
-                const distance = Math.abs(stepFloat - idx);
-                const stepOpacity = Math.max(0.1, 1 - distance * 0.9);
-                step.style.opacity = stepOpacity.toString();
-
-                const content = step.querySelector('.method-content');
-                if (content) {
-                    const stepScale = Math.max(0.8, 1 - distance * 0.2);
-                    content.style.transform = `scale(${stepScale})`;
+    dotNavs.forEach(dot => {
+        const targetHref = dot.getAttribute('href');
+        if (targetHref && targetHref.startsWith('#')) {
+            const targetId = targetHref.substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                dotObserver.observe(targetSection);
+            }
+            
+            // Smooth scroll click handler
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (targetSection) {
+                    lenis.scrollTo(targetSection, { duration: 1.2 });
                 }
-            });
-        } else if (rect.top > 0) {
-            // Reset to start if above
-            methodTrack.style.transform = `translate3d(0vw, 0, 0)`;
-            if (methodProgress) methodProgress.style.height = `0%`;
-            methodSteps.forEach((s, i) => {
-                s.style.opacity = i === 0 ? '1' : '0.1';
-                const c = s.querySelector('.method-content');
-                if (c) c.style.transform = i === 0 ? 'scale(1)' : 'scale(0.8)';
-            });
-        } else if (rect.bottom < vh) {
-            // Lock to end if scrolled past
-            const maxTranslateVw = (methodSteps.length - 1) * 100;
-            methodTrack.style.transform = `translate3d(-${maxTranslateVw}vw, 0, 0)`;
-            if (methodProgress) methodProgress.style.height = `100%`;
-            methodSteps.forEach((s, i) => {
-                const isLast = i === (methodSteps.length - 1);
-                s.style.opacity = isLast ? '1' : '0.1';
-                const c = s.querySelector('.method-content');
-                if (c) c.style.transform = isLast ? 'scale(1)' : 'scale(0.8)';
             });
         }
     });
+
+    // Custom "Fullpage" Slider effect for the homepage
+    if (isSnapPage) {
+        const snapSections = Array.from(document.querySelectorAll('.snap-section'));
+        let isAnimating = false;
+        let lastWheelTime = Date.now();
+        let currentSectionIndex = 0;
+
+        // Keep track of which section we are logically in (in case of resize / manual scroll inside tall sections)
+        lenis.on('scroll', () => {
+            if (!isAnimating) {
+                let minDiff = Infinity;
+                snapSections.forEach((sec, index) => {
+                    const diff = Math.abs(sec.getBoundingClientRect().top);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        currentSectionIndex = index;
+                    }
+                });
+            }
+        });
+
+        // Intercept wheel to force 1 full transition per scroll tick
+        window.addEventListener('wheel', (e) => {
+            // Block all wheel events during animation and shortly after (debounce)
+            if (isAnimating || (Date.now() - lastWheelTime < 1300)) {
+                e.preventDefault(); 
+                e.stopPropagation(); // CRITICAL: Stop Lenis from fighting
+                return;
+            }
+
+            // Ignore tiny micro-scrolls (magic mouse resting)
+            if (Math.abs(e.deltaY) < 10) return;
+
+            const direction = e.deltaY > 0 ? 1 : -1;
+            const currentSection = snapSections[currentSectionIndex];
+            
+            if (!currentSection) return;
+
+            const rect = currentSection.getBoundingClientRect();
+            let canSlide = false;
+
+            // Check if we reached the boundary of the current section to allow sliding
+            if (direction === 1) { // Scrolling Down
+                // Only slide down to next section if the bottom of the current section is at the bottom of viewport
+                if (rect.bottom <= window.innerHeight + 10) canSlide = true;
+            } else { // Scrolling Up
+                // Only slide up to prev section if the top of the current section is at the top of viewport
+                if (rect.top >= -10) canSlide = true;
+            }
+
+            if (canSlide) {
+                const nextIndex = currentSectionIndex + direction;
+                if (nextIndex >= 0 && nextIndex < snapSections.length) {
+                    e.preventDefault(); 
+                    e.stopPropagation(); // CRITICAL: Hide this wheel event from Lenis!
+                    
+                    isAnimating = true;
+                    lastWheelTime = Date.now();
+                    
+                    lenis.scrollTo(snapSections[nextIndex], { 
+                        duration: 1.2, 
+                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+                        force: true, // Force Lenis to override any ongoing momentum
+                        onComplete: () => {
+                            isAnimating = false;
+                            currentSectionIndex = nextIndex;
+                        }
+                    });
+                } else if (nextIndex < 0 || nextIndex >= snapSections.length) {
+                    // Prevent overscroll native bounce at the very top and very bottom
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }
+        }, { passive: false, capture: true }); // CRITICAL: capture phase ensures we run BEFORE Lenis
+    }
 }
 
 // Utils
