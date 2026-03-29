@@ -51,7 +51,7 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
-<body class="bg-pitch font-inter relative w-full overflow-x-clip ">
+<body class="bg-pitch font-inter relative w-full overflow-x-clip is-snap-page">
 
     <!-- Custom Cursor -->
     <div class="cursor-dot" id="cursor-dot"></div>
@@ -146,8 +146,18 @@
 
             <!-- Le contenu spécifique de la page -->
             
+<!-- Vertical Dot Navigation -->
+<nav class="fixed right-1 md:right-8 top-1/2 -translate-y-1/2 z-[10002] flex flex-col items-center justify-center gap-4 py-4 px-1 mix-blend-difference">
+    <a href="#sv-header" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Accueil"></a>
+    <a href="#sv-service1" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Site web"></a>
+    <a href="#sv-service2" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="SEO"></a>
+    <a href="#sv-service3" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Suivi"></a>
+    <a href="#sv-tarifs" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Tarifs"></a>
+    <a href="#sv-faq" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="FAQ"></a>
+</nav>
+
 <!-- Page Header -->
-            <section class="pt-24 pb-6 md:pt-28 md:pb-8 lg:pt-32 lg:pb-10 text-center relative grid-lines overflow-hidden w-full">
+            <section id="sv-header" class="snap-section min-h-[100svh] flex flex-col justify-center pt-24 pb-6 md:pt-28 md:pb-8 lg:pt-32 lg:pb-10 text-center relative grid-lines overflow-hidden w-full">
                 <div class="container mx-auto px-4 relative z-10">
                     <h1
                         class="font-syne text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 uppercase tracking-tighter">
@@ -166,13 +176,12 @@
                 </div>
             </section>
 
-            <!-- Detailed Services List (Vertical Layout) -->
-            <section class="py-16 lg:py-24">
-                <div class="container mx-auto px-4 md:px-8 max-w-6xl space-y-24 md:space-y-32">
+            
 
-                    
-
-                    
+            
+            <!-- Service 1 -->
+            <section id="sv-service1" class="snap-section min-h-[100svh] flex flex-col justify-center py-16 lg:py-24">
+                <div class="container mx-auto px-4 md:px-8 max-w-6xl">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div class="order-2 lg:order-1 flex flex-col justify-center">
                             <div class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
@@ -212,7 +221,12 @@
                             </div>
                         </div>
                     </div>
-                    
+                </div>
+            </section>
+            
+            <!-- Service 2 -->
+            <section id="sv-service2" class="snap-section min-h-[100svh] flex flex-col justify-center py-16 lg:py-24">
+                <div class="container mx-auto px-4 md:px-8 max-w-6xl">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div class="order-2 flex flex-col justify-center">
                             <div class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
@@ -252,7 +266,12 @@
                             </div>
                         </div>
                     </div>
-                    
+                </div>
+            </section>
+            
+            <!-- Service 3 -->
+            <section id="sv-service3" class="snap-section min-h-[100svh] flex flex-col justify-center py-16 lg:py-24">
+                <div class="container mx-auto px-4 md:px-8 max-w-6xl">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div class="order-2 lg:order-1 flex flex-col justify-center">
                             <div class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
@@ -292,15 +311,14 @@
                             </div>
                         </div>
                     </div>
-                    
-
                 </div>
             </section>
+            
 
             <!-- Pricing Detailed Grid -->
             <section
-                class="py-24 lg:py-32 bg-pitch grid-lines overflow-hidden relative z-10 border-t border-white/10 w-full"
-                id="tarifs">
+                class="snap-section min-h-[100svh] py-24 lg:py-32 bg-pitch grid-lines overflow-hidden relative z-10 border-t border-white/10 w-full"
+                id="sv-tarifs">
                 <div class="container mx-auto max-w-7xl">
                     <div class="text-center mb-16 md:mb-24">
                         <h2 class="font-syne text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
@@ -667,7 +685,7 @@
             </section>
 
             <!-- FAQ Section -->
-            <section class="py-24 lg:py-32 bg-pitch border-t border-white/10 relative" id="faq">
+            <section class="snap-section min-h-[100svh] flex flex-col justify-center py-24 lg:py-32 bg-pitch border-t border-white/10 relative" id="sv-faq">
                 <div class="container mx-auto px-4 lg:px-8 max-w-4xl">
                     <div class="text-center md:text-left mb-12 md:mb-16">
                         <h3 class="font-syne text-3xl md:text-4xl font-bold text-white mb-4">
@@ -787,7 +805,7 @@
                 </div>
             </section>
 
-            <section class="py-20 lg:py-28 bg-white/[0.02] border-t border-white/5">
+            <section class="snap-section min-h-[100svh] flex flex-col justify-center py-20 lg:py-28 bg-white/[0.02] border-t border-white/5">
                 <div class="container mx-auto px-4 md:px-8 max-w-4xl text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Un projet en tête ?</h2>
                     <p class="text-lg text-gray-300 mb-8">Que vous souhaitiez moderniser votre présence en ligne, attirer de nouveaux clients ou automatiser vos processus, je suis à votre écoute.</p>

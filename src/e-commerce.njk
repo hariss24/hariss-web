@@ -1,5 +1,6 @@
 ---
 layout: base.njk
+is_snap: true
 title: "Boutique E-commerce Shopify | Hariss Web — Sur-mesure pour professionnels"
 description: "Création de boutiques Shopify sur-mesure pour grossistes et commerçants B2B. Sur devis — premier échange offert."
 
@@ -38,7 +39,7 @@ offer_cta: " Demander un devis"
 launch_label: "( Offre de lancement )"
 launch_title: "2 places"
 launch_title_italic: "disponibles."
-launch_description: "Je construis mon portfolio e-commerce. Je recherche 2 commerçants partenaires pour des boutiques à tarif de lancement — en échange d'un retour d'expérience et d'une présence dans mon book."
+launch_description: "Je construis mon portfolio e-commerce. Je recherche 2 commerçants partenaires pour des boutiques à tarif de lancement,en échange d'un retour d'expérience et d'une présence dans mon portfolio."
 launch_cta: "Je suis intéressé"
 
 cta_label: "( On travaille ensemble ? )"
@@ -48,10 +49,20 @@ cta_description: "30 minutes d'échange, c'est gratuit. On fait le point sur vot
 cta_button: "Démarrer la conversation"
 ---
 
+<!-- Vertical Dot Navigation -->
+<nav class="fixed right-1 md:right-8 top-1/2 -translate-y-1/2 z-[10002] flex flex-col items-center justify-center gap-4 py-4 px-1 mix-blend-difference">
+    <a href="#ec-hero" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Accueil"></a>
+    <a href="#ec-why" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Pourquoi Shopify"></a>
+    <a href="#ec-demo" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Démo"></a>
+    <a href="#ec-offer" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Offre"></a>
+    <a href="#ec-launch" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Lancement"></a>
+    <a href="#ec-cta" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Contact"></a>
+</nav>
+
 <!-- =============================================
      HERO
      ============================================= -->
-<section class="relative min-h-[100svh] flex items-end pb-24 px-6 md:px-12 grid-lines overflow-hidden w-full pt-32">
+<section id="ec-hero" class="snap-section relative min-h-[100svh] flex items-end pb-24 px-6 md:px-12 grid-lines overflow-hidden w-full pt-32">
 
     <div class="w-full relative z-10 max-w-full">
         <p class="font-inter text-accent uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold mb-6 md:mb-8 reveal-text">
@@ -100,7 +111,7 @@ cta_button: "Démarrer la conversation"
 <!-- =============================================
      POURQUOI SHOPIFY
      ============================================= -->
-<section class="relative py-32 md:py-40 px-6 md:px-12 bg-white text-black overflow-hidden w-full">
+<section id="ec-why" class="snap-section relative min-h-[100svh] flex flex-col justify-center py-32 md:py-40 px-6 md:px-12 bg-white text-black overflow-hidden w-full">
 
     <div class="container mx-auto max-w-6xl relative z-10">
 
@@ -142,7 +153,7 @@ cta_button: "Démarrer la conversation"
 <!-- =============================================
      APERÇU BOUTIQUE
      ============================================= -->
-<section class="relative py-24 md:py-32 px-3 md:px-12 bg-white text-black overflow-hidden w-full" style="z-index:10000;">
+<section id="ec-demo" class="snap-section relative min-h-[100svh] flex flex-col justify-center py-24 md:py-32 px-3 md:px-12 bg-white text-black overflow-hidden w-full" style="z-index:10000;">
     <div class="container mx-auto max-w-6xl relative z-10">
 
         <!-- Vidéo client : desktop visible, mobile cachée (tabs) -->
@@ -251,7 +262,7 @@ cta_button: "Démarrer la conversation"
 <!-- =============================================
      L'OFFRE
      ============================================= -->
-<section class="relative py-32 md:py-40 px-6 md:px-12 bg-pitch text-white overflow-hidden w-full grid-lines">
+<section id="ec-offer" class="snap-section relative min-h-[100svh] flex flex-col justify-center py-32 md:py-40 px-6 md:px-12 bg-pitch text-white overflow-hidden w-full grid-lines">
 
     <div class="container mx-auto max-w-6xl relative z-10">
 
@@ -314,7 +325,7 @@ cta_button: "Démarrer la conversation"
 <!-- =============================================
      OFFRE DE LANCEMENT
      ============================================= -->
-<section class="relative py-32 md:py-40 px-6 md:px-12 bg-white text-black overflow-hidden w-full">
+<section id="ec-launch" class="snap-section relative min-h-[100svh] flex flex-col justify-center py-32 md:py-40 px-6 md:px-12 bg-white text-black overflow-hidden w-full">
 
     <div class="container mx-auto max-w-6xl relative z-10">
 
@@ -360,7 +371,7 @@ cta_button: "Démarrer la conversation"
 <!-- =============================================
      CTA FINAL
      ============================================= -->
-<section class="relative py-32 md:py-40 px-6 md:px-12 bg-pitch text-white overflow-hidden w-full">
+<section id="ec-cta" class="snap-section relative min-h-[100svh] flex flex-col justify-center py-32 md:py-40 px-6 md:px-12 bg-pitch text-white overflow-hidden w-full">
 
     <div class="container mx-auto max-w-6xl relative z-10 text-center">
 

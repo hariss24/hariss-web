@@ -1,5 +1,6 @@
 ---
 layout: base.njk
+is_snap: true
 title: Services - Hariss Web
 page_title: Mes
 page_title_accent: Services
@@ -132,8 +133,18 @@ cta_description: Que vous souhaitiez moderniser votre présence en ligne, attire
 cta_button_text: Demander un devis gratuit
 ---
 
+<!-- Vertical Dot Navigation -->
+<nav class="fixed right-1 md:right-8 top-1/2 -translate-y-1/2 z-[10002] flex flex-col items-center justify-center gap-4 py-4 px-1 mix-blend-difference">
+    <a href="#sv-header" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Accueil"></a>
+    <a href="#sv-service1" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Site web"></a>
+    <a href="#sv-service2" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="SEO"></a>
+    <a href="#sv-service3" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Suivi"></a>
+    <a href="#sv-tarifs" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="Tarifs"></a>
+    <a href="#sv-faq" class="w-2.5 h-2.5 rounded-full border border-white md:hover:bg-white transition-all dot-nav" aria-label="FAQ"></a>
+</nav>
+
 <!-- Page Header -->
-            <section class="pt-24 pb-6 md:pt-28 md:pb-8 lg:pt-32 lg:pb-10 text-center relative grid-lines overflow-hidden w-full">
+            <section id="sv-header" class="snap-section min-h-[100svh] flex flex-col justify-center pt-24 pb-6 md:pt-28 md:pb-8 lg:pt-32 lg:pb-10 text-center relative grid-lines overflow-hidden w-full">
                 <div class="container mx-auto px-4 relative z-10">
                     <h1
                         class="font-syne text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 uppercase tracking-tighter">
@@ -152,17 +163,16 @@ cta_button_text: Demander un devis gratuit
                 </div>
             </section>
 
-            <!-- Detailed Services List (Vertical Layout) -->
-            <section class="py-16 lg:py-24">
-                <div class="container mx-auto px-4 md:px-8 max-w-6xl space-y-24 md:space-y-32">
+            {% set service_icons = [
+                '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>',
+                '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>',
+                '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.1 3.04.97-5.66L3.2 8.58l5.68-.83L11.42 2.8l2.54 4.95 5.68.83-4.09 3.97.97 5.66z" /></svg>'
+            ] %}
 
-                    {% set service_icons = [
-                        '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>',
-                        '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>',
-                        '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.1 3.04.97-5.66L3.2 8.58l5.68-.83L11.42 2.8l2.54 4.95 5.68.83-4.09 3.97.97 5.66z" /></svg>'
-                    ] %}
-
-                    {% for service in services_list %}
+            {% for service in services_list %}
+            <!-- Service {{ loop.index }} -->
+            <section id="sv-service{{ loop.index }}" class="snap-section min-h-[100svh] flex flex-col justify-center py-16 lg:py-24">
+                <div class="container mx-auto px-4 md:px-8 max-w-6xl">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div class="{% if loop.index is odd %}order-2 lg:order-1{% else %}order-2{% endif %} flex flex-col justify-center">
                             <div class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
@@ -194,15 +204,14 @@ cta_button_text: Demander un devis gratuit
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
-
                 </div>
             </section>
+            {% endfor %}
 
             <!-- Pricing Detailed Grid -->
             <section
-                class="py-24 lg:py-32 bg-pitch grid-lines overflow-hidden relative z-10 border-t border-white/10 w-full"
-                id="tarifs">
+                class="snap-section min-h-[100svh] py-24 lg:py-32 bg-pitch grid-lines overflow-hidden relative z-10 border-t border-white/10 w-full"
+                id="sv-tarifs">
                 <div class="container mx-auto max-w-7xl">
                     <div class="text-center mb-16 md:mb-24">
                         <h2 class="font-syne text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
@@ -303,7 +312,7 @@ cta_button_text: Demander un devis gratuit
             </section>
 
             <!-- FAQ Section -->
-            <section class="py-24 lg:py-32 bg-pitch border-t border-white/10 relative" id="faq">
+            <section class="snap-section min-h-[100svh] flex flex-col justify-center py-24 lg:py-32 bg-pitch border-t border-white/10 relative" id="sv-faq">
                 <div class="container mx-auto px-4 lg:px-8 max-w-4xl">
                     <div class="text-center md:text-left mb-12 md:mb-16">
                         <h3 class="font-syne text-3xl md:text-4xl font-bold text-white mb-4">
@@ -347,7 +356,7 @@ cta_button_text: Demander un devis gratuit
                 </div>
             </section>
 
-            <section class="py-20 lg:py-28 bg-white/[0.02] border-t border-white/5">
+            <section class="snap-section min-h-[100svh] flex flex-col justify-center py-20 lg:py-28 bg-white/[0.02] border-t border-white/5">
                 <div class="container mx-auto px-4 md:px-8 max-w-4xl text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">{{ cta_title }}</h2>
                     <p class="text-lg text-gray-300 mb-8">{{ cta_description }}</p>
