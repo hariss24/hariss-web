@@ -23,6 +23,14 @@
   }
 }
 
+/* Video tabs */
+.video-tab {
+  @apply border-black/20 text-black/40;
+}
+.video-tab.active {
+  @apply border-accent bg-accent text-white;
+}
+
 /* Custom Utilities for things difficult to do purely with standard Tailwind classes */
 @layer utilities {
   .text-gradient {
