@@ -84,7 +84,7 @@ is_home: true
 
 
                     <div
-                        class="mt-16 md:mt-24 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 w-full">
+                        class="mt-12 md:mt-16 flex flex-col gap-10 w-full items-start">
                         <div class="max-w-md reveal-text">
                             <p class="font-inter text-gray-400 font-light text-base md:text-xl leading-relaxed">
                                 <span class="line block">{{ hero_description }}</span>
@@ -92,9 +92,9 @@ is_home: true
                         </div>
 
                         <!-- CTAs -->
-                        <div class="reveal-text flex flex-col md:flex-row gap-4">
-                            <div class="line">
-                                <a href="/contact/" class="btn-magnetic cursor-hover magnetic"
+                        <div class="reveal-text flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto" style="clip-path: none;">
+                            <div class="line w-full sm:w-auto">
+                                <a href="/contact/" class="btn-magnetic cursor-hover magnetic w-full flex justify-center"
                                     data-magnetic-strength="50">
                                     <span class="relative z-10 flex items-center gap-3">
                                         {{ hero_cta_text }}
@@ -106,9 +106,9 @@ is_home: true
                                     </span>
                                 </a>
                             </div>
-                            <div class="line">
-                                <a href="#methodologie" class="btn-outline cursor-hover h-full w-full">
-                                    <span class="relative z-10 flex items-center justify-center h-full gap-3 px-2">
+                            <div class="line w-full sm:w-auto h-full">
+                                <a href="#methodologie" class="btn-outline cursor-hover w-full flex justify-center h-full min-h-[3.5rem] sm:min-h-[auto] items-center">
+                                    <span class="relative z-10 flex items-center gap-3">
                                         Comment ça marche ?
                                     </span>
                                 </a>
