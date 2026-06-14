@@ -59,7 +59,7 @@ if (dot && outline && window.matchMedia("(pointer: fine)").matches) {
         });
         el.addEventListener('mouseleave', () => {
             outline.classList.remove('hovering');
-            dot.style.backgroundColor = '#06B6D4';
+            dot.style.backgroundColor = '#FF4C4C';
 
             // Reset magnetic force if it's also a magnetic element
             if (el.classList.contains('magnetic') || el.classList.contains('magnetic-area')) {
