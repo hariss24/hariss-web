@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         pitch: "#030303",
-        accent: "#E25D1E",
+        accent: "#2563EB",
         offwhite: "#F3F4F6",
         surface: "#111111",
       },

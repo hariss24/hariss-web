@@ -147,17 +147,17 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
             <section id="sv-header" class="snap-section min-h-[100svh] flex flex-col justify-center pt-24 pb-6 md:pt-28 md:pb-8 lg:pt-32 lg:pb-10 text-center relative grid-lines overflow-hidden w-full">
                 <div class="container mx-auto px-4 relative z-10">
                     <h1
-                        class="font-syne text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-6 uppercase tracking-tighter">
+                        class="font-syne text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 uppercase tracking-tighter">
                         {{ page_title }} <span class="font-serif italic font-normal text-accent normal-case">{{ page_title_accent }}</span>
                     </h1>
-                    <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
+                    <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
                         {{ page_description }}
                     </p>
                 </div>
 
                 <!-- Decorative vertical text -->
                 <div
-                    class="absolute top-[100%] right-12 hidden md:flex items-center gap-4 origin-right rotate-90 opacity-20 text-gray-900">
+                    class="absolute top-[100%] right-12 hidden md:flex items-center gap-4 origin-right rotate-90 opacity-20 text-white">
                     <span class="text-[1.2rem] uppercase font-bold tracking-[0.4em]">Solutions</span>
                     <div class="w-16 h-[1px] bg-white"></div>
                 </div>
@@ -178,12 +178,12 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
                             <div class="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mb-6 text-accent">
                                 {{ service_icons[loop.index0] | safe }}
                             </div>
-                            <h2 class="font-syne text-3xl md:text-5xl font-bold tracking-tighter uppercase text-gray-900 mb-6">
+                            <h2 class="font-syne text-3xl md:text-5xl font-bold tracking-tighter uppercase text-white mb-6">
                                 {{ service.title }}</h2>
-                            <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                            <p class="text-gray-300 text-lg mb-6 leading-relaxed">
                                 {{ service.description }}
                             </p>
-                            <ul class="space-y-4 text-gray-600 mb-8">
+                            <ul class="space-y-4 text-gray-400 mb-8">
                                 {% for feature in service.features %}
                                 <li class="flex items-start gap-3"><svg class="w-6 h-6 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -197,7 +197,7 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
                             </a>
                         </div>
                         <div class="{% if loop.index is odd %}order-1 lg:order-2{% else %}order-1{% endif %}">
-                            <div class="bg-surface border border-black/10 w-full aspect-[4/3] flex items-center justify-center relative overflow-hidden group hover:border-accent/50 transition-colors duration-500 cursor-hover">
+                            <div class="bg-surface border border-white/10 w-full aspect-[4/3] flex items-center justify-center relative overflow-hidden group hover:border-accent/50 transition-colors duration-500 cursor-hover">
                                 <img src="{{ service.image }}" alt="{{ service.image_alt }}"
                                     class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay"></div>
@@ -210,34 +210,34 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
 
             <!-- Pricing Detailed Grid -->
             <section
-                class="snap-section min-h-[100svh] py-24 lg:py-32 bg-white grid-lines overflow-hidden relative z-10 border-t border-black/10 w-full"
+                class="snap-section min-h-[100svh] py-24 lg:py-32 bg-pitch grid-lines overflow-hidden relative z-10 border-t border-white/10 w-full"
                 id="sv-tarifs">
                 <div class="container mx-auto max-w-7xl">
                     <div class="text-center mb-16 md:mb-24">
-                        <h2 class="font-syne text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6">
+                        <h2 class="font-syne text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
                             Forfaits & <span class="text-gradient">Prestations</span>
                         </h2>
-                        <p class="text-gray-600 font-inter text-lg max-w-2xl mx-auto">
+                        <p class="text-gray-400 font-inter text-lg max-w-2xl mx-auto">
                             Des tarifs de lancement clairs et transparents, sans surprise. Choisissez le forfait adapté à vos besoins.
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 border-y border-black/20">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 border-y border-white/20">
                         {% for plan in pricing_plans %}
-                        <div class="group {{ 'border-b lg:border-b-0 lg:border-r' if not loop.last else '' }} border-black/20 p-8 md:p-10 lg:p-16 hover:bg-{{ plan.hover_style }} transition-colors cursor-hover magnetic-area {{ 'text-gray-900 hover:text-gray-900' if plan.hover_style == 'accent' else '' }} flex flex-col"
+                        <div class="group {{ 'border-b lg:border-b-0 lg:border-r' if not loop.last else '' }} border-white/20 p-8 md:p-10 lg:p-16 hover:bg-{{ plan.hover_style }} transition-colors cursor-hover magnetic-area {{ 'text-white hover:text-white' if plan.hover_style == 'accent' else '' }} flex flex-col"
                             data-magnetic-strength="5">
                             <div class="flex justify-between items-center mb-2">
-                                <h3 class="font-syne text-xl md:text-2xl font-bold {{ '' if plan.hover_style == 'accent' else 'text-gray-900' }} uppercase">{{ plan.name }}{% if plan.badge %} <span
+                                <h3 class="font-syne text-xl md:text-2xl font-bold {{ '' if plan.hover_style == 'accent' else 'text-white' }} uppercase">{{ plan.name }}{% if plan.badge %} <span
                                         class="text-[9px] md:text-[10px] ml-2 px-2 py-1 border border-current rounded-full">{{ plan.badge }}</span>{% endif %}
                                 </h3>
                                 <div class="{{ 'w-3 h-3 rounded-full bg-white group-hover:bg-white transition-colors' if plan.hover_style == 'accent' else 'w-3 h-3 rounded-full border border-white/30 group-hover:bg-accent group-hover:border-accent transition-colors' }}"></div>
                             </div>
-                            {% if plan.tagline %}<p class="font-inter text-xs text-accent {% if plan.hover_style == 'accent' %}group-hover:text-gray-900/70 transition-colors{% endif %} mb-12 md:mb-16">{{ plan.tagline }}</p>{% else %}<div class="mb-12 md:mb-16"></div>{% endif %}
+                            {% if plan.tagline %}<p class="font-inter text-xs text-accent {% if plan.hover_style == 'accent' %}group-hover:text-white/70 transition-colors{% endif %} mb-12 md:mb-16">{{ plan.tagline }}</p>{% else %}<div class="mb-12 md:mb-16"></div>{% endif %}
                             <div class="mb-12 md:mb-16">
-                                <p class="text-xs md:text-sm font-inter {{ 'opacity-60' if plan.hover_style == 'accent' else 'text-gray-600' }} uppercase tracking-widest mb-4">À
+                                <p class="text-xs md:text-sm font-inter {{ 'opacity-60' if plan.hover_style == 'accent' else 'text-gray-400' }} uppercase tracking-widest mb-4">À
                                     partir de</p>
                                 <p
-                                    class="font-syne text-5xl md:text-6xl font-bold {{ '' if plan.hover_style == 'accent' else 'text-gray-900' }} tracking-tighter {{ '' if plan.hover_style == 'accent' else 'group-hover:text-accent' }} transition-colors">
+                                    class="font-syne text-5xl md:text-6xl font-bold {{ '' if plan.hover_style == 'accent' else 'text-white' }} tracking-tighter {{ '' if plan.hover_style == 'accent' else 'group-hover:text-accent' }} transition-colors">
                                     {{ plan.price }}<span class="text-2xl md:text-3xl">€</span></p>
                                 <p class="mt-4 font-serif italic {{ 'opacity-70' if plan.hover_style == 'accent' else 'text-gray-500' }}">{{ plan.subtitle }}</p>
                             </div>
@@ -246,9 +246,9 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
                                 {% for cat in plan.categories %}
                                 <div>
                                     <h4
-                                        class="font-inter text-xs text-gray-900/50 font-bold uppercase tracking-widest border-b border-black/10 pb-2 mb-6">
+                                        class="font-inter text-xs text-white/50 font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">
                                         {{ cat.cat_name }}</h4>
-                                    <ul class="font-inter text-sm {{ 'text-gray-200' if plan.hover_style == 'accent' else 'text-gray-700' }} space-y-4">
+                                    <ul class="font-inter text-sm {{ 'text-gray-200' if plan.hover_style == 'accent' else 'text-gray-300' }} space-y-4">
                                         {% for item in cat.items %}
                                         {% if item.type == "option" %}
                                         <li class="flex items-start gap-3"><span
@@ -279,10 +279,10 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
                 <!-- À la carte options -->
                 <div class="container mx-auto px-4 lg:px-8 max-w-[1400px] mt-24 md:mt-32">
                     <div class="text-center md:text-left mb-12">
-                        <h3 class="font-syne text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <h3 class="font-syne text-3xl md:text-4xl font-bold text-white mb-4">
                             Options <span class="text-accent italic font-serif">À la carte</span>
                         </h3>
-                        <p class="text-gray-600 font-inter max-w-2xl">
+                        <p class="text-gray-400 font-inter max-w-2xl">
                             Personnalisez votre projet avec ces options supplémentaires. Ajoutables à n'importe quel
                             forfait.
                         </p>
@@ -291,13 +291,13 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {% for option in options %}
                         <div
-                            class="border border-black/10 p-6 hover:border-white/30 transition-colors group bg-white/[0.01]">
+                            class="border border-white/10 p-6 hover:border-white/30 transition-colors group bg-white/[0.01]">
                             <div class="flex justify-between items-start mb-4">
-                                <h4 class="font-syne font-bold text-lg text-gray-900">{{ option.name }}</h4>
+                                <h4 class="font-syne font-bold text-lg text-white">{{ option.name }}</h4>
                                 <span
                                     class="text-accent text-sm font-bold font-inter bg-accent/10 px-3 py-1 rounded-full">{{ option.price }}</span>
                             </div>
-                            <p class="text-gray-600 font-inter text-sm">{{ option.description }}</p>
+                            <p class="text-gray-400 font-inter text-sm">{{ option.description }}</p>
                         </div>
                         {% endfor %}
                     </div>
@@ -305,20 +305,20 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
 
                 <!-- Decorative vertical text -->
                 <div
-                    class="absolute top-[40%] right-12 hidden md:flex items-center gap-4 origin-right rotate-90 opacity-20 text-gray-900">
+                    class="absolute top-[40%] right-12 hidden md:flex items-center gap-4 origin-right rotate-90 opacity-20 text-white">
                     <span class="text-[1.2rem] uppercase font-bold tracking-[0.4em]">Sur-mesure</span>
                     <div class="w-16 h-[1px] bg-white"></div>
                 </div>
             </section>
 
             <!-- FAQ Section -->
-            <section class="snap-section min-h-[100svh] flex flex-col justify-center py-24 lg:py-32 bg-white border-t border-black/10 relative" id="sv-faq">
+            <section class="snap-section min-h-[100svh] flex flex-col justify-center py-24 lg:py-32 bg-pitch border-t border-white/10 relative" id="sv-faq">
                 <div class="container mx-auto px-4 lg:px-8 max-w-4xl">
                     <div class="text-center md:text-left mb-12 md:mb-16">
-                        <h3 class="font-syne text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <h3 class="font-syne text-3xl md:text-4xl font-bold text-white mb-4">
                             Questions <span class="text-accent italic font-serif">Fréquentes</span>
                         </h3>
-                        <p class="text-gray-600 font-inter max-w-2xl">
+                        <p class="text-gray-400 font-inter max-w-2xl">
                             Parce que la transparence est la clé d'une collaboration réussie, voici les réponses à vos
                             questions les plus techniques.
                         </p>
@@ -327,19 +327,19 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
                     <div class="space-y-4">
                         {% for item in faq %}
                         <div
-                            class="faq-item border border-black/10 bg-white/[0.01] overflow-hidden transition-colors hover:border-white/30">
+                            class="faq-item border border-white/10 bg-white/[0.01] overflow-hidden transition-colors hover:border-white/30">
                             <button
                                 class="faq-button w-full flex justify-between items-center p-6 text-left cursor-pointer group"
                                 aria-expanded="false">
                                 <span
-                                    class="font-syne font-bold text-lg text-gray-900 group-hover:text-accent transition-colors">{{ item.question }}</span>
+                                    class="font-syne font-bold text-lg text-white group-hover:text-accent transition-colors">{{ item.question }}</span>
                                 <span
-                                    class="faq-icon text-gray-900/50 text-2xl font-light transform transition-transform duration-300 group-hover:text-accent">+</span>
+                                    class="faq-icon text-white/50 text-2xl font-light transform transition-transform duration-300 group-hover:text-accent">+</span>
                             </button>
                             <div
                                 class="faq-content h-0 overflow-hidden transition-all duration-300 ease-in-out opacity-0">
                                 <div
-                                    class="p-6 pt-0 text-gray-600 font-inter text-sm leading-relaxed border-t border-white/5 mt-2">
+                                    class="p-6 pt-0 text-gray-400 font-inter text-sm leading-relaxed border-t border-white/5 mt-2">
                                     {{ item.answer }}
                                 </div>
                             </div>
@@ -350,7 +350,7 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
 
                 <!-- Decorative vertical text -->
                 <div
-                    class="absolute bottom-12 right-12 hidden md:flex items-center gap-4 origin-right rotate-90 opacity-20 text-gray-900">
+                    class="absolute bottom-12 right-12 hidden md:flex items-center gap-4 origin-right rotate-90 opacity-20 text-white">
                     <span class="text-[1.2rem] uppercase font-bold tracking-[0.4em]">Réponses</span>
                     <div class="w-16 h-[1px] bg-white"></div>
                 </div>
@@ -358,8 +358,8 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
 
             <section class="snap-section min-h-[100svh] flex flex-col justify-center py-20 lg:py-28 bg-white/[0.02] border-t border-white/5">
                 <div class="container mx-auto px-4 md:px-8 max-w-4xl text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{{ cta_title }}</h2>
-                    <p class="text-lg text-gray-700 mb-8">{{ cta_description }}</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">{{ cta_title }}</h2>
+                    <p class="text-lg text-gray-300 mb-8">{{ cta_description }}</p>
                     <a href="/contact/" class="btn-magnetic cursor-hover magnetic pointer-events-auto"
                         data-magnetic-strength="20">{{ cta_button_text }}</a>
                 </div>

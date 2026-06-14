@@ -7,20 +7,20 @@ page_description: "Projets de démonstration — en attendant mes premières ré
 
 <!-- Page Header -->
 <section
-    class="pt-24 pb-12 lg:pt-32 lg:pb-16 flex flex-col justify-center items-center text-center relative grid-lines overflow-hidden w-full bg-white">
+    class="pt-24 pb-12 lg:pt-32 lg:pb-16 flex flex-col justify-center items-center text-center relative grid-lines overflow-hidden w-full bg-pitch">
     <div class="container mx-auto px-4 relative z-10 w-full flex flex-col items-center">
         <h1
-            class="font-syne text-4xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 leading-tight mb-6 uppercase tracking-tighter">
+            class="font-syne text-4xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-6 uppercase tracking-tighter">
             <span class="text-gradient">{{ page_title }}</span>
         </h1>
-        <p class="font-inter text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+        <p class="font-inter text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
             {{ page_description }}
         </p>
     </div>
 
     <!-- Decorative vertical text -->
     <div
-        class="absolute top-[100%] right-12 hidden md:flex items-center gap-4 origin-right rotate-90 opacity-20 text-gray-900">
+        class="absolute top-[100%] right-12 hidden md:flex items-center gap-4 origin-right rotate-90 opacity-20 text-white">
         <span class="text-[1rem] uppercase font-bold tracking-[0.4em]">Archive</span>
         <div class="w-16 h-[1px] bg-white"></div>
     </div>
@@ -35,11 +35,11 @@ page_description: "Projets de démonstration — en attendant mes premières ré
                 <div class="project-card block">
                     <img loading="lazy" src="{{ project.image }}" alt="{{ project.image_alt }}" class="w-full h-full object-cover object-top">
                     <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ project.name }}</h3>
-                        <p class="text-gray-700 text-sm mb-4">{{ project.description }}</p>
+                        <h3 class="text-2xl font-bold text-white mb-2">{{ project.name }}</h3>
+                        <p class="text-gray-300 text-sm mb-4">{{ project.description }}</p>
                         <div>
                             {% for tag in project.tags %}
-                            <span class="project-tag inline-block px-3 py-1 text-xs font-syne uppercase tracking-widest text-gray-900 border border-black/20 bg-black/5 mr-2 mb-2">{{ tag }}</span>
+                            <span class="project-tag inline-block px-3 py-1 text-xs font-syne uppercase tracking-widest text-white border border-white/20 bg-white/5 mr-2 mb-2">{{ tag }}</span>
                             {% endfor %}
                         </div>
                         <p class="text-accent text-xs mt-3 font-inter uppercase tracking-wider">Projet de démonstration</p>
@@ -50,7 +50,7 @@ page_description: "Projets de démonstration — en attendant mes premières ré
         </div>
     </div>
     <!-- Drag hint indicator -->
-    <div class="slider-hint text-center pt-6 text-gray-900/30 font-inter text-[0.8rem] tracking-[0.15em] uppercase" id="slider-hint">
+    <div class="slider-hint text-center pt-6 text-white/30 font-inter text-[0.8rem] tracking-[0.15em] uppercase" id="slider-hint">
         <span>← Glisser pour explorer →</span>
     </div>
 </section>
