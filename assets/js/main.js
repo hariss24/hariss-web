@@ -179,6 +179,7 @@ if (dotNavs.length > 0) {
         }
     });
 
+    /*
     // Custom "Fullpage" Slider effect for the homepage
     if (isSnapPage) {
         const snapSections = Array.from(document.querySelectorAll('.snap-section'));
@@ -255,6 +256,7 @@ if (dotNavs.length > 0) {
             }
         }, { passive: false, capture: true }); // CRITICAL: capture phase ensures we run BEFORE Lenis
     }
+    */
 }
 
 // Utils
