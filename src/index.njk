@@ -29,7 +29,7 @@ methodology_steps:
 pricing:
   - name: Essentiel
     badge: ''
-    price: '549'
+    price: 'Sur devis'
     price_subtitle: Site One-Page
     features:
       - Une page complète (jusqu'à 6 sections)
@@ -39,7 +39,7 @@ pricing:
     tagline: Pour démarrer avec une page pro
   - name: Pro
     badge: POPULAIRE
-    price: '990'
+    price: 'Sur devis'
     price_subtitle: Site vitrine (jusqu'à 5 pages)
     features:
       - Jusqu'à 5 pages (Accueil, Services, Contact...)
@@ -425,11 +425,13 @@ is_home: true
                             </div>
                             {% if plan.tagline %}<p class="font-inter text-xs text-accent mb-12 md:mb-16">{{ plan.tagline }}</p>{% else %}<div class="mb-12 md:mb-16"></div>{% endif %}
                             <div class="mb-12 md:mb-16">
+                                {% if plan.price != 'Sur devis' %}
                                 <p class="text-xs md:text-sm font-inter {% if plan.badge %}opacity-60{% else %}text-gray-400{% endif %} uppercase tracking-widest mb-4">À
                                     partir de</p>
+                                {% endif %}
                                 <p
                                     class="font-syne text-5xl md:text-6xl font-bold {% if not plan.badge %}text-white{% endif %} tracking-tighter {% if not plan.badge %}group-hover:text-accent{% endif %} transition-colors">
-                                    {{ plan.price }}<span class="text-2xl md:text-3xl">€</span></p>
+                                    {{ plan.price }}{% if plan.price != 'Sur devis' %}<span class="text-2xl md:text-3xl">€</span>{% endif %}</p>
                                 <p class="mt-4 font-serif italic {% if plan.badge %}opacity-70{% else %}text-gray-500{% endif %}">{{ plan.price_subtitle }}</p>
                             </div>
                             <ul class="font-inter text-sm {% if plan.badge %}opacity-90{% else %}text-gray-400{% endif %} space-y-4">

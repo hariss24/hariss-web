@@ -36,7 +36,7 @@ services_list:
 pricing_plans:
   - name: Essentiel
     badge: ''
-    price: '549'
+    price: 'Sur devis'
     subtitle: Site One-Page
     tagline: Pour démarrer avec une page pro
     hover_style: surface
@@ -67,7 +67,7 @@ pricing_plans:
             type: inclus
   - name: Pro
     badge: POPULAIRE
-    price: '990'
+    price: 'Sur devis'
     subtitle: "Site Vitrine (jusqu'à 5 pages)"
     tagline: Pour un site complet et autonome
     hover_style: accent
@@ -232,11 +232,13 @@ cta_button_text: DEMANDER UN AUDIT GRATUIT
                             </div>
                             {% if plan.tagline %}<p class="font-inter text-xs text-accent {% if plan.hover_style == 'accent' %}group-hover:text-white/70 transition-colors{% endif %} mb-12 md:mb-16">{{ plan.tagline }}</p>{% else %}<div class="mb-12 md:mb-16"></div>{% endif %}
                             <div class="mb-12 md:mb-16">
+                                {% if plan.price != 'Sur devis' %}
                                 <p class="text-xs md:text-sm font-inter {{ 'opacity-60' if plan.hover_style == 'accent' else 'text-gray-400' }} uppercase tracking-widest mb-4">À
                                     partir de</p>
+                                {% endif %}
                                 <p
                                     class="font-syne text-5xl md:text-6xl font-bold {{ '' if plan.hover_style == 'accent' else 'text-white' }} tracking-tighter {{ '' if plan.hover_style == 'accent' else 'group-hover:text-accent' }} transition-colors">
-                                    {{ plan.price }}<span class="text-2xl md:text-3xl">€</span></p>
+                                    {{ plan.price }}{% if plan.price != 'Sur devis' %}<span class="text-2xl md:text-3xl">€</span>{% endif %}</p>
                                 <p class="mt-4 font-serif italic {{ 'opacity-70' if plan.hover_style == 'accent' else 'text-gray-500' }}">{{ plan.subtitle }}</p>
                             </div>
 
