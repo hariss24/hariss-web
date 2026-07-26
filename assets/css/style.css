@@ -519,3 +519,305 @@ html.lenis {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* =========================================================
+   PAGE CV (/cv/)
+   ========================================================= */
+
+/* Le reveal global translate les .line de 100% de leur hauteur.
+   Sur des blocs longs (entrées de timeline) c'est trop : on adoucit. */
+.cv-hero .line,
+.cv-section .line {
+    transform: translateY(28px);
+}
+
+.cv-hero.is-visible .line,
+.cv-section .is-visible .line,
+.cv-section.is-visible .line {
+    transform: translateY(0);
+}
+
+/* Nom du héros : fluide, jamais tronqué */
+.cv-name {
+    font-size: clamp(3.25rem, 13vw, 10rem);
+}
+
+/* En-tête de section : numéro + titre */
+.cv-section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.cv-section-num {
+    font-family: "Syne", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: #FF4C4C;
+}
+
+/* ---------- Timeline ---------- */
+.cv-timeline {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Le rail vertical */
+.cv-timeline::before {
+    content: "";
+    position: absolute;
+    top: 0.65rem;
+    bottom: 0.65rem;
+    left: 5px;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(255, 76, 76, 0.5), rgba(255, 255, 255, 0.08));
+}
+
+.cv-entry {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 3.5rem;
+}
+
+.cv-entry:last-child {
+    padding-bottom: 0;
+}
+
+/* Pastille */
+.cv-dot {
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 76, 76, 0.5);
+    background: #030303;
+    transition: background-color 0.6s ease, box-shadow 0.6s ease, transform 0.6s ease;
+}
+
+.cv-entry.is-visible .cv-dot {
+    background: #FF4C4C;
+    box-shadow: 0 0 0 5px rgba(255, 76, 76, 0.12);
+    transform: scale(1.1);
+}
+
+.cv-entry-meta {
+    margin-bottom: 0.75rem;
+}
+
+.cv-bullets li {
+    position: relative;
+    padding-left: 1.15rem;
+}
+
+.cv-bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 6px;
+    height: 1px;
+    background: #FF4C4C;
+}
+
+/* Desktop : date en colonne fixe à gauche du contenu */
+@media (min-width: 768px) {
+
+    /* Le rail passe par le centre des pastilles : 12rem + moitié de la pastille.
+       12rem laisse la plage de dates tenir sur une seule ligne. */
+    .cv-timeline::before {
+        left: calc(12rem + 5px);
+    }
+
+    .cv-entry {
+        display: grid;
+        grid-template-columns: 12rem 1fr;
+        column-gap: 3rem;
+        padding-left: 0;
+    }
+
+    .cv-dot {
+        left: 12rem;
+        top: 0.6rem;
+    }
+
+    .cv-entry-meta {
+        text-align: right;
+        margin-bottom: 0;
+        padding-right: 1.25rem;
+    }
+}
+
+/* ---------- Compétences / cartes / tags ---------- */
+.cv-skill {
+    position: relative;
+    padding-top: 1.25rem;
+}
+
+.cv-skill-rule {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.5rem;
+    height: 2px;
+    background: #FF4C4C;
+}
+
+.cv-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.5rem;
+    transition: border-color 0.4s ease, background-color 0.4s ease;
+}
+
+.cv-card:hover {
+    border-color: rgba(255, 76, 76, 0.4);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.cv-tag {
+    display: inline-block;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.03);
+    font-family: "Inter", sans-serif;
+    font-size: 0.875rem;
+    color: #E5E7EB;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.cv-tag:hover {
+    border-color: #FF4C4C;
+    color: #fff;
+}
+
+/* =========================================================
+   IMPRESSION DU CV
+   ========================================================= */
+@media print {
+
+    /* Décors et chrome du site : hors page */
+    #main-header,
+    #mobile-menu,
+    .noise-overlay,
+    .cursor-dot,
+    .cursor-outline,
+    .cv-actions,
+    .cv-decor,
+    footer {
+        display: none !important;
+    }
+
+    html,
+    body {
+        background: #fff !important;
+        color: #111 !important;
+    }
+
+    /* Neutralise le fond sombre hérité de Tailwind */
+    .cv-hero,
+    .cv-section {
+        background: #fff !important;
+        border-color: #ddd !important;
+        padding-top: 1.25rem !important;
+        padding-bottom: 1.25rem !important;
+        page-break-inside: avoid;
+    }
+
+    .cv-hero {
+        padding-top: 0 !important;
+    }
+
+    .grid-lines::before,
+    .grid-lines::after {
+        display: none !important;
+    }
+
+    /* Le reveal ne doit jamais masquer du contenu à l'impression */
+    .reveal-text .line,
+    .cv-hero .line,
+    .cv-section .line {
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    .cv-name {
+        font-size: 2.5rem !important;
+        color: #111 !important;
+    }
+
+    .cv-name .text-gradient {
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        -webkit-text-fill-color: #111 !important;
+        color: #111 !important;
+    }
+
+    h1,
+    h2,
+    h3 {
+        color: #111 !important;
+    }
+
+    p,
+    li,
+    span,
+    a {
+        color: #222 !important;
+    }
+
+    .cv-section-num,
+    .cv-date,
+    .text-accent {
+        color: #b3261e !important;
+    }
+
+    .cv-dot {
+        background: #b3261e !important;
+        box-shadow: none !important;
+    }
+
+    .cv-timeline::before {
+        background: #bbb !important;
+    }
+
+    .cv-card,
+    .cv-tag {
+        border-color: #ccc !important;
+        background: none !important;
+    }
+
+    .cv-entry {
+        page-break-inside: avoid;
+        padding-bottom: 1.5rem;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    @page {
+        margin: 14mm;
+    }
+}
+
+/* Accessibilité : si l'utilisateur refuse les animations, tout est visible d'emblée */
+@media (prefers-reduced-motion: reduce) {
+
+    .cv-hero .line,
+    .cv-section .line {
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    .cv-entry .cv-dot {
+        background: #FF4C4C !important;
+    }
+}

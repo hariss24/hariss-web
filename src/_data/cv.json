@@ -1,0 +1,134 @@
+{
+  "name": "Hariss Hafeji",
+  "title": "Chargé de projet Digital & E-commerce",
+  "location": "Paris, 75012, Gare de Lyon",
+  "email": "hafejihariss@gmail.com",
+  "phone": "07 66 05 22 07",
+  "linkedin": "",
+  "summary": "Formé en marketing digital, je maîtrise les différents leviers pour valoriser votre présence digitale. Expert en gestion web (CMS, SEO, UX, CRM, code, analytique) et en vulgarisation de sujets techniques, je sais traduire des enjeux métiers en supports de communication impactants.",
+  "experience": [
+    {
+      "title": "Projets web & IA",
+      "company": "Projets personnels",
+      "contract": "",
+      "location": "Paris, France",
+      "date": "2026 – Présent",
+      "bullets": [
+        "Développement de cvmatchr.fr, un outil SaaS d'aide à la candidature.",
+        "Conception de mon site personnel hariss-web.fr.",
+        "Automatisation de workflows et de tests de performance via l'IA."
+      ]
+    },
+    {
+      "title": "Webmaster PO",
+      "company": "Nickel",
+      "contract": "Stage",
+      "location": "Charenton-le-Pont, France",
+      "date": "05/2025 – 10/2025",
+      "bullets": [
+        "Gestion des contenus sous Drupal et déploiement de stratégies SEO/GEO.",
+        "Optimisation UI/UX ayant généré une hausse de 70 % du trafic vers l'onboarding.",
+        "Pilotage quotidien des indicateurs de performance et suivi des recettes fonctionnelles.",
+        "Coordination entre les équipes marketing, les prestataires techniques et les directions métiers."
+      ]
+    },
+    {
+      "title": "Chargé d'e-commerce",
+      "company": "Espace Lumières",
+      "contract": "Stage",
+      "location": "Paris, France",
+      "date": "10/2024 – 12/2024",
+      "bullets": [
+        "Mise à jour des fiches produits et animation commerciale via Shopify.",
+        "Pilotage de l'acquisition (Google/Meta Ads) et expérimentation de l'IA pour la création graphique.",
+        "Gestion de la base client via CRM et fidélisation."
+      ]
+    },
+    {
+      "title": "Chargé de communication digitale",
+      "company": "CPR Asset Management",
+      "contract": "Stage",
+      "location": "Paris, France",
+      "date": "02/2024 – 07/2024",
+      "bullets": [
+        "Support technique lors des phases de migration et de refonte de sites.",
+        "Animation éditoriale et gestion de campagnes de fidélisation.",
+        "Analyse des performances : progression de 300 % des impressions suite aux travaux de refonte."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "title": "Master 2, AEI Commerce électronique",
+      "school": "Université Paris 12 (UPEC)",
+      "location": "Créteil, France",
+      "date": "09/2023 – 10/2025"
+    },
+    {
+      "title": "Licence, Économie et Gestion",
+      "school": "Université Paris Cité",
+      "location": "Paris, France",
+      "date": "09/2019 – 07/2022"
+    }
+  ],
+  "skills": [
+    "Gestion de projets web — Recueil des besoins, rédaction de spécifications, conception, intégration et recette fonctionnelle.",
+    "SEO & GEO — Intégration de stratégie de référencement et des normes RGAA.",
+    "Design UI/UX — Création de maquettes, refonte, wireframes et respect du responsive design.",
+    "Collaboration — Communication quotidienne avec les directions métiers."
+  ],
+  "softSkills": [
+    "Communication digitale",
+    "Rigueur éditoriale",
+    "Curiosité intellectuelle",
+    "Esprit d'équipe",
+    "Gestion de projet",
+    "Expression orale et écrite"
+  ],
+  "tools": [
+    "CMS & Code (WordPress, Drupal, Shopify, HTML/CSS)",
+    "Communication (Jira, Trello, Slack..)",
+    "Analytique (GA4, Piano, GSC, Looker)",
+    "Design (Figma, Canva, Photoshop)",
+    "IA (Claude Code, Codex, Antigravity)"
+  ],
+  "languages": [
+    { "name": "Français", "level": "Natif" },
+    { "name": "Anglais", "level": "Professionnel" },
+    { "name": "Allemand", "level": "Intermédiaire" }
+  ],
+  "interests": [
+    "Photographie (Fujifilm X100V)",
+    "DIY mobilier",
+    "Impression 3D"
+  ],
+  "projects": [
+    {
+      "title": "cvmatchr.fr",
+      "date": "2026 - Présent",
+      "description": "Adapte automatiquement un CV à une offre d'emploi grâce à l'IA : analyse ATS, réécriture ciblée et recherche de postes adaptés."
+    }
+  ],
+  "certifications": [],
+  "volunteer": [],
+  "customSections": [],
+  "customFields": [
+    { "label": "Portfolio", "value": "github.com/hariss24" },
+    { "label": "Disponibilité", "value": "Immédiate" }
+  ],
+  "sectionOrder": [
+    "summary",
+    "experience",
+    "skills",
+    "education",
+    "softSkills",
+    "tools",
+    "languages",
+    "projects",
+    "certifications",
+    "volunteer",
+    "interests"
+  ],
+  "sectionTitles": {},
+  "hiddenSections": ["softSkills"]
+}

@@ -1,0 +1,210 @@
+---
+layout: base.njk
+title: CV — Hariss Hafeji | Chargé de projet Digital & E-commerce
+description: "Parcours, compétences et réalisations de Hariss Hafeji, chargé de projet digital et e-commerce basé à Paris."
+permalink: /CV/
+noindex: true
+hide_header: true
+---
+
+<!-- Sans JavaScript, le reveal ne se déclenche jamais : on force la visibilité du CV. -->
+<noscript>
+    <style>
+        .cv-hero .line,
+        .cv-section .line {
+            transform: none !important;
+            opacity: 1 !important;
+        }
+
+        .cv-dot {
+            background: #FF4C4C !important;
+        }
+    </style>
+</noscript>
+
+{% macro section_title(num, label) %}
+<div class="cv-section-head reveal-text">
+    <span class="line cv-section-num">{{ num }}</span>
+    <h2 class="line font-syne text-xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tighter text-white">{{ label }}</h2>
+</div>
+{% endmacro %}
+
+<!-- ============ HÉROS ============ -->
+<section class="cv-hero relative w-full overflow-hidden bg-pitch grid-lines pt-20 pb-16 md:pt-28 md:pb-24">
+    <div class="container mx-auto px-6 md:px-12 relative z-10">
+
+        <div class="reveal-text">
+            <p class="line text-accent font-syne text-xs md:text-sm uppercase tracking-[0.35em] mb-6">Curriculum Vitæ</p>
+            <h1 class="line cv-name font-syne font-extrabold uppercase tracking-tighter leading-[0.85] text-white mb-6">
+                Hariss<br><span class="text-gradient">Hafeji</span>
+            </h1>
+            <p class="line font-serif italic text-2xl md:text-4xl text-gray-300 mb-10">{{ cv.title }}</p>
+        </div>
+
+        <!-- Coordonnées -->
+        <ul class="cv-contact reveal-text flex flex-wrap gap-x-8 gap-y-3 mb-10 text-sm md:text-base text-gray-300">
+            <li class="line">
+                <a href="mailto:{{ cv.email }}" class="cursor-hover hover:text-accent transition-colors border-b border-white/20 hover:border-accent pb-0.5">{{ cv.email }}</a>
+            </li>
+            <li class="line">
+                <a href="tel:+33766052207" class="cursor-hover hover:text-accent transition-colors border-b border-white/20 hover:border-accent pb-0.5">{{ cv.phone }}</a>
+            </li>
+            <li class="line">{{ cv.location }}</li>
+            {% for field in cv.customFields %}
+            <li class="line"><span class="text-white/40 uppercase text-xs tracking-widest mr-2">{{ field.label }}</span>{{ field.value }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Actions -->
+        <div class="flex flex-wrap gap-4 cv-actions">
+            <button type="button" onclick="window.print()"
+                class="group relative inline-flex items-center justify-center px-8 py-4 border border-white/20 text-xs font-syne uppercase tracking-wider text-white overflow-hidden cursor-hover magnetic rounded-full hover:border-accent transition-colors duration-500"
+                data-magnetic-strength="20">
+                <span class="relative z-10 transition-colors group-hover:text-black font-bold">Imprimer / PDF</span>
+                <div class="absolute inset-0 bg-accent translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-out z-0"></div>
+            </button>
+            <a href="/contact/"
+                class="group relative inline-flex items-center justify-center px-8 py-4 bg-accent text-xs font-syne uppercase tracking-wider text-black overflow-hidden cursor-hover magnetic rounded-full font-bold"
+                data-magnetic-strength="20">
+                <span class="relative z-10">Me contacter</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Texte vertical décoratif -->
+    <div class="absolute bottom-12 right-8 hidden lg:flex items-center gap-4 origin-right rotate-90 opacity-20 text-white cv-decor">
+        <span class="text-[0.9rem] uppercase font-bold tracking-[0.4em]">Paris</span>
+        <div class="w-16 h-[1px] bg-white"></div>
+    </div>
+</section>
+
+<!-- ============ RÉSUMÉ ============ -->
+<section class="cv-section w-full bg-pitch py-16 md:py-24 border-t border-white/5">
+    <div class="container mx-auto px-6 md:px-12">
+        {{ section_title("01", "Profil") }}
+        <div class="reveal-text max-w-4xl">
+            <p class="line font-inter text-lg md:text-2xl text-gray-200 leading-relaxed">{{ cv.summary }}</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ EXPÉRIENCE (timeline) ============ -->
+<section class="cv-section w-full bg-pitch py-16 md:py-24 border-t border-white/5">
+    <div class="container mx-auto px-6 md:px-12">
+        {{ section_title("02", "Expérience") }}
+
+        <ol class="cv-timeline">
+            {% for job in cv.experience %}
+            <li class="cv-entry reveal-text">
+                <span class="cv-dot" aria-hidden="true"></span>
+
+                <div class="cv-entry-meta line">
+                    <span class="cv-date font-syne text-accent text-sm md:text-base font-bold tracking-wide">{{ job.date }}</span>
+                    <span class="cv-place block text-xs md:text-sm text-white/40 mt-1">{{ job.location }}</span>
+                </div>
+
+                <div class="cv-entry-body">
+                    <h3 class="line font-syne text-xl md:text-3xl font-bold text-white tracking-tight">{{ job.title }}</h3>
+                    <p class="line font-inter text-base md:text-lg text-gray-300 mt-1 mb-4">
+                        {{ job.company }}{% if job.contract %} <span class="text-white/40">·</span> <span class="text-white/60">{{ job.contract }}</span>{% endif %}
+                    </p>
+                    <ul class="cv-bullets space-y-2.5">
+                        {% for bullet in job.bullets %}
+                        <li class="line font-inter text-base md:text-[1.05rem] text-gray-300 leading-relaxed">{{ bullet }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</section>
+
+<!-- ============ COMPÉTENCES ============ -->
+<section class="cv-section w-full bg-pitch py-16 md:py-24 border-t border-white/5">
+    <div class="container mx-auto px-6 md:px-12">
+        {{ section_title("03", "Compétences") }}
+        <ul class="reveal-text grid md:grid-cols-2 gap-x-12 gap-y-8">
+            {% for skill in cv.skills %}
+            <li class="line cv-skill">
+                <span class="cv-skill-rule" aria-hidden="true"></span>
+                <p class="font-inter text-base md:text-lg text-gray-200 leading-relaxed">{{ skill }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<!-- ============ FORMATION ============ -->
+<section class="cv-section w-full bg-pitch py-16 md:py-24 border-t border-white/5">
+    <div class="container mx-auto px-6 md:px-12">
+        {{ section_title("04", "Formation") }}
+        <ul class="reveal-text grid md:grid-cols-2 gap-8">
+            {% for edu in cv.education %}
+            <li class="line cv-card">
+                <span class="font-syne text-accent text-sm font-bold tracking-wide">{{ edu.date }}</span>
+                <h3 class="font-syne text-lg md:text-2xl font-bold text-white mt-2 tracking-tight">{{ edu.title }}</h3>
+                <p class="font-inter text-base text-gray-300 mt-2">{{ edu.school }}</p>
+                <p class="font-inter text-sm text-white/40 mt-1">{{ edu.location }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<!-- ============ OUTILS ============ -->
+<section class="cv-section w-full bg-pitch py-16 md:py-24 border-t border-white/5">
+    <div class="container mx-auto px-6 md:px-12">
+        {{ section_title("05", "Outils") }}
+        <ul class="reveal-text flex flex-wrap gap-3">
+            {% for tool in cv.tools %}
+            <li class="line cv-tag">{{ tool }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<!-- ============ LANGUES ============ -->
+<section class="cv-section w-full bg-pitch py-16 md:py-24 border-t border-white/5">
+    <div class="container mx-auto px-6 md:px-12">
+        {{ section_title("06", "Langues") }}
+        <ul class="reveal-text grid sm:grid-cols-3 gap-6">
+            {% for lang in cv.languages %}
+            <li class="line cv-card flex items-baseline justify-between gap-4">
+                <span class="font-syne text-lg md:text-2xl font-bold text-white tracking-tight">{{ lang.name }}</span>
+                <span class="font-inter text-sm text-accent">{{ lang.level }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<!-- ============ PROJETS ============ -->
+{% if cv.projects.length %}
+<section class="cv-section w-full bg-pitch py-16 md:py-24 border-t border-white/5">
+    <div class="container mx-auto px-6 md:px-12">
+        {{ section_title("07", "Projets") }}
+        <ul class="reveal-text space-y-8">
+            {% for project in cv.projects %}
+            <li class="line cv-card max-w-3xl">
+                <span class="font-syne text-accent text-sm font-bold tracking-wide">{{ project.date }}</span>
+                <h3 class="font-syne text-xl md:text-3xl font-bold text-white mt-2 tracking-tight">{{ project.title }}</h3>
+                <p class="font-inter text-base md:text-lg text-gray-300 mt-3 leading-relaxed">{{ project.description }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endif %}
+
+<!-- ============ CENTRES D'INTÉRÊT ============ -->
+<section class="cv-section w-full bg-pitch py-16 md:py-24 border-t border-white/5">
+    <div class="container mx-auto px-6 md:px-12">
+        {{ section_title("08", "Centres d'intérêt") }}
+        <ul class="reveal-text flex flex-wrap gap-3">
+            {% for interest in cv.interests %}
+            <li class="line cv-tag">{{ interest }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

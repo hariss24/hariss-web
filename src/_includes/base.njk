@@ -6,6 +6,7 @@
     <meta name="google-site-verification" content="kelfP6WkoZM2VVI_QYpnmEy_psMrWgQVI08vnLkgS30" />
     <title>{{ title | default("Hariss Web | Création de Sites Web pour TPE & Indépendants") }}</title>
     <meta name="description" content="{{ description | default("Développeur freelance spécialisé en création de sites web sur-mesure pour TPE et indépendants. Sites vitrines, CMS et solutions digitales à prix accessible.") }}">
+    {% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
 
     <!-- Fonts: Syne (Headings), Playfair Display (Serif Italic), Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +61,7 @@
     <!-- Global Noise Overlay -->
     <div class="noise-overlay"></div>
 
-    {% include "./components/header.njk" %}
+    {% if not hide_header %}{% include "./components/header.njk" %}{% endif %}
 
     <div id="smooth-wrapper" class="w-full overflow-x-clip">
         <main id="smooth-content" class="w-full min-h-screen">
