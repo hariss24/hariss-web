@@ -1,14 +1,14 @@
 // 1. Smooth Scroll (Lenis)
 const isSnapPage = document.querySelector('body').classList.contains('is-snap-page');
 const lenis = new Lenis({
-    duration: 1.2,
+    duration: 0.8,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     direction: 'vertical',
     gestureDirection: 'vertical',
     smooth: true,
-    mouseMultiplier: 1,
+    mouseMultiplier: 0.8,
     smoothTouch: false,
-    touchMultiplier: 2,
+    touchMultiplier: 1.5,
     infinite: false,
 });
 
@@ -59,7 +59,7 @@ if (dot && outline && window.matchMedia("(pointer: fine)").matches) {
         });
         el.addEventListener('mouseleave', () => {
             outline.classList.remove('hovering');
-            dot.style.backgroundColor = '#4ADE80';
+            dot.style.backgroundColor = '#E65F2B';
 
             // Reset magnetic force if it's also a magnetic element
             if (el.classList.contains('magnetic') || el.classList.contains('magnetic-area')) {
