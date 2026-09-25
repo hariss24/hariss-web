@@ -59,7 +59,7 @@ if (dot && outline && window.matchMedia("(pointer: fine)").matches) {
         });
         el.addEventListener('mouseleave', () => {
             outline.classList.remove('hovering');
-            dot.style.backgroundColor = '#FF4C4C';
+            dot.style.backgroundColor = '#4ADE80';
 
             // Reset magnetic force if it's also a magnetic element
             if (el.classList.contains('magnetic') || el.classList.contains('magnetic-area')) {
@@ -607,4 +607,27 @@ if (faqItems.length > 0) {
             }
         });
     });
+}
+
+// 10. Skill Bars — animate width on scroll
+const skillBars = document.querySelectorAll('.skill-bar');
+if (skillBars.length > 0) {
+    skillBars.forEach(bar => {
+        bar.setAttribute('data-width', bar.style.width);
+        bar.style.width = '0%';
+    });
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bars = entry.target.querySelectorAll('.skill-bar');
+                bars.forEach((bar, i) => {
+                    setTimeout(() => { bar.style.width = bar.getAttribute('data-width'); }, i * 100);
+                });
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const parent = skillBars[0].closest('section');
+    if (parent) skillObserver.observe(parent);
 }
