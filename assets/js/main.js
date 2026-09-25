@@ -18,6 +18,19 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
+// Anchor links: smooth scroll via Lenis
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+            e.preventDefault();
+            lenis.scrollTo(target, { duration: 0.8 });
+        }
+    });
+});
+
 // 2. (Removed Hide/Show Header logic, header is now always fixed)
 
 // 3. Custom Cursor (only on non-touch devices)
